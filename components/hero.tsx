@@ -86,6 +86,7 @@ const Hero = () => {
         {/* Side Links */}
         <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4">
             {[
+            { href: "/collection", title: "Our Collection", subtitle: "oral history" },
             { href: "#about", title: "Our purpose", subtitle: "who we are" },
             { href: "#services", title: "Work of the Project", subtitle: "what we do" },
             { href: "#contact", title: "Contact", subtitle: "get in touch" }
