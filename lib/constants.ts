@@ -181,3 +181,8 @@ export const griotConfig: GriotConfig = {
         maxTokens: parseInt(process.env.NEXT_PUBLIC_CONTEXT_MAX_TOKENS || '4000'),
     },
 }
+
+// GoFundMe OAuth configuration
+export const GOFUNDME_CLIENT_ID = process.env.GOFUNDME_CLIENT_ID || 'client_id';
+export const GOFUNDME_CLIENT_SECRET = process.env.GOFUNDME_CLIENT_SECRET || 'client_secret';
+export const GOFUNDME_REDIRECT_URI = process.env.GOFUNDME_REDIRECT_URI || 'http://localhost:3000/oauth/callback';

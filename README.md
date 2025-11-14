@@ -38,21 +38,76 @@ export FEATURE_ASK_THE_GRIOT=true
 export FEATURE_ASK_THE_GRIOT=false
 ```
 
+### GoFundMe Donation Integration
+
+The GoFundMe donation section on the main page can be configured and controlled using environment variables.
+
+**Required API Credentials (for real-time campaign data):**
+```bash
+export GOFUNDME_CLIENT_ID=your-classy-client-id       # Required: Your Classy API client ID
+export GOFUNDME_CLIENT_SECRET=your-classy-secret      # Required: Your Classy API client secret
+```
+
+**Optional Configuration:**
+```bash
+export GOFUNDME_CAMPAIGN_ID=731313     # Default campaign ID
+export FEATURE_GOFUNDME=true           # Enable/disable the feature (default: enabled)
+export GOFUNDME_USE_EMBEDDED=false     # Use embedded modal vs external links (default: false - external links)
+export GOFUNDME_REDIRECT_URI=http://localhost:3000/oauth/callback  # OAuth redirect URI (not currently used)
+```
+
+**To use embedded donation modal:**
+```bash
+export GOFUNDME_USE_EMBEDDED=true      # Opens donation form in modal on your site
+```
+
+**To disable the GoFundMe section:**
+```bash
+export FEATURE_GOFUNDME=false
+```
+
 **For deployment platforms:**
 
-- **Vercel**: Add `FEATURE_ASK_THE_GRIOT=false` to your environment variables in the Vercel dashboard
-- **Netlify**: Add `FEATURE_ASK_THE_GRIOT=false` to your environment variables in site settings
-- **Docker**: Pass the environment variable when running the container:
+- **Vercel**: Add environment variables in the Vercel dashboard:
+  - `GOFUNDME_CLIENT_ID=your-classy-client-id` (**Required** for real-time data)
+  - `GOFUNDME_CLIENT_SECRET=your-classy-secret` (**Required** for real-time data)
+  - `FEATURE_ASK_THE_GRIOT=false` (to disable Ask the Griot)
+  - `GOFUNDME_CAMPAIGN_ID=your-campaign-id` (to set your campaign)
+  - `FEATURE_GOFUNDME=false` (to disable GoFundMe section)
+  - `GOFUNDME_USE_EMBEDDED=true` (to use embedded modal instead of external links)
+
+- **Netlify**: Add environment variables in site settings:
+  - `GOFUNDME_CLIENT_ID=your-classy-client-id` (**Required**)
+  - `GOFUNDME_CLIENT_SECRET=your-classy-secret` (**Required**)
+  - `FEATURE_ASK_THE_GRIOT=false`
+  - `GOFUNDME_CAMPAIGN_ID=your-campaign-id`
+  - `FEATURE_GOFUNDME=false`
+  - `GOFUNDME_USE_EMBEDDED=true`
+
+- **Docker**: Pass environment variables when running the container:
   ```bash
-  docker run -e FEATURE_ASK_THE_GRIOT=false your-app
+  docker run -e GOFUNDME_CLIENT_ID=your-classy-client-id \
+             -e GOFUNDME_CLIENT_SECRET=your-classy-secret \
+             -e FEATURE_ASK_THE_GRIOT=false \
+             -e GOFUNDME_CAMPAIGN_ID=your-campaign-id \
+             -e FEATURE_GOFUNDME=true \
+             -e GOFUNDME_USE_EMBEDDED=true \
+             your-app
   ```
-- **Railway/Render**: Add `FEATURE_ASK_THE_GRIOT=false` to your environment variables in the platform dashboard
+
+- **Railway/Render**: Add environment variables in the platform dashboard
 
 **Notes:**
 - Feature flags are evaluated server-side during page rendering for security
 - Changes require a deployment/restart to take effect
-- If the environment variable is not set, the feature defaults to enabled
-- When disabled, the "Ask the Griot" button and chat interface will not appear on the Collection page
+- **GoFundMe API Credentials**:
+  - **Required** for real-time campaign data (current amount raised, donor count, etc.)
+  - Without credentials, the GoFundMe section will show fallback/default values
+  - Credentials are from Classy API (GoFundMe's partner platform for organizations)
+- **GoFundMe Default**: External links (opens `https://give.griotandgrits.org/campaign/731313/donate` in new window)
+- **GoFundMe Embedded**: Modal overlay with embedded donation form (when `GOFUNDME_USE_EMBEDDED=true`)
+- If environment variables are not set, features default to enabled with campaign ID 731313
+- When disabled, the respective features will not appear on the website
 
 ## Learn More
 

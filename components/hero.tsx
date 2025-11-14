@@ -89,6 +89,7 @@ const Hero = () => {
             { href: "/collection", title: "Our Collection", subtitle: "oral history" },
             { href: "#about", title: "Our purpose", subtitle: "who we are" },
             { href: "#services", title: "Work of the Project", subtitle: "what we do" },
+            { href: "#donate", title: "Support Us", subtitle: "make a donation" },
             { href: "#contact", title: "Contact", subtitle: "get in touch" }
             ].map((link, index) => (
             <motion.a

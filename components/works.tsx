@@ -113,7 +113,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h3 className="text-[#a94728] tracking-widest font-semibold text-lg mt-6 mb-4 uppercase">/ Featured Stories</h3>
+          <h3 className="text-[#a94728] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Featured Stories</h3>
           <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
             Discover and watch the rich tapestry of Black experiences
           </p>

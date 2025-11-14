@@ -159,7 +159,7 @@ const Services: React.FC = () => {
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <h3 className="text-[#a94728] tracking-widest font-semibold text-lg mt-6 mb-4 uppercase">/ Work Of The Project</h3>
+                    <h3 className="text-[#a94728] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Work Of The Project</h3>
                     <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
                         Bringing the Black experience to life for generations to come
                     </p>
@@ -175,8 +175,8 @@ const Services: React.FC = () => {
                     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
                         <div className="relative aspect-video bg-gray-900 group">
                             <Image
-                                src="/media/img/launch_video_thumbnail.png"
-                                alt="Griot and Grits - How it Works"
+                                src="/media/img/bringing_stories_to_life_video_thumbnail.png"
+                                alt="Griot and Grits - Bringing Stories to Life"
                                 fill
                                 className="object-cover"
                             />
@@ -184,7 +184,7 @@ const Services: React.FC = () => {
                                 <button
                                     onClick={handleVideoPlay}
                                     className="bg-white/90 rounded-full p-6 hover:bg-white transition-colors transform hover:scale-110 duration-300"
-                                    aria-label="Play How it Works video"
+                                    aria-label="Play Griot and Grits video"
                                 >
                                     <Play className="w-8 h-8 text-[#a94728] ml-1" />
                                 </button>
@@ -194,7 +194,7 @@ const Services: React.FC = () => {
                             </div>
                         </div>
                         <div className="p-6">
-                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Griot and Grits - How it Works</h3>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Griot and Grits - Bringing Stories to Life</h3>
                             <p className="text-gray-600 text-lg leading-relaxed">
                                 Watch how the Griot and Grits community brings the stories of black families to life using AI and advanced technologies to preserve oral history.
                             </p>
@@ -218,8 +218,8 @@ const Services: React.FC = () => {
                 <VideoPlayer
                     isOpen={isVideoPlayerOpen}
                     onClose={handleVideoPlayerClose}
-                    videoUrl="https://www.youtube.com/watch?v=sO3GO_ghEXk"
-                    title="Griot and Grits - How it Works"
+                    videoUrl="https://www.youtube.com/watch?v=JwHJFHz3mu4"
+                    title="Griot and Grits - Bringing Stories to Life"
                 />
             </div>
         </section>
