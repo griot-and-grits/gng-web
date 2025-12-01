@@ -1,185 +1,5 @@
 videos:
   - id: "1"
-    thumbnail: "/media/img/launch_video_thumbnail.png"
-    title: "Civil Rights Movement Memories"
-    interviewees: 
-      - "Dorothy Williams"
-      - "Rev. Fred Shuttlesworth"
-    description: "Dorothy and Rev. Shuttlesworth share their experiences during the Civil Rights Movement in Birmingham, Alabama, including their participation in the Children's Crusade of 1963."
-    duration: "42:15"
-    createdDate: "2023-02-14T10:30:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=sO3GO_ghEXk"
-    locations:
-      - name: "Birmingham, Alabama"
-        coordinates: [33.5186, -86.8104]
-      - name: "Selma, Alabama"
-        coordinates: [32.4074, -87.0211]
-    tags:
-      - "Civil Rights"
-      - "Birmingham"
-      - "1960s"
-      - "Children's Crusade"
-      - "Church Leadership"
-      - "Protest Strategy"
-      - "Civil Rights Movement"
-      - "Education"
-      - "Social Justice"
-    people:
-      - "Dorothy Williams"
-      - "Rev. Fred Shuttlesworth"
-      - "Martin Luther King Jr."
-      - "Bull Connor"
-
-  - id: "2"
-    thumbnail: "/media/img/launch_video_thumbnail.png"
-    title: "Migration Stories from the South"
-    interviewees: 
-      - "James Thompson"
-      - "Mary Thompson"
-    description: "James and Mary Thompson recount their family's journey from rural Mississippi to Chicago during the Great Migration, and the challenges they faced."
-    duration: "38:22"
-    createdDate: "2023-03-22T14:15:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=sO3GO_ghEXk"
-    locations:
-      - name: "Clarksdale, Mississippi"
-        coordinates: [34.2003, -90.5706]
-      - name: "Chicago, Illinois"
-        coordinates: [41.8781, -87.6298]
-      - name: "Detroit, Michigan"
-        coordinates: [42.3314, -83.0458]
-    tags:
-      - "Great Migration"
-      - "Mississippi"
-      - "Chicago"
-      - "Family History"
-      - "Marriage"
-      - "Labor Movement"
-      - "Family Stories"
-      - "Economic Opportunity"
-    people:
-      - "James Thompson"
-      - "Mary Thompson"
-      - "Thompson Family"
-
-  - id: "3"
-    thumbnail: "/media/img/launch_video_thumbnail.png"
-    title: "Preserving Cultural Traditions"
-    interviewees: 
-      - "Maria Santos"
-    description: "Maria discusses how her community maintained their cultural traditions through music, food, and storytelling across generations."
-    duration: "29:47"
-    createdDate: "2023-04-05T16:45:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=sO3GO_ghEXk"
-    locations:
-      - name: "New Orleans, Louisiana"
-        coordinates: [29.9511, -90.0715]
-      - name: "Lafayette, Louisiana"
-        coordinates: [30.2241, -92.0198]
-    tags:
-      - "Cultural Traditions"
-      - "Music"
-      - "Food"
-      - "Community"
-      - "Storytelling"
-      - "Recipes"
-      - "Cultural Preservation"
-      - "Music Traditions"
-    people:
-      - "Maria Santos"
-      - "Santos Family"
-
-  - id: "4"
-    thumbnail: "/media/img/launch_video_thumbnail.png"
-    title: "Voices from the Montgomery Bus Boycott"
-    interviewees: 
-      - "Robert Johnson"
-      - "Virginia Durr"
-    description: "Robert and Virginia share their firsthand accounts of participating in the Montgomery Bus Boycott and the community organizing that made it successful."
-    duration: "45:32"
-    createdDate: "2023-05-18T09:20:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=sO3GO_ghEXk"
-    locations:
-      - name: "Montgomery, Alabama"
-        coordinates: [32.3617, -86.2792]
-      - name: "Birmingham, Alabama"
-        coordinates: [33.5186, -86.8104]
-    tags:
-      - "Montgomery Bus Boycott"
-      - "Civil Rights"
-      - "Community Organizing"
-      - "Rosa Parks"
-      - "White Allies"
-      - "Economic Pressure"
-      - "Civil Rights Movement"
-      - "Transportation"
-      - "Economic Justice"
-    people:
-      - "Robert Johnson"
-      - "Virginia Durr"
-      - "Rosa Parks"
-      - "Martin Luther King Jr."
-      - "E.D. Nixon"
-
-  - id: "5"
-    thumbnail: "/media/img/launch_video_thumbnail.png"
-    title: "Jazz Heritage and Community"
-    interviewees: 
-      - "Sarah Washington"
-      - "Duke Ellington Jr."
-    description: "Sarah and Duke Jr. reflect on growing up in jazz-rich neighborhoods and how music brought communities together during difficult times."
-    duration: "35:18"
-    createdDate: "2023-06-12T15:00:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=sO3GO_ghEXk"
-    locations:
-      - name: "Kansas City, Missouri"
-        coordinates: [39.0997, -94.5786]
-      - name: "New York, New York"
-        coordinates: [40.7128, -74.0060]
-    tags:
-      - "Jazz"
-      - "Music History"
-      - "Community"
-      - "Kansas City"
-      - "Harlem Renaissance"
-      - "Musicians"
-      - "Music Traditions"
-      - "Cultural Heritage"
-    people:
-      - "Sarah Washington"
-      - "Duke Ellington Jr."
-      - "Charlie Parker"
-      - "Count Basie"
-
-  - id: "6"
-    thumbnail: "/media/img/launch_video_thumbnail.png"
-    title: "Education and Desegregation"
-    interviewees: 
-      - "Michael Davis"
-    description: "Michael talks about being among the first Black students to integrate his high school in Little Rock and the courage it took to persevere."
-    duration: "41:07"
-    createdDate: "2023-07-08T11:45:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=sO3GO_ghEXk"
-    locations:
-      - name: "Little Rock, Arkansas"
-        coordinates: [34.7465, -92.2896]
-      - name: "Pine Bluff, Arkansas"
-        coordinates: [34.2284, -92.0032]
-    tags:
-      - "School Integration"
-      - "Education"
-      - "Little Rock Nine"
-      - "Courage"
-      - "Federal Intervention"
-      - "Arkansas"
-      - "Civil Rights Movement"
-      - "School Desegregation"
-    people:
-      - "Michael Davis"
-      - "Little Rock Nine"
-      - "Daisy Bates"
-      - "Ernest Green"
-
-  - id: "7"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667555/Screenshot_62_wjthuw.png"
     title: "Mrs. Clark Talks Black Prisoner Cadavers"
     interviewees: 
@@ -200,7 +20,7 @@ videos:
     people:
       - "Irene Clark"
 
-  - id: "8"
+  - id: "2"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
     title: "Ms. Gladys M. Williams"
     interviewees: 
@@ -227,7 +47,7 @@ videos:
     people:
       - "Gladys M. Williams"
 
-  - id: "9"
+  - id: "3"
     thumbnail: "https://img.youtube.com/vi/9Nwl-6DRPYI/0.jpg"
     title: "Deborah Ragan McCoy"
     interviewees: 
@@ -251,7 +71,7 @@ videos:
     people:
       - "Deborah Ragan McCoy"
 
-  - id: "10"
+  - id: "4"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667554/Screenshot_61_e3jz6q.png"
     title: "Sharon McDuffie Recalls 911"
     interviewees: 
@@ -277,7 +97,7 @@ videos:
     people:
       - "Sharon McDuffie"
 
-  - id: "11"
+  - id: "5"
     thumbnail: "https://img.youtube.com/vi/1veIaRHpYO0/0.jpg"
     title: "Ty McDuffie Remembers Meeting His Wife"
     interviewees: 
@@ -303,7 +123,7 @@ videos:
       - "Ty McDuffie"
       - "Sharon Burwell McDuffie"
 
-  - id: "12"
+  - id: "6"
     thumbnail: "https://img.youtube.com/vi/Wygd0hwc7iA/0.jpg"
     title: "Deborah McCoy Recalls a Historic Snowstorm"
     interviewees: 

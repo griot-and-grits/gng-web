@@ -65,7 +65,7 @@ const ContactSection: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="mb-16"
                 >
-                    <h3 className="text-[#a94728] text-sm uppercase max-w-4xl mx-auto tracking-widest font-semibold mb-4">/ Contributing to the Project</h3>
+                    <h3 className="text-[#a94728] text-xl uppercase max-w-4xl mx-auto tracking-widest font-semibold mb-4">/ Contributing to the Project</h3>
                     <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold">
                         There&apos;s a lot of work to do to get this project off the ground. 
                         Your help is always welcome. If you&apos;re interested in joining as a member, reach out to us!
@@ -109,7 +109,7 @@ const ContactSection: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                     >
-                        <h3 className="text-[#a94728] tracking-widest font-semibold uppercase mb-4">/ Where To Find Us</h3>
+                        <h3 className="text-[#a94728] tracking-widest font-semibold text-xl uppercase mb-4">/ Where To Find Us</h3>
                         <p className="text-xl text-gray-300">
                             123 Project Street<br />
                             Innovation District<br />
