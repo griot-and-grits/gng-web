@@ -10,21 +10,12 @@ export interface GoFundMeConfig {
 }
 
 /**
- * Server-side feature flags configuration.
- * These flags are read at build time and can be overridden by environment variables.
- */
-const defaultFeatureFlags: FeatureFlags = {
-    askTheGriot: true, // Default to enabled
-    goFundMe: true, // Default to enabled
-};
-
-/**
  * Get feature flags from environment variables or default configuration.
  * This function runs on the server side only.
  */
 export function getFeatureFlags(): FeatureFlags {
     return {
-        askTheGriot: process.env.FEATURE_ASK_THE_GRIOT !== 'false',
+        askTheGriot: process.env.FEATURE_ASK_THE_GRIOT === 'true',
         goFundMe: process.env.FEATURE_GOFUNDME !== 'false',
     };
 }
