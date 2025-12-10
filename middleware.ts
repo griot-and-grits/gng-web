@@ -3,9 +3,7 @@ import type { NextRequest } from 'next/server';
 
 import { auth } from '@/auth';
 
-const authDisabled =
-    process.env.ADMIN_AUTH_DISABLED === 'true' ||
-    process.env.ADMIN_DEV_BYPASS === 'true';
+const authDisabled = process.env.ADMIN_AUTH_DISABLED === 'true';
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
@@ -19,10 +17,6 @@ export async function middleware(request: NextRequest) {
     }
 
     const session = await auth();
-
-    if (session?.devBypass) {
-        return NextResponse.next();
-    }
 
     if (!session) {
         const signInUrl = new URL('/admin/sign-in', request.url);
