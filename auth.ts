@@ -139,8 +139,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         async session({ session, token }) {
             if (session.user) {
                 session.user.email = token.email ?? session.user.email ?? null;
-                session.user.role = token.role ?? 'admin';
-                session.user.githubLogin = token.githubLogin;
+                session.user.role = (token.role as string) ?? 'admin';
+                session.user.githubLogin = token.githubLogin as string | undefined;
             }
 
             session.devBypass = token.devBypass === true;

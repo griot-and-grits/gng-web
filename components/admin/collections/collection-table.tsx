@@ -7,14 +7,15 @@ import { Loader2, RefreshCw } from 'lucide-react';
 
 import { collectionsApi } from '@/lib/admin/apis';
 import { CollectionStatus } from '@/lib/admin/types';
-import { formatDate, formatFileSize } from '@/lib/admin/utils/formatters';
+import { formatDate } from '@/lib/admin/utils/formatters';
 import { CollectionStatusBadge } from '../shared/collection-status-badge';
 import { getAPIErrorMessage } from '@/lib/admin/utils/error';
 
 const statusOptions = [
     { value: '', label: 'All statuses' },
     { value: CollectionStatus.DRAFT, label: 'Draft' },
-    { value: CollectionStatus.UPLOADED, label: 'Uploaded' },
+    { value: CollectionStatus.AWAITING_UPLOAD, label: 'Awaiting Upload' },
+    { value: CollectionStatus.UPLOAD_IN_PROGRESS, label: 'Upload In Progress' },
     { value: CollectionStatus.VERIFYING, label: 'Verifying' },
     { value: CollectionStatus.SEALED, label: 'Sealed' },
     { value: CollectionStatus.ERROR, label: 'Error' },
@@ -132,7 +133,7 @@ export function CollectionTable() {
                                         {collection.artifact_ids?.length ?? 0}
                                     </td>
                                     <td className="px-4 py-3 text-sm text-slate-600">
-                                        {formatFileSize(collection.verification?.total_size_bytes)}
+                                        -
                                     </td>
                                     <td className="px-4 py-3 text-sm text-slate-600">
                                         {formatDate(collection.created_at)}

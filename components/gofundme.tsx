@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Target, Users, TrendingUp, X, RefreshCw } from 'lucide-react';
 
@@ -37,28 +37,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    // Fetch campaign data on component mount
-    useEffect(() => {
-        fetchPublicCampaignData();
-
-        // Only load GoFundMe widget script if embedded mode is enabled
-        if (useEmbedded) {
-            const script = document.createElement('script');
-            script.src = 'https://www.gofundme.com/static/js/embed.js';
-            script.async = true;
-            document.body.appendChild(script);
-
-            return () => {
-                // Cleanup script when component unmounts
-                if (document.body.contains(script)) {
-                    document.body.removeChild(script);
-                }
-            };
-        }
-    }, [useEmbedded, campaignId]);
-
-
-    const fetchPublicCampaignData = async () => {
+    const fetchPublicCampaignData = useCallback(async () => {
         setIsLoading(true);
         setError(null);
 
@@ -87,8 +66,27 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [campaignId]);
 
+    // Fetch campaign data on component mount
+    useEffect(() => {
+        fetchPublicCampaignData();
+
+        // Only load GoFundMe widget script if embedded mode is enabled
+        if (useEmbedded) {
+            const script = document.createElement('script');
+            script.src = 'https://www.gofundme.com/static/js/embed.js';
+            script.async = true;
+            document.body.appendChild(script);
+
+            return () => {
+                // Cleanup script when component unmounts
+                if (document.body.contains(script)) {
+                    document.body.removeChild(script);
+                }
+            };
+        }
+    }, [useEmbedded, campaignId, fetchPublicCampaignData]);
 
     // Prevent body scroll when modal is open
     useEffect(() => {

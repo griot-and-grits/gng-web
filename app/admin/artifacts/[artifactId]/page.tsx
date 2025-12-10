@@ -1,11 +1,11 @@
 import { ArtifactDetail } from '@/components/admin/artifacts/artifact-detail';
 
 type ArtifactDetailPageProps = {
-    params: { artifactId: string };
+    params: Promise<{ artifactId: string }>;
 };
 
-export default function ArtifactDetailPage({ params }: ArtifactDetailPageProps) {
-    const { artifactId } = params;
+export default async function ArtifactDetailPage({ params }: ArtifactDetailPageProps) {
+    const { artifactId } = await params;
 
     return <ArtifactDetail artifactId={artifactId} />;
 }

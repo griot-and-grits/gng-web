@@ -1,4 +1,5 @@
 import { apiClient } from '../api-client';
+import type { AxiosProgressEvent } from 'axios';
 import type {
     Artifact,
     ArtifactListResponse,
@@ -9,7 +10,7 @@ import type {
 } from '../types';
 
 type IngestOptions = {
-    onUploadProgress?: (progressEvent: ProgressEvent) => void;
+    onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
     timeoutMs?: number;
 };
 

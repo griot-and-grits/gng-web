@@ -45,14 +45,14 @@ export function ArtifactDetail({ artifactId }: ArtifactDetailProps) {
     } = useQuery({
         queryKey: ['artifact', artifactId],
         queryFn: () => artifactsApi.getById(artifactId),
-        refetchInterval: (data) => {
-            if (!data) {
+        refetchInterval: (query) => {
+            if (!query.state.data) {
                 return 5000;
             }
 
             if (
-                data.status === ArtifactStatus.PROCESSING ||
-                data.status === ArtifactStatus.UPLOADING
+                query.state.data.status === ArtifactStatus.PROCESSING ||
+                query.state.data.status === ArtifactStatus.UPLOADING
             ) {
                 return 5000;
             }
