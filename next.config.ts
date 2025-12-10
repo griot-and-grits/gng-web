@@ -2,7 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /**
-   * Configuration for server deployment with dynamic features
+   * Disable server-based image optimization when deploying the static
+   * marketing site. This remains compatible with SSR features needed
+   * for the admin portal.
    */
   images: {
     unoptimized: true,
