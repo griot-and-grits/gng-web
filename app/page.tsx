@@ -1,6 +1,5 @@
 import About from '@/components/about'
 import ContactSection from '@/components/contact'
-import FAQ from '@/components/faq'
 import GoFundMe from '@/components/gofundme'
 import Hero from '@/components/hero'
 import MediaCoverage from '@/components/media-coverage'

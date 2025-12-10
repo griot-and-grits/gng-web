@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Target, Users, TrendingUp, X, ExternalLink, RefreshCw } from 'lucide-react';
+import { Heart, Target, Users, TrendingUp, X, RefreshCw } from 'lucide-react';
 
 interface GoFundMeProps {
     campaignId: string;
@@ -114,46 +114,6 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
     const calculateProgress = () => {
         if (!campaignData) return 35; // Default fallback
         return Math.min((campaignData.current_amount / campaignData.goal) * 100, 100);
-    };
-
-    const generateDonationAmounts = () => {
-        if (!campaignData) {
-            // Default fallback amounts
-            return [
-                { amount: 25, description: 'Basic support' },
-                { amount: 50, description: 'Story preservation' },
-                { amount: 100, description: 'Technology boost' },
-                { amount: 250, description: 'Community impact' }
-            ];
-        }
-
-        const min = campaignData.minimum_donation_amount || 5;
-        const goal = campaignData.goal;
-
-        // Generate smart donation amounts based on goal size
-        if (goal <= 1000) {
-            return [
-                { amount: Math.max(min, 10), description: 'Basic support' },
-                { amount: Math.max(min, 25), description: 'Story preservation' },
-                { amount: Math.max(min, 50), description: 'Technology boost' },
-                { amount: Math.max(min, 100), description: 'Community impact' }
-            ];
-        } else if (goal <= 10000) {
-            return [
-                { amount: Math.max(min, 25), description: 'Basic support' },
-                { amount: Math.max(min, 50), description: 'Story preservation' },
-                { amount: Math.max(min, 100), description: 'Technology boost' },
-                { amount: Math.max(min, 250), description: 'Community impact' }
-            ];
-        } else {
-            // For larger goals like $100k
-            return [
-                { amount: Math.max(min, 50), description: 'Basic support' },
-                { amount: Math.max(min, 100), description: 'Story preservation' },
-                { amount: Math.max(min, 250), description: 'Technology boost' },
-                { amount: Math.max(min, 500), description: 'Community impact' }
-            ];
-        }
     };
 
     const openDonationModal = () => {

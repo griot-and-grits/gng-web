@@ -145,7 +145,7 @@ const MediaCoverage: React.FC = () => {
                         Media Inquiries
                     </h3>
                     <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                        Interested in featuring Griot and Grits in your publication? We'd love to share our story and mission with your audience.
+                        Interested in featuring Griot and Grits in your publication? We&apos;d love to share our story and mission with your audience.
                     </p>
                     <a
                         href="#contact"

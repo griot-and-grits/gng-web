@@ -18,6 +18,12 @@ interface PublicCampaignData {
     minimum_donation_amount?: number;
 }
 
+interface Transaction {
+    status: string;
+    donation_gross_amount?: string;
+    total_gross_amount?: string;
+}
+
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
@@ -103,8 +109,8 @@ export async function GET(request: NextRequest) {
                     if (transactionsData.data && Array.isArray(transactionsData.data)) {
                         // Calculate total gross amount from successful transactions
                         currentAmount = transactionsData.data
-                            .filter((transaction: any) => transaction.status === 'success')
-                            .reduce((total: number, transaction: any) => {
+                            .filter((transaction: Transaction) => transaction.status === 'success')
+                            .reduce((total: number, transaction: Transaction) => {
                                 return total + parseFloat(transaction.donation_gross_amount || transaction.total_gross_amount || '0');
                             }, 0);
 
