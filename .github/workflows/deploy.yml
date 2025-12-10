@@ -41,7 +41,9 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy to production
-        run: flyctl deploy --remote-only --app gng-web
+        run: |
+          flyctl deploy --remote-only --app gng-web \
+            --build-arg NEXT_PUBLIC_ADMIN_API_BASE_URL="${{ secrets.NEXT_PUBLIC_ADMIN_API_BASE_URL }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
@@ -60,6 +62,8 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy to development
-        run: flyctl deploy --remote-only --app gng-web-dev --config fly.dev.toml
+        run: |
+          flyctl deploy --remote-only --app gng-web-dev --config fly.dev.toml \
+            --build-arg NEXT_PUBLIC_ADMIN_API_BASE_URL="${{ secrets.DEV_NEXT_PUBLIC_ADMIN_API_BASE_URL }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
