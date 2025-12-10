@@ -147,6 +147,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
             return session;
         },
+        async redirect({ url, baseUrl }) {
+            // If url is relative, prepend baseUrl
+            if (url.startsWith('/')) return `${baseUrl}${url}`;
+            // If url is on the same origin, allow it
+            if (new URL(url).origin === baseUrl) return url;
+            // Otherwise redirect to /admin
+            return `${baseUrl}/admin`;
+        },
     },
     pages: {
         signIn: '/admin/sign-in',

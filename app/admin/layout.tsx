@@ -10,6 +10,11 @@ export const fetchCache = 'force-no-store';
 export default async function AdminLayout({ children }: { children: ReactNode }) {
     const session = await auth();
 
+    // Don't render admin shell if not authenticated (sign-in page)
+    if (!session) {
+        return <AdminAppProviders session={session}>{children}</AdminAppProviders>;
+    }
+
     return (
         <AdminAppProviders session={session}>
             <AdminShell>{children}</AdminShell>
