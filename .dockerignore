@@ -11,3 +11,7 @@ LICENSE
 .vscode
 .next
 *.swp
+.env*
+!.env.local.example
+fly.toml
+work/

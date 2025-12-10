@@ -1,8 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Griot & Grits Website + Admin Portal
 
-## Getting Started
+This repository hosts the public marketing site for Griot & Grits and the new admin portal used to manage the digital preservation backend. The admin experience lives under `/admin` inside the Next.js App Router and connects to the FastAPI preservation service delivered in `griot-and-grits-backend`.
 
-First, run the development server:
+## What’s Included
+
+- Public marketing experience (`/`)
+- Admin dashboard with quick actions
+- Artifact management (list, detail view, ingestion form)
+- Preservation metadata panels (storage locations, events, fixity)
+- Archive package workflow: draft → upload → confirm
+- GitHub / development auth scaffolding via NextAuth
+- React Query data layer, React Hook Form + Zod validation helpers
+
+## Prerequisites
+
+- Node.js 18+ (recommended: latest LTS)
+- npm (ships with Node) or an alternative package manager
+- Access to the preservation API (default base URL `http://localhost:8009`)
+- GitHub OAuth credentials (production) or a development token (local testing)
+
+## Installation
+
+Install dependencies after cloning:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev

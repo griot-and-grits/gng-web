@@ -10,6 +10,7 @@ const normalizeList = (value?: string) =>
 
 const allowedEmails = normalizeList(process.env.ADMIN_ALLOWED_EMAILS);
 const allowedLogins = normalizeList(process.env.ADMIN_ALLOWED_GITHUB_LOGINS);
+const allowedOrg = process.env.ADMIN_ALLOWED_GITHUB_ORG?.trim();
 
 export const isGitHubConfigured =
     Boolean(process.env.GITHUB_CLIENT_ID) && Boolean(process.env.GITHUB_CLIENT_SECRET);
@@ -29,7 +30,7 @@ if (isGitHubConfigured) {
         GitHub({
             clientId: process.env.GITHUB_CLIENT_ID ?? '',
             clientSecret: process.env.GITHUB_CLIENT_SECRET ?? '',
-            authorization: { params: { scope: 'read:user user:email' } },
+            authorization: { params: { scope: 'read:user user:email read:org' } },
             profile(profile) {
                 return {
                     id: profile.id?.toString() ?? '',
@@ -84,7 +85,30 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             const email = githubProfile?.email?.toLowerCase() ?? user?.email?.toLowerCase();
             const login = githubProfile?.login?.toLowerCase();
 
-            if (allowedEmails.length === 0 && allowedLogins.length === 0) {
+            // Check organization membership if ADMIN_ALLOWED_GITHUB_ORG is set
+            if (allowedOrg && account?.access_token) {
+                try {
+                    const orgResponse = await fetch(
+                        `https://api.github.com/orgs/${allowedOrg}/members/${login}`,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${account.access_token}`,
+                                Accept: 'application/vnd.github+json',
+                            },
+                        }
+                    );
+
+                    // 204 = user is a member, 404 = not a member, 302 = need to check publicness
+                    if (orgResponse.status === 204 || orgResponse.status === 302) {
+                        return true;
+                    }
+                } catch (error) {
+                    console.error('Failed to check GitHub org membership:', error);
+                }
+            }
+
+            // Fall back to email/login checks if org check didn't pass or wasn't configured
+            if (allowedEmails.length === 0 && allowedLogins.length === 0 && !allowedOrg) {
                 return true;
             }
 
