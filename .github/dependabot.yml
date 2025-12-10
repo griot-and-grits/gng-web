@@ -19,10 +19,6 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
-    # Auto-merge security updates
-    labels:
-      - "dependencies"
-      - "security"
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -30,6 +26,3 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
-    labels:
-      - "dependencies"
-      - "github-actions"
