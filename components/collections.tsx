@@ -41,9 +41,10 @@ const InteractiveMap = dynamic(() => import('./interactive-map'), {
 interface CollectionsProps {
     videos: Video[];
     filters: FilterMetadata;
+    askTheGriotEnabled?: boolean;
 }
 
-const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
+const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotEnabled = true }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [showMap, setShowMap] = useState(false);
@@ -255,25 +256,27 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                             <button
                                 onClick={() => setShowMap(!showMap)}
                                 className={`px-4 py-3 rounded-lg border flex items-center gap-2 transition-colors ${
-                                    showMap 
-                                        ? 'bg-primary text-primary-foreground border-primary' 
+                                    showMap
+                                        ? 'bg-primary text-primary-foreground border-primary'
                                         : 'bg-card text-foreground border-border hover:bg-accent'
                                 }`}
                             >
                                 <MapPin className="w-5 h-5" />
                                 Map
                             </button>
-                            <button
-                                onClick={() => setShowChatbot(!showChatbot)}
-                                className={`px-4 py-3 rounded-lg border flex items-center gap-2 transition-colors ${
-                                    showChatbot 
-                                        ? 'bg-primary text-primary-foreground border-primary' 
-                                        : 'bg-card text-foreground border-border hover:bg-accent'
-                                }`}
-                            >
-                                <MessageSquare className="w-5 h-5" />
-                                Ask the Griot
-                            </button>
+                            {askTheGriotEnabled && (
+                                <button
+                                    onClick={() => setShowChatbot(!showChatbot)}
+                                    className={`px-4 py-3 rounded-lg border flex items-center gap-2 transition-colors ${
+                                        showChatbot
+                                            ? 'bg-primary text-primary-foreground border-primary'
+                                            : 'bg-card text-foreground border-border hover:bg-accent'
+                                    }`}
+                                >
+                                    <MessageSquare className="w-5 h-5" />
+                                    Ask the Griot
+                                </button>
+                            )}
                         </div>
                     </div>
 
@@ -314,7 +317,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                     )}
 
                     {/* Griot AI Interface - Shows directly below buttons */}
-                    {showChatbot && (
+                    {askTheGriotEnabled && showChatbot && (
                         <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}

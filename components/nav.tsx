@@ -33,6 +33,7 @@ const Nav = () => {
         { label: 'Our Purpose', href: '/#about' },
         { label: 'Work of the Project', href: '/#services' },
         { label: 'Featured Stories', href: '/#works' },
+        { label: 'Support Us', href: '/#donate' },
         { label: 'Contributing', href: '/#contact' }
     ];
 
