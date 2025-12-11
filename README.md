@@ -143,8 +143,32 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This application is deployed on [Fly.io](https://fly.io) with automated deployments via GitHub Actions.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Production Environment
+
+The admin portal at `/admin` is protected by GitHub OAuth and requires membership in the configured GitHub organization.
+
+**Required Secrets (GitHub Actions):**
+- `FLY_API_TOKEN` - Fly.io deployment token
+- `NEXT_PUBLIC_ADMIN_API_BASE_URL` - Backend API URL (set at build time)
+- `AUTH_SECRET` - NextAuth.js secret (generate with `openssl rand -base64 32`)
+- `GITHUB_CLIENT_ID` - GitHub OAuth app client ID
+- `GITHUB_CLIENT_SECRET` - GitHub OAuth app client secret
+- `ADMIN_ALLOWED_GITHUB_ORG` - GitHub organization slug for access control
+
+### Deployment Process
+
+Deployments are triggered automatically on pushes to `main` or `dev` branches. The workflow:
+1. Runs security audit with `npm audit`
+2. Builds Docker image with build-time secrets
+3. Deploys to Fly.io
+
+### Manual Deployment
+
+```bash
+flyctl deploy --remote-only --app gng-web \
+  --build-arg NEXT_PUBLIC_ADMIN_API_BASE_URL="https://your-api.fly.dev"
+```
