@@ -1,6 +1,6 @@
 # Griot & Grits Website + Admin Portal
 
-This repository hosts the public marketing site for Griot & Grits and the new admin portal used to manage the digital preservation backend. The admin experience lives under `/admin` inside the Next.js App Router and connects to the FastAPI preservation service delivered in `griot-and-grits-backend`.
+This repository hosts the public marketing site for Griot & Grits and the admin portal used to manage the digital preservation backend. The admin experience lives under `/admin` inside the Next.js App Router and connects to the FastAPI preservation service delivered in `griot-and-grits-backend`.
 
 ## What’s Included
 
@@ -101,13 +101,6 @@ export FEATURE_GOFUNDME=false
   - `FEATURE_GOFUNDME=false` (to disable GoFundMe section)
   - `GOFUNDME_USE_EMBEDDED=true` (to use embedded modal instead of external links)
 
-- **Netlify**: Add environment variables in site settings:
-  - `GOFUNDME_CLIENT_ID=your-classy-client-id` (**Required**)
-  - `GOFUNDME_CLIENT_SECRET=your-classy-secret` (**Required**)
-  - `FEATURE_ASK_THE_GRIOT=false`
-  - `GOFUNDME_CAMPAIGN_ID=your-campaign-id`
-  - `FEATURE_GOFUNDME=false`
-  - `GOFUNDME_USE_EMBEDDED=true`
 
 - **Docker**: Pass environment variables when running the container:
   ```bash
@@ -120,7 +113,6 @@ export FEATURE_GOFUNDME=false
              your-app
   ```
 
-- **Railway/Render**: Add environment variables in the platform dashboard
 
 **Notes:**
 - Feature flags are evaluated server-side during page rendering for security
@@ -134,14 +126,6 @@ export FEATURE_GOFUNDME=false
 - If environment variables are not set, features default to enabled with campaign ID 731313
 - When disabled, the respective features will not appear on the website
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deployment
 
@@ -149,7 +133,7 @@ This application is deployed on [Fly.io](https://fly.io) with automated deployme
 
 ### Production Environment
 
-The admin portal at `/admin` is protected by GitHub OAuth and requires membership in the configured GitHub organization.
+The admin portal is protected by GitHub OAuth and requires membership in the configured GitHub organization.
 
 **Required Secrets (GitHub Actions):**
 - `FLY_API_TOKEN` - Fly.io deployment token
