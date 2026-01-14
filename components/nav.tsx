@@ -87,20 +87,20 @@ const Nav = () => {
                 transition={{ duration: 0.5 }}
                 className="flex items-center gap-4"
             >
-                <Link href="/#home" className="flex items-center gap-2">
+                <Link href="/#home" className="flex items-center gap-3">
                     <Image
                         src="./icon.png"
                         alt="Griot and Grits Logo"
                         width={600}
                         height={600}
-                        className="w-12 md:w-16 h-auto"
+                        className="w-20 md:w-28 h-auto"
                     />
                     <Image
                         src="./logo.png"
                         alt="Griot and Grits Logo"
                         width={600}
                         height={600}
-                        className="w-16 md:w-24 h-auto"
+                        className="w-28 md:w-40 h-auto"
                     />
                 </Link>
             </motion.div>
