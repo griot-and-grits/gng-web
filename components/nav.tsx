@@ -78,56 +78,83 @@ const Nav = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 top-6 transition-all duration-300 ${isMenuOpen ? 'bg-black' : 'bg-transparent'}`}>
-        {/* Logo */}
-        <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute left-10 top-1/2 -translate-y-1/2 z-60"
-        >
-            <Link href="/#home" className="block">
-                <Image 
-                    src="./icon.png" 
-                    alt="Griot and Grits Logo" 
-                    width={600} 
-                    height={600} 
-                    className="w-24 md:w-40 max-w-full h-auto"
-                />
-                <Image 
-                    src="./logo.png" 
-                    alt="Griot and Grits Logo" 
-                    width={600} 
-                    height={600} 
-                    className="w-24 md:w-40 max-w-full mt-2 h-auto"
-            />
-            </Link>
-        </motion.div>
+        <nav className="w-full z-50 bg-white shadow-md transition-all duration-300">
+        <div className="flex items-center justify-between px-10 py-4">
+            {/* Logo */}
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-4"
+            >
+                <Link href="/#home" className="flex items-center gap-2">
+                    <Image
+                        src="./icon.png"
+                        alt="Griot and Grits Logo"
+                        width={600}
+                        height={600}
+                        className="w-12 md:w-16 h-auto"
+                    />
+                    <Image
+                        src="./logo.png"
+                        alt="Griot and Grits Logo"
+                        width={600}
+                        height={600}
+                        className="w-16 md:w-24 h-auto"
+                    />
+                </Link>
+            </motion.div>
 
-        {/* Mobile Menu Toggle */}
-        <motion.button 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            onClick={toggleMenu}
-            className="fixed right-10 rounded-full bg-black w-12 h-11 flex items-center justify-center z-60 group"
-        >
-            <div className="relative w-[20px] h-[2px] bg-white transition-all duration-300 group-hover:bg-[#a94728]">
-            <div className="absolute -top-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
-            <div className="absolute -bottom-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
+            {/* Right side - Donate button and Menu toggle */}
+            <div className="flex items-center gap-4">
+                {/* Donate Now Button */}
+                <motion.a
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    href="#donate"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#a94728] to-[#8b3a1f] text-white px-4 py-2 rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                    Donate Now
+                </motion.a>
+
+                {/* Mobile Menu Toggle */}
+                <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    onClick={toggleMenu}
+                    className="rounded-full bg-black w-12 h-11 flex items-center justify-center group"
+                >
+                    <div className="relative w-[20px] h-[2px] bg-white transition-all duration-300 group-hover:bg-[#a94728]">
+                        <div className="absolute -top-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
+                        <div className="absolute -bottom-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
+                    </div>
+                </motion.button>
             </div>
-        </motion.button>
+        </div>
 
         {/* Navigation Drawer */}
         <AnimatePresence>
             {isMenuOpen && (
-            <motion.nav 
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "tween" }}
-                className="fixed top-0 right-0 w-[280px] h-full bg-black text-white transform"
-            >
+            <>
+                {/* Backdrop */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={toggleMenu}
+                    className="fixed inset-0 bg-black/50 z-[90]"
+                />
+
+                {/* Drawer */}
+                <motion.nav
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ type: "tween" }}
+                    className="fixed top-0 right-0 w-[280px] h-full bg-black text-white transform z-[100]"
+                >
                 {/* Close Button */}
                 <motion.button 
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -212,6 +239,7 @@ const Nav = () => {
                 </motion.ul>
                 </div>
             </motion.nav>
+            </>
             )}
         </AnimatePresence>
         </nav>
