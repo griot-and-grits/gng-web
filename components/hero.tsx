@@ -47,10 +47,11 @@ const Hero = () => {
     }, []);
 
     return (
-        <section 
+        <section
             ref={sectionRef}
-            id="home" 
-            className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+            id="home"
+            className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
+            style={{ height: 'calc(100vh - 88px)' }}
         >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50" />
