@@ -49,7 +49,6 @@ const Hero = () => {
     return (
         <section
             ref={sectionRef}
-            id="home"
             className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
             style={{ height: 'calc(100vh - 88px)' }}
         >
@@ -83,27 +82,6 @@ const Hero = () => {
             </p>
             </motion.div>
         </div>
-
-        {/* Side Links */}
-        <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4">
-            {[
-            { href: "/collection", title: "Our Collection", subtitle: "oral history" },
-            { href: "#about", title: "Our purpose", subtitle: "who we are" },
-            { href: "#services", title: "Work of the Project", subtitle: "what we do" },
-            { href: "#donate", title: "Support Us", subtitle: "make a donation" },
-            { href: "#contact", title: "Contact", subtitle: "get in touch" }
-            ].map((link, index) => (
-            <motion.a
-                key={index}
-                href={link.href}
-                className="block text-white hover:text-gray-300 transition-colors"
-                whileHover={{ x: 10 }} 
-            >
-                <div className="text-sm font-medium uppercase">{link.title}</div>
-                <div className="text-xs text-gray-200">{link.subtitle}</div>
-            </motion.a>
-            ))}
-        </nav>
 
         {/* Social Links */}
         <div className="hidden lg:block text-sm absolute right-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4 text-white">

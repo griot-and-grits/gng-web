@@ -30,11 +30,12 @@ const Nav = () => {
     const navLinks = [
         { label: 'Home', href: '/#home' },
         { label: 'Our Collection', href: '/collection' },
+        { label: 'Who We Are', href: '/who-we-are' },
         { label: 'Our Purpose', href: '/#about' },
         { label: 'Work of the Project', href: '/#services' },
         { label: 'Featured Stories', href: '/#works' },
         { label: 'Support Us', href: '/#donate' },
-        { label: 'Contributing', href: '/#contact' }
+        { label: 'Contact Us', href: '/#contact' }
     ];
 
     const containerVariants = {
@@ -78,7 +79,7 @@ const Nav = () => {
     };
 
     return (
-        <nav className="w-full z-50 bg-white shadow-md transition-all duration-300">
+        <nav className="w-full z-50 bg-white shadow-md transition-all duration-300 sticky top-0">
         <div className="flex items-center justify-between px-10 py-4">
             {/* Logo */}
             <motion.div
@@ -184,15 +185,16 @@ const Nav = () => {
                     className="border-y border-white/10"
                 >
                     {navLinks.map((link, index) => (
-                    <motion.li 
-                        key={index} 
+                    <motion.li
+                        key={index}
                         variants={itemVariants}
                         whileHover="hover"
                         className="border-b border-white/5 last:border-b-0"
                     >
-                        <Link 
-                            href={link.href} 
+                        <Link
+                            href={link.href}
                             className="block py-4 text-lg text-white/50 hover:text-white transition-colors"
+                            onClick={toggleMenu}
                         >
                         {link.label}
                         </Link>
