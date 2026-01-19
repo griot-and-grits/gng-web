@@ -31,11 +31,8 @@ const Nav = () => {
         { label: 'Home', href: '/#home' },
         { label: 'Our Collection', href: '/collection' },
         { label: 'Who We Are', href: '/who-we-are' },
-        { label: 'Our Purpose', href: '/#about' },
-        { label: 'Work of the Project', href: '/#services' },
-        { label: 'Featured Stories', href: '/#works' },
         { label: 'Support Us', href: '/#donate' },
-        { label: 'Contact Us', href: '/#contact' }
+        { label: 'Get In Touch', href: '/#contact' }
     ];
 
     const containerVariants = {

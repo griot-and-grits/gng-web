@@ -53,7 +53,7 @@ const Hero = () => {
             style={{ height: 'calc(100vh - 88px)' }}
         >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
 
         <video autoPlay muted className="w-full h-full object-cover absolute top-0 left-0 z-0" playsInline loop preload="none">
             <source src="/media/vid/website_background_video.mp4" type="video/mp4" />
@@ -74,10 +74,10 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl uppercase mx-auto text-center"
             >
-            <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 font-[family-name:var(--font-montserrat)]" style={{ textShadow: '-0.5px -0.5px 0 rgba(0,0,0,0.3), 0.5px -0.5px 0 rgba(0,0,0,0.3), -0.5px 0.5px 0 rgba(0,0,0,0.3), 0.5px 0.5px 0 rgba(0,0,0,0.3)' }}>
                 Welcome to the Griot and Grits Project
             </h1>
-            <p className='text-xs md:text-xl'>
+            <p className='text-xs md:text-xl' style={{ textShadow: '-0.5px -0.5px 0 rgba(0,0,0,0.3), 0.5px -0.5px 0 rgba(0,0,0,0.3), -0.5px 0.5px 0 rgba(0,0,0,0.3), 0.5px 0.5px 0 rgba(0,0,0,0.3)' }}>
                 Black Voices Worth Remembering, Black History Worth Sharing
             </p>
             </motion.div>
