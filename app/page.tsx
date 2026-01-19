@@ -18,6 +18,7 @@ const page = () => {
 
     return (
         <>
+            <div id="home"></div>
             <Nav />
             <Hero />
             <About />

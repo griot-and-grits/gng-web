@@ -29,47 +29,47 @@ interface ServiceCardProps {
 }
 
 const services: Service[] = [
-    {   
-        icon: "📚", 
+    {
+        icon: "",
         title: "Centralized Repository",
         excerpt: "A unified storage solution for seamless data management and access.",
-        description: `A centralized repository is a single storage location for data, documents, or code. It provides a unified point of access, ensuring 
+        description: `A centralized repository is a single storage location for data, documents, or code. It provides a unified point of access, ensuring
         consistency and facilitating collaboration across an organization.`
     },
-    {   
-        icon: "🧠", 
+    {
+        icon: "",
         title: "AI Metadata Extraction",
         excerpt: "Intelligent extraction of metadata to enhance data organization.",
-        description: `AI metadata extraction involves using artificial intelligence to automatically collect and organize metadata from various data sources. 
-        This process enhances data management by extracting relevant information such as names, definitions, context, and technical attributes.` 
+        description: `AI metadata extraction involves using artificial intelligence to automatically collect and organize metadata from various data sources.
+        This process enhances data management by extracting relevant information such as names, definitions, context, and technical attributes.`
     },
-    {   
-        icon: "🌐",
+    {
+        icon: "",
         title: "Content Enrichment",
         excerpt: "Advanced AI techniques for comprehensive content enhancement.",
-        description: `Content enrichment is the process of applying advanced techniques like machine learning and AI to automatically extract meaningful 
-        information from documents. It involves creating fully-enriched products with extensive, customer-centric attributes. This process improves 
+        description: `Content enrichment is the process of applying advanced techniques like machine learning and AI to automatically extract meaningful
+        information from documents. It involves creating fully-enriched products with extensive, customer-centric attributes. This process improves
         searchability, enhances product discovery, and provides valuable insights for better decision-making.`
     },
-    {   
-        icon: "📋", 
+    {
+        icon: "",
         title: "AI Annotation",
         excerpt: "Smart labeling system for enhanced machine learning comprehension.",
-        description: `AI annotation is the practice of labeling or tagging data to make it comprehensible for machine learning models. It involves adding 
+        description: `AI annotation is the practice of labeling or tagging data to make it comprehensible for machine learning models. It involves adding
         metadata or labels to various data types, including images, text, audio, or video.`
     },
-    {   
-        icon: "🤖", 
+    {
+        icon: "",
         title: "Generative AI Enhancement",
         excerpt: "Cutting-edge AI models for automated process optimization.",
-        description: `Generative AI models can enhance various aspects of data processing, transformation, and analysis. They can automate repetitive tasks, 
-        improve decision-making, and boost productivity across industries.` 
+        description: `Generative AI models can enhance various aspects of data processing, transformation, and analysis. They can automate repetitive tasks,
+        improve decision-making, and boost productivity across industries.`
     },
-    {   
-        icon: "🔎", 
+    {
+        icon: "",
         title: "Searchable Index",
         excerpt: "Optimized data indexing for efficient information retrieval.",
-        description: `A searchable index is a structured collection of data optimized for quick and efficient information retrieval. It contains searchable 
+        description: `A searchable index is a structured collection of data optimized for quick and efficient information retrieval. It contains searchable
         content available for indexing, full-text search, vector search, and filtered queries.`
     },
 ]

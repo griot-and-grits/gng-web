@@ -49,12 +49,11 @@ const Hero = () => {
     return (
         <section
             ref={sectionRef}
-            id="home"
             className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
             style={{ height: 'calc(100vh - 88px)' }}
         >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
 
         <video autoPlay muted className="w-full h-full object-cover absolute top-0 left-0 z-0" playsInline loop preload="none">
             <source src="/media/vid/website_background_video.mp4" type="video/mp4" />
@@ -75,35 +74,14 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl uppercase mx-auto text-center"
             >
-            <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 font-[family-name:var(--font-montserrat)]" style={{ textShadow: '-0.5px -0.5px 0 rgba(0,0,0,0.3), 0.5px -0.5px 0 rgba(0,0,0,0.3), -0.5px 0.5px 0 rgba(0,0,0,0.3), 0.5px 0.5px 0 rgba(0,0,0,0.3)' }}>
                 Welcome to the Griot and Grits Project
             </h1>
-            <p className='text-xs md:text-xl'>
+            <p className='text-xs md:text-xl' style={{ textShadow: '-0.5px -0.5px 0 rgba(0,0,0,0.3), 0.5px -0.5px 0 rgba(0,0,0,0.3), -0.5px 0.5px 0 rgba(0,0,0,0.3), 0.5px 0.5px 0 rgba(0,0,0,0.3)' }}>
                 Black Voices Worth Remembering, Black History Worth Sharing
             </p>
             </motion.div>
         </div>
-
-        {/* Side Links */}
-        <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4">
-            {[
-            { href: "/collection", title: "Our Collection", subtitle: "oral history" },
-            { href: "#about", title: "Our purpose", subtitle: "who we are" },
-            { href: "#services", title: "Work of the Project", subtitle: "what we do" },
-            { href: "#donate", title: "Support Us", subtitle: "make a donation" },
-            { href: "#contact", title: "Contact", subtitle: "get in touch" }
-            ].map((link, index) => (
-            <motion.a
-                key={index}
-                href={link.href}
-                className="block text-white hover:text-gray-300 transition-colors"
-                whileHover={{ x: 10 }} 
-            >
-                <div className="text-sm font-medium uppercase">{link.title}</div>
-                <div className="text-xs text-gray-200">{link.subtitle}</div>
-            </motion.a>
-            ))}
-        </nav>
 
         {/* Social Links */}
         <div className="hidden lg:block text-sm absolute right-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4 text-white">
