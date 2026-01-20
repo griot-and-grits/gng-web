@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Github, Facebook, Youtube, Instagram, X } from 'lucide-react';
+import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,20 +88,21 @@ const Hero = () => {
             <div className="mb-4 font-medium">Follow Us</div>
             <div className="space-y-4">
             {[
-                { Icon: Github, label: "GitHub", link: 'https://github.com/griot-and-grits/griot-and-grits' },
-                { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-                { Icon: X, label: "X", link: 'https://x.com/GriotandGrits' },
-                { Icon: Instagram, label: "Instagram", link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: Youtube, label: "YouTube", link: 'https://www.youtube.com/@GriotandGrits' }
-            ].map(({ Icon, label, link }, index) => (
+                { Icon: SiGithub, label: "GitHub", link: 'https://github.com/griot-and-grits/griot-and-grits' },
+                { Icon: SiFacebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+                { Icon: SiX, label: "X", link: 'https://x.com/GriotandGrits' },
+                { Icon: SiInstagram, label: "Instagram", link: 'https://www.instagram.com/griotngrits/' },
+                { Icon: SiYoutube, label: "YouTube", link: 'https://www.youtube.com/@GriotandGrits' }
+            ].map(({ Icon: IconComponent, label, link }, index) => (
                 <motion.a
                 key={index}
                 href={link}
-                target='blank'
+                target='_blank'
+                rel='noopener noreferrer'
                 className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                 whileHover={{ x: -10 }}
                 >
-                <Icon className='text-[#a94728] mt-1' size={14} />
+                <IconComponent className='text-[#a94728] mt-1' size={14} />
                 <span >{label}</span>
                 </motion.a>
             ))}
@@ -112,20 +113,21 @@ const Hero = () => {
             <div className="mb-4 text-center font-medium">Follow Us</div>
             <div className="flex flex-row space-x-4">
             {[
-                { Icon: Github, link: 'https://github.com/griot-and-grits/griot-and-grits' },
-                { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-                { Icon: X, label: "X", link: 'https://x.com/GriotandGrits' },
-                { Icon: Instagram, label: "Instagra,", link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/@GriotandGrits' }
-            ].map(({ Icon, link }, index) => (
+                { Icon: SiGithub, link: 'https://github.com/griot-and-grits/griot-and-grits' },
+                { Icon: SiFacebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+                { Icon: SiX, link: 'https://x.com/GriotandGrits' },
+                { Icon: SiInstagram, link: 'https://www.instagram.com/griotngrits/' },
+                { Icon: SiYoutube, link: 'https://www.youtube.com/@GriotandGrits' }
+            ].map(({ Icon: IconComponent, link }, index) => (
                 <motion.a
                     key={index}
                     href={link}
-                    target='blank'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                     whileHover={{ x: -10 }}
                 >
-                    <Icon size={20} />
+                    <IconComponent size={20} />
                 </motion.a>
             ))}
             </div>

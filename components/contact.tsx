@@ -2,13 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-    Github,
-    Facebook, 
-    Instagram,
-    Youtube,
-    X 
-} from 'lucide-react';
+import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
 import LoadingDots from './loading-dots';
 
 const ContactSection: React.FC = () => {
@@ -45,10 +39,10 @@ const ContactSection: React.FC = () => {
     };
 
     const socialLinks = [
-        { icon: Facebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-        { icon: X, link: 'https://x.com/GriotandGrits' },
-        { icon: Instagram, link: 'https://www.instagram.com/griotngrits/' },
-        { icon: Youtube, link: 'https://www.youtube.com/@GriotandGrits' }
+        { Icon: SiFacebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+        { Icon: SiX, link: 'https://x.com/GriotandGrits' },
+        { Icon: SiInstagram, link: 'https://www.instagram.com/griotngrits/' },
+        { Icon: SiYoutube, link: 'https://www.youtube.com/@GriotandGrits' }
     ];
 
     return (
@@ -85,7 +79,7 @@ const ContactSection: React.FC = () => {
                                 className="text-xl md:text-2xl font-light hover:text-[#a94728] transition-colors inline-flex items-center gap-2"
                                 target="_blank"
                             >
-                                <Github size={28} />
+                                <SiGithub size={28} />
                                 <span>Contribute on GitHub</span>
                             </a>
                         </div>
@@ -124,14 +118,14 @@ const ContactSection: React.FC = () => {
 
                         {/* Social Media Links */}
                         <div className="flex justify-center space-x-4 mt-8">
-                            {socialLinks.map(({ icon: Icon, link }, index) => (
+                            {socialLinks.map(({ Icon: IconComponent, link }, index) => (
                                 <a
                                     key={index}
                                     href={link}
                                     target='_blank'
                                     className="text-gray-400 hover:text-white transition-colors"
                                 >
-                                    <Icon size={28} />
+                                    <IconComponent size={28} />
                                 </a>
                             ))}
                         </div>

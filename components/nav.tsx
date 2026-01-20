@@ -4,13 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-    Github,
-    Facebook, 
-    Instagram, 
-    Youtube, 
-    X 
-} from 'lucide-react';
+import { X } from 'lucide-react';
+import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
 
 const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,11 +15,11 @@ const Nav = () => {
     };
 
     const socialLinks = [
-        { Icon: Github, href: 'https://github.com/griot-and-grits/griot-and-grits' },
-        { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61571179057798' },
-        { Icon: X, href: 'https://x.com/GriotandGrits' },
-        { Icon: Instagram, href: 'https://www.instagram.com/griotngrits/' },
-        { Icon: Youtube, href: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' }
+        { Icon: SiGithub, href: 'https://github.com/griot-and-grits/griot-and-grits' },
+        { Icon: SiFacebook, href: 'https://www.facebook.com/profile.php?id=61571179057798' },
+        { Icon: SiX, href: 'https://x.com/GriotandGrits' },
+        { Icon: SiInstagram, href: 'https://www.instagram.com/griotngrits/' },
+        { Icon: SiYoutube, href: 'https://www.youtube.com/@GriotandGrits' }
     ];
 
     const navLinks = [
@@ -215,24 +210,26 @@ const Nav = () => {
                 </motion.p>
 
                 {/* Social Links */}
-                <motion.ul 
+                <motion.ul
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                     className="flex space-x-4 text-white/50"
                 >
-                    {socialLinks.map(({ Icon, href }) => (
-                    <motion.li 
+                    {socialLinks.map(({ Icon: IconComponent, href }) => (
+                    <motion.li
                         key={href}
                         variants={itemVariants}
                         whileHover="hover"
                     >
-                        <Link 
-                            href={href} 
+                        <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="hover:text-white transition-colors"
                         >
-                        <Icon className="w-6 h-6" />
-                        </Link>
+                        <IconComponent size={24} />
+                        </a>
                     </motion.li>
                     ))}
                 </motion.ul>
