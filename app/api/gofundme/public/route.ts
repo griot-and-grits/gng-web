@@ -10,18 +10,13 @@ interface PublicCampaignData {
     currency: string;
     status: string;
     donors_count: number;
+    percent_to_goal: number;
     url: string;
     organizer: {
         name: string;
         location: string;
     };
     minimum_donation_amount?: number;
-}
-
-interface Transaction {
-    status: string;
-    donation_gross_amount?: string;
-    total_gross_amount?: string;
 }
 
 export async function GET(request: NextRequest) {
@@ -87,53 +82,35 @@ export async function GET(request: NextRequest) {
             const classyData = await campaignResponse.json();
             console.log('Campaign data received:', classyData);
 
-            // Step 3: Fetch actual fundraising data from transactions and supporters
-            console.log('Fetching transactions and supporters data...');
+            // Step 3: Fetch overview data for fundraising metrics
+            console.log('Fetching campaign overview data...');
 
             let currentAmount = 0;
             let donorsCount = 0;
+            let percentToGoal = 0;
 
             try {
-                // Fetch transactions to calculate total amount raised
-                const transactionsResponse = await fetch(`https://api.classy.org/2.0/campaigns/${campaignId}/transactions`, {
+                // Fetch overview to get total_gross_amount, donors_count, and percent_to_goal
+                const overviewResponse = await fetch(`https://api.classy.org/2.0/campaigns/${campaignId}/overview`, {
                     headers: {
                         'Authorization': `Bearer ${tokenData.access_token}`,
                         'Accept': 'application/json',
                     },
                 });
 
-                if (transactionsResponse.ok) {
-                    const transactionsData = await transactionsResponse.json();
-                    console.log('Transactions data received:', transactionsData.total, 'transactions');
+                if (overviewResponse.ok) {
+                    const overviewData = await overviewResponse.json();
+                    console.log('Overview data received:', overviewData);
 
-                    if (transactionsData.data && Array.isArray(transactionsData.data)) {
-                        // Calculate total gross amount from successful transactions
-                        currentAmount = transactionsData.data
-                            .filter((transaction: Transaction) => transaction.status === 'success')
-                            .reduce((total: number, transaction: Transaction) => {
-                                return total + parseFloat(transaction.donation_gross_amount || transaction.total_gross_amount || '0');
-                            }, 0);
+                    currentAmount = parseFloat(overviewData.total_gross_amount || '0');
+                    donorsCount = overviewData.donors_count || 0;
+                    percentToGoal = parseFloat(overviewData.percent_to_goal || '0');
 
-                        console.log(`Calculated total from ${transactionsData.data.length} transactions: $${currentAmount}`);
-                    }
-                }
-
-                // Fetch supporters to get donor count
-                const supportersResponse = await fetch(`https://api.classy.org/2.0/campaigns/${campaignId}/supporters`, {
-                    headers: {
-                        'Authorization': `Bearer ${tokenData.access_token}`,
-                        'Accept': 'application/json',
-                    },
-                });
-
-                if (supportersResponse.ok) {
-                    const supportersData = await supportersResponse.json();
-                    console.log('Supporters data received:', supportersData.total, 'supporters');
-                    donorsCount = supportersData.total || 0;
+                    console.log(`Overview metrics - Amount: $${currentAmount}, Donors: ${donorsCount}, Progress: ${percentToGoal}%`);
                 }
 
             } catch (fundraisingError) {
-                console.error('Error fetching fundraising data:', fundraisingError);
+                console.error('Error fetching overview data:', fundraisingError);
             }
 
             // Map Classy API response to our interface
@@ -146,6 +123,7 @@ export async function GET(request: NextRequest) {
                 currency: classyData.currency_code || 'USD',
                 status: classyData.status || 'active',
                 donors_count: donorsCount,
+                percent_to_goal: percentToGoal,
                 url: classyData.canonical_url || campaignUrl || `https://give.griotandgrits.org/campaign/${campaignId}/donate`,
                 organizer: {
                     name: classyData.organizer?.first_name

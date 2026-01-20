@@ -105,7 +105,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
   };
 
   return (
-    <section className="pt-20 overflow-hidden">
+    <section id="works" className="pt-20 overflow-hidden">
       <div className="container mx-auto px-4">        
         <motion.div
           initial={{ opacity: 0, y: 20 }}

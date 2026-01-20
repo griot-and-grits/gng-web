@@ -18,15 +18,7 @@ const page = () => {
 
     return (
         <>
-            {/* Fixed Donate Now Button */}
-            <div className="fixed top-6 right-24 z-50 h-11 flex items-center">
-                <a
-                    href="#donate"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#a94728] to-[#8b3a1f] text-white px-4 py-2 rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
-                >
-                    Donate Now
-                </a>
-            </div>
+            <div id="home"></div>
             <Nav />
             <Hero />
             <About />
