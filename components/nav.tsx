@@ -4,13 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-    Github,
-    Facebook, 
-    Instagram, 
-    Youtube, 
-    X 
-} from 'lucide-react';
+import { X } from 'lucide-react';
+import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
 
 const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,21 +15,19 @@ const Nav = () => {
     };
 
     const socialLinks = [
-        { Icon: Github, href: 'https://github.com/griot-and-grits/griot-and-grits' },
-        { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61571179057798' },
-        { Icon: X, href: 'https://x.com/GriotandGrits' },
-        { Icon: Instagram, href: 'https://www.instagram.com/griotngrits/' },
-        { Icon: Youtube, href: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' }
+        { Icon: SiGithub, href: 'https://github.com/griot-and-grits/griot-and-grits' },
+        { Icon: SiFacebook, href: 'https://www.facebook.com/profile.php?id=61571179057798' },
+        { Icon: SiX, href: 'https://x.com/GriotandGrits' },
+        { Icon: SiInstagram, href: 'https://www.instagram.com/griotngrits/' },
+        { Icon: SiYoutube, href: 'https://www.youtube.com/@GriotandGrits' }
     ];
 
     const navLinks = [
         { label: 'Home', href: '/#home' },
         { label: 'Our Collection', href: '/collection' },
-        { label: 'Our Purpose', href: '/#about' },
-        { label: 'Work of the Project', href: '/#services' },
-        { label: 'Featured Stories', href: '/#works' },
+        { label: 'Who We Are', href: '/who-we-are' },
         { label: 'Support Us', href: '/#donate' },
-        { label: 'Contributing', href: '/#contact' }
+        { label: 'Get In Touch', href: '/#contact' }
     ];
 
     const containerVariants = {
@@ -78,56 +71,83 @@ const Nav = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 top-6 transition-all duration-300 ${isMenuOpen ? 'bg-black' : 'bg-transparent'}`}>
-        {/* Logo */}
-        <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute left-10 top-1/2 -translate-y-1/2 z-60"
-        >
-            <Link href="/#home" className="block">
-                <Image 
-                    src="./icon.png" 
-                    alt="Griot and Grits Logo" 
-                    width={600} 
-                    height={600} 
-                    className="w-24 md:w-40 max-w-full h-auto"
-                />
-                <Image 
-                    src="./logo.png" 
-                    alt="Griot and Grits Logo" 
-                    width={600} 
-                    height={600} 
-                    className="w-24 md:w-40 max-w-full mt-2 h-auto"
-            />
-            </Link>
-        </motion.div>
+        <nav className="w-full z-50 bg-white shadow-md transition-all duration-300 sticky top-0">
+        <div className="flex items-center justify-between px-10 py-4">
+            {/* Logo */}
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-4"
+            >
+                <Link href="/#home" className="flex items-center gap-3">
+                    <Image
+                        src="./icon.png"
+                        alt="Griot and Grits Logo"
+                        width={600}
+                        height={600}
+                        className="w-20 md:w-28 h-auto"
+                    />
+                    <Image
+                        src="./logo.png"
+                        alt="Griot and Grits Logo"
+                        width={600}
+                        height={600}
+                        className="w-28 md:w-40 h-auto"
+                    />
+                </Link>
+            </motion.div>
 
-        {/* Mobile Menu Toggle */}
-        <motion.button 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            onClick={toggleMenu}
-            className="fixed right-10 rounded-full bg-black w-12 h-11 flex items-center justify-center z-60 group"
-        >
-            <div className="relative w-[20px] h-[2px] bg-white transition-all duration-300 group-hover:bg-[#a94728]">
-            <div className="absolute -top-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
-            <div className="absolute -bottom-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
+            {/* Right side - Donate button and Menu toggle */}
+            <div className="flex items-center gap-4">
+                {/* Donate Now Button */}
+                <motion.a
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    href="#donate"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#a94728] to-[#8b3a1f] text-white px-4 py-2 rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                    Donate Now
+                </motion.a>
+
+                {/* Mobile Menu Toggle */}
+                <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    onClick={toggleMenu}
+                    className="rounded-full bg-black w-12 h-11 flex items-center justify-center group"
+                >
+                    <div className="relative w-[20px] h-[2px] bg-white transition-all duration-300 group-hover:bg-[#a94728]">
+                        <div className="absolute -top-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
+                        <div className="absolute -bottom-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
+                    </div>
+                </motion.button>
             </div>
-        </motion.button>
+        </div>
 
         {/* Navigation Drawer */}
         <AnimatePresence>
             {isMenuOpen && (
-            <motion.nav 
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "tween" }}
-                className="fixed top-0 right-0 w-[280px] h-full bg-black text-white transform"
-            >
+            <>
+                {/* Backdrop */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onClick={toggleMenu}
+                    className="fixed inset-0 bg-black/50 z-[90]"
+                />
+
+                {/* Drawer */}
+                <motion.nav
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ type: "tween" }}
+                    className="fixed top-0 right-0 w-[280px] h-full bg-black text-white transform z-[100]"
+                >
                 {/* Close Button */}
                 <motion.button 
                 initial={{ opacity: 0, scale: 0.5 }}
@@ -157,15 +177,16 @@ const Nav = () => {
                     className="border-y border-white/10"
                 >
                     {navLinks.map((link, index) => (
-                    <motion.li 
-                        key={index} 
+                    <motion.li
+                        key={index}
                         variants={itemVariants}
                         whileHover="hover"
                         className="border-b border-white/5 last:border-b-0"
                     >
-                        <Link 
-                            href={link.href} 
+                        <Link
+                            href={link.href}
                             className="block py-4 text-lg text-white/50 hover:text-white transition-colors"
+                            onClick={toggleMenu}
                         >
                         {link.label}
                         </Link>
@@ -189,29 +210,32 @@ const Nav = () => {
                 </motion.p>
 
                 {/* Social Links */}
-                <motion.ul 
+                <motion.ul
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                     className="flex space-x-4 text-white/50"
                 >
-                    {socialLinks.map(({ Icon, href }) => (
-                    <motion.li 
+                    {socialLinks.map(({ Icon: IconComponent, href }) => (
+                    <motion.li
                         key={href}
                         variants={itemVariants}
                         whileHover="hover"
                     >
-                        <Link 
-                            href={href} 
+                        <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="hover:text-white transition-colors"
                         >
-                        <Icon className="w-6 h-6" />
-                        </Link>
+                        <IconComponent size={24} />
+                        </a>
                     </motion.li>
                     ))}
                 </motion.ul>
                 </div>
             </motion.nav>
+            </>
             )}
         </AnimatePresence>
         </nav>

@@ -2,13 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-    Github,
-    Facebook, 
-    Instagram,
-    Youtube,
-    X 
-} from 'lucide-react';
+import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
 import LoadingDots from './loading-dots';
 
 const ContactSection: React.FC = () => {
@@ -45,101 +39,65 @@ const ContactSection: React.FC = () => {
     };
 
     const socialLinks = [
-        { icon: Github, link: 'https://github.com/griot-and-grits/griot-and-grits' },
-        { icon: Facebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-        { icon: X, link: 'https://x.com/GriotandGrits' },
-        { icon: Instagram, link: 'https://www.instagram.com/griotngrits/' },
-        { icon: Youtube, link: 'https://www.youtube.com/@GriotandGrits' }
+        { Icon: SiFacebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+        { Icon: SiX, link: 'https://x.com/GriotandGrits' },
+        { Icon: SiInstagram, link: 'https://www.instagram.com/griotngrits/' },
+        { Icon: SiYoutube, link: 'https://www.youtube.com/@GriotandGrits' }
     ];
 
     return (
         <section id="contact" className="relative bg-black/90 text-white pt-24 pb-6 px-4">
             {/* Black overlay with reduced opacity */}
             <div className="absolute inset-0 bg-black/50"></div>
-            
+
             <div className="container mx-auto max-w-4xl text-left relative z-10">
-                {/* Section Header */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-16"
-                >
-                    <h3 className="text-[#a94728] text-xl uppercase max-w-4xl mx-auto tracking-widest font-semibold mb-4">/ Contributing to the Project</h3>
-                    <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold">
-                        There&apos;s a lot of work to do to get this project off the ground. 
-                        Your help is always welcome. If you&apos;re interested in joining as a member, reach out to us!
-                    </h1>
-                </motion.div>
-
-                {/* Contact Details */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-center mb-8"
-                >
-                    <a 
-                        href="mailto:info@griotandgrits.org" 
-                        className="text-2xl md:text-3xl font-light hover:text-[#a94728] transition-colors" target="_blank"
-                    >
-                        info@griotandgrits.org
-                    </a>
-                </motion.div>
-
-                <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-center mb-16"
-                >
-                    <a 
-                        href="https://github.com/griot-and-grits/griot-and-grits" 
-                        className="text-2xl md:text-3xl font-light hover:text-[#a94728] transition-colors" target="_blank"
-                    >
-                        Contribute on GitHub
-                    </a>
-                </motion.div>
-
-                {/* Contact Secondary */}
+                {/* Get In Touch Section */}
                 <div className='max-w-md mx-auto'>
-                    {/* Location 
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
+                        transition={{ duration: 0.6 }}
+                        className="mb-16"
                     >
-                        <h3 className="text-[#a94728] tracking-widest font-semibold text-xl uppercase mb-4">/ Where To Find Us</h3>
-                        <p className="text-xl text-gray-300">
-                            123 Project Street<br />
-                            Innovation District<br />
-                            San Francisco, CA 94105
-                        </p>
-                    </motion.div>
-                    */}
+                        <h3 className="text-[#a94728] text-xl uppercase tracking-widest font-semibold mb-8">/ Get In Touch</h3>
 
-                    {/* Social & Subscribe */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                        <h3 className="tracking-widest font-semibold text-[#a94728] mb-4">/ Follow Us</h3>
-                        <div className="flex space-x-4 mb-8">
-                            {socialLinks.map(({ icon: Icon, link }, index) => (
-                                <a 
-                                    key={index} 
-                                    href={link} 
-                                    target='blank'
-                                    className="text-gray-400 hover:text-white transition-colors"
-                                >
-                                    <Icon size={24} />
-                                </a>
-                            ))}
+                        {/* Email */}
+                        <div className="mb-6">
+                            <a
+                                href="mailto:info@griotandgrits.org"
+                                className="text-2xl md:text-3xl font-light hover:text-[#a94728] transition-colors inline-block"
+                                target="_blank"
+                            >
+                                info@griotandgrits.org
+                            </a>
                         </div>
 
+                        {/* GitHub */}
+                        <div className="mb-6">
+                            <a
+                                href="https://github.com/griot-and-grits/griot-and-grits"
+                                className="text-xl md:text-2xl font-light hover:text-[#a94728] transition-colors inline-flex items-center gap-2"
+                                target="_blank"
+                            >
+                                <SiGithub size={28} />
+                                <span>Contribute on GitHub</span>
+                            </a>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Newsletter Section */}
+                <div className='max-w-md mx-auto'>
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        <h3 className="text-[#a94728] text-xl uppercase tracking-widest font-semibold mb-8">/ Follow Us</h3>
+                        <p className="text-gray-300 mb-4">Subscribe to our newsletter to stay updated on our latest news and events.</p>
+
                         <form onSubmit={subscribe} className="relative">
-                            <input 
+                            <input
                                 id="email-address"
                                 name="email"
                                 type="email"
@@ -148,15 +106,29 @@ const ContactSection: React.FC = () => {
                                 ref={inputRef}
                                 className="w-full bg-white/10 px-4 py-3 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a94728]"
                             />
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#a94728] text-white p-2 rounded-full hover:opacity-70 duration-300 transition-all"
                             >
                                 {loading ? <LoadingDots className="mb-3 bg-[#a94728]" /> : <p>Subscribe</p>}
                             </button>
                         </form>
 
-                        <p className="mt-2 text-center  text-white">{message ? message : ``}</p>
+                        <p className="mt-2 text-center text-white">{message ? message : ``}</p>
+
+                        {/* Social Media Links */}
+                        <div className="flex justify-center space-x-4 mt-8">
+                            {socialLinks.map(({ Icon: IconComponent, link }, index) => (
+                                <a
+                                    key={index}
+                                    href={link}
+                                    target='_blank'
+                                    className="text-gray-400 hover:text-white transition-colors"
+                                >
+                                    <IconComponent size={28} />
+                                </a>
+                            ))}
+                        </div>
                     </motion.div>
                 </div>
 

@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Github, Facebook, Youtube, Instagram, X } from 'lucide-react';
+import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,13 +47,13 @@ const Hero = () => {
     }, []);
 
     return (
-        <section 
+        <section
             ref={sectionRef}
-            id="home" 
-            className="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+            className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
+            style={{ height: 'calc(100vh - 88px)' }}
         >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
 
         <video autoPlay muted className="w-full h-full object-cover absolute top-0 left-0 z-0" playsInline loop preload="none">
             <source src="/media/vid/website_background_video.mp4" type="video/mp4" />
@@ -74,55 +74,35 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl uppercase mx-auto text-center"
             >
-            <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 font-[family-name:var(--font-montserrat)]" style={{ textShadow: '-0.5px -0.5px 0 rgba(0,0,0,0.3), 0.5px -0.5px 0 rgba(0,0,0,0.3), -0.5px 0.5px 0 rgba(0,0,0,0.3), 0.5px 0.5px 0 rgba(0,0,0,0.3)' }}>
                 Welcome to the Griot and Grits Project
             </h1>
-            <p className='text-xs md:text-xl'>
+            <p className='text-xs md:text-xl' style={{ textShadow: '-0.5px -0.5px 0 rgba(0,0,0,0.3), 0.5px -0.5px 0 rgba(0,0,0,0.3), -0.5px 0.5px 0 rgba(0,0,0,0.3), 0.5px 0.5px 0 rgba(0,0,0,0.3)' }}>
                 Black Voices Worth Remembering, Black History Worth Sharing
             </p>
             </motion.div>
         </div>
-
-        {/* Side Links */}
-        <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4">
-            {[
-            { href: "/collection", title: "Our Collection", subtitle: "oral history" },
-            { href: "#about", title: "Our purpose", subtitle: "who we are" },
-            { href: "#services", title: "Work of the Project", subtitle: "what we do" },
-            { href: "#donate", title: "Support Us", subtitle: "make a donation" },
-            { href: "#contact", title: "Contact", subtitle: "get in touch" }
-            ].map((link, index) => (
-            <motion.a
-                key={index}
-                href={link.href}
-                className="block text-white hover:text-gray-300 transition-colors"
-                whileHover={{ x: 10 }} 
-            >
-                <div className="text-sm font-medium uppercase">{link.title}</div>
-                <div className="text-xs text-gray-200">{link.subtitle}</div>
-            </motion.a>
-            ))}
-        </nav>
 
         {/* Social Links */}
         <div className="hidden lg:block text-sm absolute right-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4 text-white">
             <div className="mb-4 font-medium">Follow Us</div>
             <div className="space-y-4">
             {[
-                { Icon: Github, label: "GitHub", link: 'https://github.com/griot-and-grits/griot-and-grits' },
-                { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-                { Icon: X, label: "X", link: 'https://x.com/GriotandGrits' },
-                { Icon: Instagram, label: "Instagram", link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: Youtube, label: "YouTube", link: 'https://www.youtube.com/@GriotandGrits' }
-            ].map(({ Icon, label, link }, index) => (
+                { Icon: SiGithub, label: "GitHub", link: 'https://github.com/griot-and-grits/griot-and-grits' },
+                { Icon: SiFacebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+                { Icon: SiX, label: "X", link: 'https://x.com/GriotandGrits' },
+                { Icon: SiInstagram, label: "Instagram", link: 'https://www.instagram.com/griotngrits/' },
+                { Icon: SiYoutube, label: "YouTube", link: 'https://www.youtube.com/@GriotandGrits' }
+            ].map(({ Icon: IconComponent, label, link }, index) => (
                 <motion.a
                 key={index}
                 href={link}
-                target='blank'
+                target='_blank'
+                rel='noopener noreferrer'
                 className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                 whileHover={{ x: -10 }}
                 >
-                <Icon className='text-[#a94728] mt-1' size={14} />
+                <IconComponent className='text-[#a94728] mt-1' size={14} />
                 <span >{label}</span>
                 </motion.a>
             ))}
@@ -133,20 +113,21 @@ const Hero = () => {
             <div className="mb-4 text-center font-medium">Follow Us</div>
             <div className="flex flex-row space-x-4">
             {[
-                { Icon: Github, link: 'https://github.com/griot-and-grits/griot-and-grits' },
-                { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-                { Icon: X, label: "X", link: 'https://x.com/GriotandGrits' },
-                { Icon: Instagram, label: "Instagra,", link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/@GriotandGrits' }
-            ].map(({ Icon, link }, index) => (
+                { Icon: SiGithub, link: 'https://github.com/griot-and-grits/griot-and-grits' },
+                { Icon: SiFacebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+                { Icon: SiX, link: 'https://x.com/GriotandGrits' },
+                { Icon: SiInstagram, link: 'https://www.instagram.com/griotngrits/' },
+                { Icon: SiYoutube, link: 'https://www.youtube.com/@GriotandGrits' }
+            ].map(({ Icon: IconComponent, link }, index) => (
                 <motion.a
                     key={index}
                     href={link}
-                    target='blank'
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                     whileHover={{ x: -10 }}
                 >
-                    <Icon size={20} />
+                    <IconComponent size={20} />
                 </motion.a>
             ))}
             </div>
