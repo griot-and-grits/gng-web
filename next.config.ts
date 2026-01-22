@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
    * Enable standalone output for Docker deployments
    */
   output: 'standalone',
+  /**
+   * Fix cross-origin warning for OpenShift dev environments
+   * Allows requests from OpenShift route domains (*.apps.*.opentlc.com)
+   */
+  allowedDevOrigins: [
+    '.apps.*.opentlc.com',
+  ],
 };
 
 export default nextConfig;
