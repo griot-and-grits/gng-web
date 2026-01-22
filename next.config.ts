@@ -18,7 +18,6 @@ const nextConfig: NextConfig = {
    * Allows requests from OpenShift route domains (*.apps.*.opentlc.com)
    */
   allowedDevOrigins: [
-    '.apps.ocp.4rhc9.sandbox2233.opentlc.com',
     '.apps.*.opentlc.com',
   ],
 };
