@@ -25,6 +25,7 @@ const Nav = () => {
     const navLinks = [
         { label: 'Home', href: '/#home' },
         { label: 'Our Collection', href: '/collection' },
+        //{ label: 'Curated Stories', href: '/' },
         { label: 'Who We Are', href: '/who-we-are' },
         { label: 'Support Us', href: '/#donate' },
         { label: 'Get In Touch', href: '/#contact' }
@@ -80,27 +81,27 @@ const Nav = () => {
                 transition={{ duration: 0.5 }}
                 className="flex items-center gap-4"
             >
-                <Link href="/#home" className="flex items-center gap-3">
+                <Link href="/#home" className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
                     <Image
                         src="./icon.png"
-                        alt="Griot and Grits Logo"
+                        alt="Griot and Grits Icon"
                         width={600}
                         height={600}
-                        className="w-20 md:w-28 h-auto"
+                        className="w-16 sm:w-20 md:w-28 h-auto"
                     />
                     <Image
                         src="./logo.png"
                         alt="Griot and Grits Logo"
                         width={600}
                         height={600}
-                        className="w-28 md:w-40 h-auto"
+                        className="w-24 sm:w-28 md:w-40 h-auto"
                     />
                 </Link>
             </motion.div>
 
             {/* Right side - Donate button and Menu toggle */}
             <div className="flex items-center gap-4">
-                {/* Donate Now Button */}
+                {/* Donate Button */}
                 <motion.a
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -108,7 +109,7 @@ const Nav = () => {
                     href="#donate"
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-[#a94728] to-[#8b3a1f] text-white px-4 py-2 rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
-                    Donate Now
+                    Donate
                 </motion.a>
 
                 {/* Mobile Menu Toggle */}
