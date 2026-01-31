@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { Play, Clock, User, Tag, Calendar, MapPin } from "lucide-react";
+import { Play, Clock, User, Tag, Calendar, MapPin, History } from "lucide-react";
 import VideoPlayer from './video-player';
-import { Video, FilterMetadata } from '@/lib/video-metadata';
+import { Video, FilterMetadata, getHistoricalYears, getHistoricalLocations } from '@/lib/video-metadata';
 
 interface WorksProps {
   videos: Video[];
@@ -184,19 +184,51 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
                   )}
                 </div>
 
-                <div className="flex items-center text-sm text-gray-600 mb-4">
-                  <MapPin className="w-4 h-4 mr-2" />
-                  <div className="flex flex-wrap gap-1">
-                    {video.locations.map((location, index) => (
-                      <span key={location.name}>
-                        {location.name}
-                        {index < video.locations.length - 1 && '; '}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                {(() => {
+                  const locations = getHistoricalLocations(video);
+                  return locations.length > 0 && (
+                    <div
+                      className="flex items-center text-sm text-gray-600 mb-4 cursor-help"
+                      title="Location(s) mentioned in this story"
+                    >
+                      <MapPin className="w-4 h-4 mr-2" />
+                      <div className="flex flex-wrap gap-1">
+                        {locations.map((location, index) => (
+                          <span key={location.name}>
+                            {location.name}
+                            {index < locations.length - 1 && '; '}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
 
-                <div className="flex items-center text-sm text-gray-600 mb-4">
+                {/* Historical Years */}
+                {(() => {
+                  const years = getHistoricalYears(video);
+                  return years.length > 0 && (
+                    <div
+                      className="flex items-center text-sm text-gray-600 mb-4 cursor-help"
+                      title="Historical time period(s) referenced in this story"
+                    >
+                      <History className="w-4 h-4 mr-2" />
+                      <div className="flex flex-wrap gap-1">
+                        {years.map((year, index) => (
+                          <span key={year}>
+                            {year}
+                            {index < years.length - 1 && ', '}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                <div
+                  className="flex items-center text-sm text-gray-600 mb-4 cursor-help"
+                  title="Date this video was recorded"
+                >
                   <Calendar className="w-4 h-4 mr-2" />
                   {new Date(video.createdDate).toLocaleDateString('en-US', {
                     year: 'numeric',

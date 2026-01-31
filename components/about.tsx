@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,9 +8,42 @@ import 'swiper/css/effect-cards';
 import { EffectCards, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Play, ArrowRight } from 'lucide-react';
+import { Play, ArrowRight, Mail } from 'lucide-react';
+import LoadingDots from './loading-dots';
 
 const About = () => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [message, setMessage] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const res = await fetch(`api/subscribe`, {
+            body: JSON.stringify({
+                email: inputRef.current!.value
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        });
+
+        const { error } = await res.json();
+
+        if (error) {
+            setMessage(error);
+            setLoading(false);
+
+            return;
+        }
+
+        inputRef.current!.value = '';
+        setMessage('You are now subscribed to our newsletter!');
+        setLoading(false);
+    };
+
     const processItems = [
         {
         number: '1',
@@ -50,15 +83,70 @@ const About = () => {
                         <h4 className="text-2xl font-bold">Explore Our Oral History Collection</h4>
                     </div>
                     <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
-                        Discover powerful stories, voices, and experiences from our community. 
+                        Discover powerful stories, voices, and experiences from our community.
                         Browse, filter, and watch our growing archive of oral history videos.
                     </p>
-                    <Link href="/collection">
-                        <button className="bg-white text-[#a94728] font-semibold px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 flex items-center gap-3 mx-auto text-lg shadow-lg">
-                            View Our Collection
-                            <ArrowRight className="w-5 h-5" />
-                        </button>
-                    </Link>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <Link href="/collection">
+                            <button className="bg-white text-[#a94728] font-semibold px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 flex items-center gap-3 text-lg shadow-lg">
+                                View Our Collection
+                                <ArrowRight className="w-5 h-5" />
+                            </button>
+                        </Link>
+                        <a
+                            href={`mailto:info@griotandgrits.org?subject=${encodeURIComponent('I Want to Share My Story')}&body=${encodeURIComponent(`Hello Griot and Grits Team,
+
+I would like to share my story with your oral history collection.
+
+Please provide the following information:
+
+Your Full Name:
+
+Your Contact Information (Phone/Email):
+
+Brief Description of Your Story:
+
+
+Location (City, State):
+
+Preferred Interview Format (In-person/Virtual):
+
+
+Additional Notes:
+
+
+Thank you for preserving our community's history. We understand there is high demand and appreciate your patience as the team works to connect with everyone. We will reach out to you as soon as possible to schedule your interview.
+
+Best regards`)}`}
+                            className="bg-[#a94728] text-white font-semibold px-8 py-4 rounded-lg hover:bg-[#8b3a1f] transition-all duration-300 transform hover:scale-105 flex items-center gap-3 text-lg shadow-lg border-2 border-white"
+                        >
+                            <Mail className="w-5 h-5" />
+                            Tell Us Your Story
+                        </a>
+                    </div>
+
+                    {/* Newsletter Subscription */}
+                    <div className="mt-8 max-w-md mx-auto">
+                        <p className="text-white text-center mb-4 opacity-90 text-lg">Stay connected with new stories.</p>
+                        <form onSubmit={subscribe} className="relative">
+                            <input
+                                id="email-address"
+                                name="email"
+                                type="email"
+                                required
+                                placeholder="Enter your email"
+                                ref={inputRef}
+                                className="w-full bg-white/20 px-4 py-3 rounded-full text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white"
+                            />
+                            <button
+                                type="submit"
+                                className="absolute right-1 top-1/2 -translate-y-1/2 bg-white text-[#a94728] px-6 py-2 rounded-full hover:opacity-90 duration-300 transition-all font-semibold"
+                            >
+                                {loading ? <LoadingDots className="mb-3 bg-white" /> : <span>Subscribe</span>}
+                            </button>
+                        </form>
+                        <p className="mt-2 text-center text-white text-sm">{message ? message : ``}</p>
+                    </div>
                 </div>
             </motion.div>
             

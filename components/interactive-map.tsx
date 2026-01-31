@@ -54,17 +54,23 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         const locationMap = new Map<string, MapLocation>();
 
         videos.forEach(video => {
-            video.locations.forEach(location => {
-                if (locationMap.has(location.name)) {
-                    locationMap.get(location.name)!.videos.push(video);
-                } else {
-                    locationMap.set(location.name, {
-                        name: location.name,
-                        coordinates: [location.coordinates[0], location.coordinates[1]] as LatLngExpression,
-                        videos: [video]
-                    });
-                }
-            });
+            // Get locations from historicalContext
+            if (video.historicalContext) {
+                video.historicalContext.forEach(ctx => {
+                    if (ctx.location) {
+                        const location = ctx.location;
+                        if (locationMap.has(location.name)) {
+                            locationMap.get(location.name)!.videos.push(video);
+                        } else {
+                            locationMap.set(location.name, {
+                                name: location.name,
+                                coordinates: [location.coordinates[0], location.coordinates[1]] as LatLngExpression,
+                                videos: [video]
+                            });
+                        }
+                    }
+                });
+            }
         });
 
         return Array.from(locationMap.values());
@@ -129,7 +135,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                                         {location.name}
                                     </h3>
                                     <p className="text-xs text-gray-600 mb-2">
-                                        {location.videos.length} video{location.videos.length !== 1 ? 's' : ''}
+                                        {location.videos.length} {location.videos.length === 1 ? 'story' : 'stories'}
                                     </p>
                                     <div className="space-y-2">
                                         {location.videos.slice(0, 3).map((video) => (
@@ -147,10 +153,25 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                                         )}
                                     </div>
                                     <button
-                                        onClick={() => onLocationClick(location.name)}
+                                        onClick={() => {
+                                            onLocationClick(location.name);
+                                            // Scroll to active filters section with offset for header
+                                            setTimeout(() => {
+                                                const activeFiltersSection = document.querySelector('[data-active-filters]');
+                                                if (activeFiltersSection) {
+                                                    const elementPosition = activeFiltersSection.getBoundingClientRect().top;
+                                                    const offsetPosition = elementPosition + window.pageYOffset - 100; // 100px offset for header
+
+                                                    window.scrollTo({
+                                                        top: offsetPosition,
+                                                        behavior: 'smooth'
+                                                    });
+                                                }
+                                            }, 100);
+                                        }}
                                         className="mt-2 px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
                                     >
-                                        Filter by location
+                                        Show stories
                                     </button>
                                 </div>
                             </Popup>

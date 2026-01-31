@@ -1,188 +1,56 @@
 tags:
-  - name: "Civil Rights Movement"
-    popularity: 1.0
   - name: "Personal Stories"
-    popularity: 1.0
-  - name: "Community"
-    popularity: 1.0
-  - name: "Family Stories"
-    popularity: 1.0
-  - name: "Education"
     popularity: 1.0
   - name: "Resilience"
     popularity: 1.0
-  - name: "Civil Rights"
+  - name: "Education"
+    popularity: 1.0
+  - name: "Family History"
     popularity: 0.9
   - name: "Historical Events"
     popularity: 0.9
-  - name: "Family History"
-    popularity: 0.8
-  - name: "Cultural Heritage"
-    popularity: 0.8
-  - name: "Montgomery Bus Boycott"
-    popularity: 0.8
-  - name: "Jazz"
-    popularity: 0.8
   - name: "September 11"
     popularity: 0.8
-  - name: "9/11"
-    popularity: 0.8
-  - name: "Philadelphia"
-    popularity: 0.8
-  - name: "Love Story"
+  - name: "Love Stories"
     popularity: 0.8
   - name: "Founder Stories"
     popularity: 0.8
-  - name: "Childhood Stories"
+  - name: "Childhood"
     popularity: 0.8
-  - name: "Platform Overview"
+  - name: "Philadelphia"
     popularity: 0.8
-  - name: "Community Building"
-    popularity: 0.8
-  - name: "Great Migration"
-    popularity: 0.7
-  - name: "Music"
-    popularity: 0.7
-  - name: "Social Justice"
-    popularity: 0.7
-  - name: "Music History"
-    popularity: 0.7
-  - name: "School Integration"
-    popularity: 0.7
   - name: "Medical History"
     popularity: 0.7
   - name: "Racial Injustice"
     popularity: 0.7
-  - name: "Personal Journey"
-    popularity: 0.7
-  - name: "Personal History"
-    popularity: 0.7
-  - name: "Love Stories"
-    popularity: 0.7
-  - name: "Technology"
-    popularity: 0.7
-  - name: "Cultural Traditions"
-    popularity: 0.6
-  - name: "Community Organizing"
-    popularity: 0.6
-  - name: "Harlem Renaissance"
-    popularity: 0.6
-  - name: "Little Rock Nine"
-    popularity: 0.6
   - name: "Prison System"
     popularity: 0.6
-  - name: "Work Ethic"
-    popularity: 0.6
-  - name: "Personal Account"
-    popularity: 0.6
-  - name: "Music Traditions"
-    popularity: 0.6
-  - name: "School Desegregation"
+  - name: "Work & Employment"
     popularity: 0.6
   - name: "Migration"
     popularity: 0.6
-  - name: "Founder Story"
-    popularity: 0.6
-  - name: "How It Works"
-    popularity: 0.6
-  - name: "Food"
-    popularity: 0.5
-  - name: "Storytelling"
-    popularity: 0.5
-  - name: "Rosa Parks"
-    popularity: 0.5
-  - name: "Musicians"
-    popularity: 0.5
-  - name: "Courage"
-    popularity: 0.5
   - name: "Historical Exploitation"
-    popularity: 0.5
-  - name: "Brooklyn"
-    popularity: 0.5
-  - name: "Work Experience"
-    popularity: 0.5
-  - name: "Economic Justice"
-    popularity: 0.5
-  - name: "Personal Experience"
     popularity: 0.5
   - name: "Military Service"
     popularity: 0.5
-  - name: "Romance"
-    popularity: 0.5
-  - name: "Childhood"
-    popularity: 0.5
-  - name: "Mississippi"
-    popularity: 0.4
-  - name: "Chicago"
-    popularity: 0.4
-  - name: "Labor Movement"
-    popularity: 0.4
-  - name: "Economic Opportunity"
-    popularity: 0.4
-  - name: "White Allies"
-    popularity: 0.4
-  - name: "Economic Pressure"
-    popularity: 0.4
-  - name: "Kansas City"
-    popularity: 0.4
   - name: "Medical Ethics"
-    popularity: 0.4
-  - name: "North Carolina"
-    popularity: 0.4
-  - name: "Identity"
-    popularity: 0.4
-  - name: "Raleigh"
     popularity: 0.4
   - name: "World Trade Center"
     popularity: 0.4
-  - name: "September 11 Attacks"
-    popularity: 0.4
   - name: "Air Force"
+    popularity: 0.4
+  - name: "Brooklyn"
+    popularity: 0.4
+  - name: "North Carolina"
+    popularity: 0.4
+  - name: "Raleigh"
     popularity: 0.4
   - name: "Family Responsibility"
     popularity: 0.4
-  - name: "Recipes"
-    popularity: 0.3
-  - name: "Cultural Preservation"
-    popularity: 0.3
-  - name: "Transportation"
-    popularity: 0.3
-  - name: "Federal Intervention"
-    popularity: 0.3
-  - name: "Arkansas"
-    popularity: 0.3
-  - name: "Name Origins"
-    popularity: 0.3
-  - name: "Elder"
-    popularity: 0.3
-  - name: "MEPS"
-    popularity: 0.3
-  - name: "Snowstorm"
-    popularity: 0.3
-  - name: "Babysitting"
-    popularity: 0.3
   - name: "Weather Events"
     popularity: 0.3
-  - name: "Birmingham"
-    popularity: 0.2
-  - name: "1960s"
-    popularity: 0.2
-  - name: "Children's Crusade"
-    popularity: 0.2
-  - name: "Church Leadership"
-    popularity: 0.2
-  - name: "Protest Strategy"
-    popularity: 0.2
-  - name: "Marriage"
-    popularity: 0.2
-  - name: "1949"
-    popularity: 0.2
 
 people:
-  - name: "Martin Luther King Jr."
-    popularity: 1.0
-  - name: "Rosa Parks"
-    popularity: 1.0
   - name: "Deborah Ragan McCoy"
     popularity: 1.0
   - name: "Gladys M. Williams"
@@ -193,45 +61,5 @@ people:
     popularity: 1.0
   - name: "Sharon Burwell McDuffie"
     popularity: 1.0
-  - name: "Griot and Grits Team"
-    popularity: 1.0
   - name: "Irene Clark"
     popularity: 0.9
-  - name: "Little Rock Nine"
-    popularity: 0.8
-  - name: "Charlie Parker"
-    popularity: 0.7
-  - name: "Count Basie"
-    popularity: 0.6
-  - name: "Daisy Bates"
-    popularity: 0.5
-  - name: "Dorothy Williams"
-    popularity: 0.4
-  - name: "Virginia Durr"
-    popularity: 0.4
-  - name: "Duke Ellington Jr."
-    popularity: 0.4
-  - name: "Ernest Green"
-    popularity: 0.4
-  - name: "Maria Santos"
-    popularity: 0.3
-  - name: "Rev. Fred Shuttlesworth"
-    popularity: 0.3
-  - name: "James Thompson"
-    popularity: 0.3
-  - name: "Mary Thompson"
-    popularity: 0.3
-  - name: "Robert Johnson"
-    popularity: 0.3
-  - name: "Sarah Washington"
-    popularity: 0.3
-  - name: "Michael Davis"
-    popularity: 0.3
-  - name: "E.D. Nixon"
-    popularity: 0.3
-  - name: "Thompson Family"
-    popularity: 0.2
-  - name: "Santos Family"
-    popularity: 0.2
-  - name: "Bull Connor"
-    popularity: 0.2
