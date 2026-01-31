@@ -338,7 +338,7 @@ and amplifying all perspectives.`
                 </div>
             </section>
 
-            {/* Board of Advisors Section */}
+            {/* Strategic Advisory Board Section */}
             {boardMembers.length > 0 && (
                 <section className="py-20 bg-white">
                     <div className="container mx-auto px-6">
@@ -348,7 +348,7 @@ and amplifying all perspectives.`
                             transition={{ duration: 0.6 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Board of Advisors</h2>
+                            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Strategic Advisory Board</h2>
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto justify-items-center">
                                 {boardMembers.map((member) => (
                                     <MemberCard
