@@ -6,8 +6,9 @@ videos:
       - "Irene Clark"
     description: "Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
     duration: "3:00"
-    createdDate: "2023-08-25T13:10:00Z"
+    createdDate: "2024-08-25T13:10:00Z"
     videoUrl: "https://www.youtube.com/watch?v=mE1PTJeDBXI"
+    featured: true
     historicalContext:
       - year: 1926
         location:
@@ -31,6 +32,7 @@ videos:
     duration: "12:56"
     createdDate: "2023-09-14T10:25:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Bwk5yovVvmM"
+    featured: true
     historicalContext:
       - year: 1924
         location:
@@ -58,8 +60,9 @@ videos:
       - "Deborah Ragan McCoy"
     description: "Deborah McCoy reflects on her life, starting with her birth in Philadelphia, Pennsylvania in 1949. She explains how she got her name and shares various names she has been called, including Debbie and Elder Deb."
     duration: "3:27"
-    createdDate: "2023-10-03T16:30:00Z"
+    createdDate: "2024-10-03T16:30:00Z"
     videoUrl: "https://www.youtube.com/watch?v=9Nwl-6DRPYI"
+    featured: false
     historicalContext:
       - year: 1949
         location:
@@ -83,8 +86,9 @@ videos:
       - "Sharon McDuffie"
     description: "On the morning of September 11, 2001, she awoke in Raleigh, North Carolina, to the shocking news of a plane crashing into the World Trade Center. As a second plane struck, confirming the attack, a sense of urgency and fear set in."
     duration: "9:36"
-    createdDate: "2023-11-17T08:45:00Z"
+    createdDate: "2024-11-17T08:45:00Z"
     videoUrl: "https://www.youtube.com/watch?v=meR02ie2lYg"
+    featured: true
     historicalContext:
       - year: 2001
         location:
@@ -110,8 +114,9 @@ videos:
       - "Ty McDuffie"
     description: "Ty McDuffie, founder of Griot and Grits, shares his personal story about meeting his wife, Sharon Burwell McDuffie, just before Air Force basic training at a MEPS station. They were assigned different flights but managed to connect by passing notes."
     duration: "3:16"
-    createdDate: "2023-12-08T14:20:00Z"
+    createdDate: "2024-12-08T14:20:00Z"
     videoUrl: "https://www.youtube.com/watch?v=1veIaRHpYO0"
+    featured: true
     historicalContext:
       - year: 1992
         location:
@@ -135,8 +140,9 @@ videos:
       - "Deborah Ragan McCoy"
     description: "At just 10 years old, Deborah Ragan McCoy found herself babysitting her aunt's six children in West Philadelphia—a responsibility far beyond her years. As the evening wore on, an approaching snowstorm made her eager to get home. Determined, she braved the bitter cold and deepening snow, embarking on an arduous four-hour trek."
     duration: "5:14"
-    createdDate: "2024-01-12T12:15:00Z"
+    createdDate: "2025-01-12T12:15:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Wygd0hwc7iA"
+    featured: true
     historicalContext:
       - year: 1958
         location:
@@ -152,3 +158,30 @@ videos:
       - "Weather Events"
     people:
       - "Deborah Ragan McCoy"
+  - id: "7"
+    thumbnail: "https://img.youtube.com/vi/Wygd0hwc7iA/0.jpg"
+    title: "Dr. Oliver T. Reid Reflects on Growing Up Between Danger and Sanctuary"
+    interviewees:
+      - "Dr. Oliver T. Reid"
+    description: "Dr. Oliver T. Reid reflects on the complicated journey of growing into his own name, sharing how \"Oliver\" once felt like a burden until he uncovered the powerful legacy behind it—a grandfather who rose from enslavement to reclaim the very land his family once worked. He traces the nicknames that marked different chapters of his life, the move from Concord to Charlotte in North Carolina, and the Boys and Girls Club that became a rare place of safety and belonging during a turbulent childhood. Through heritage, hardship, and the people who held him up, he tells the story of learning to take pride in the name he once rejected."
+    duration: "4:35"
+    createdDate: "2026-01-31T12:00:00Z"
+    videoUrl: "https://www.youtube.com/watch?v=Wygd0hwc7iA"
+    featured: true
+    historicalContext:
+      - location:
+          name: "Concord, North Carolina"
+          coordinates: [35.4089, -80.5816]
+      - location:
+          name: "Charlotte, North Carolina"
+          coordinates: [35.2271, -80.8431]
+    tags:
+      - "North Carolina"
+      - "Charlotte"
+      - "Boys and Girls Club"
+      - "Childhood"
+      - "Heritage"
+      - "Personal Stories"
+      - "Resilience"
+    people:
+      - "Dr. Oliver T. Reid"

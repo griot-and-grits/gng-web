@@ -7,13 +7,12 @@ import Nav from '@/components/nav'
 import Services from '@/components/services'
 import Testimonials from '@/components/testimonials'
 import Works from '@/components/works'
-import { loadVideoMetadata, loadFilterMetadata } from '@/lib/load-metadata'
+import { loadVideoMetadata } from '@/lib/load-metadata'
 import { getGoFundMeConfig } from '@/lib/feature-flags'
 import React from 'react'
 
 const page = () => {
     const videoMetadata = loadVideoMetadata();
-    const filterMetadata = loadFilterMetadata();
     const goFundMeConfig = getGoFundMeConfig();
 
     return (
@@ -23,7 +22,7 @@ const page = () => {
             <Hero />
             <About />
             <Services />
-            <Works videos={videoMetadata.videos} filters={filterMetadata} />
+            <Works videos={videoMetadata.videos} />
             {/* <Stats /> */}
             {goFundMeConfig.enabled && goFundMeConfig.campaignId && (
                 <GoFundMe
