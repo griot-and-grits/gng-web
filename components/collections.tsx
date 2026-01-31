@@ -3,10 +3,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { 
-    Search, 
-    Filter, 
-    MapPin, 
+import {
+    Search,
+    Filter,
+    MapPin,
     MessageSquare,
     Play,
     Clock,
@@ -15,7 +15,8 @@ import {
     X,
     Calendar,
     Send,
-    Loader2
+    Loader2,
+    Flag
 } from 'lucide-react';
 import { 
     Video, 
@@ -27,6 +28,8 @@ import {
 import { griotLLM, ChatMessage } from '@/lib/griot-llm';
 import dynamic from 'next/dynamic';
 import VideoPlayer from './video-player';
+import { FeedbackModal } from './feedback/feedback-modal';
+import { FeedbackType } from '@/lib/admin/types';
 
 // Dynamically import the map component to avoid SSR issues
 const InteractiveMap = dynamic(() => import('./interactive-map'), {
@@ -61,6 +64,14 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
     const [showAllPeople, setShowAllPeople] = useState(false);
     const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
     const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
+    const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
+    const [feedbackContext, setFeedbackContext] = useState<{
+        type: FeedbackType;
+        artifactId?: string;
+        artifactTitle?: string;
+        chatUserMessage?: string;
+        chatAssistantMessage?: string;
+    }>({ type: FeedbackType.OTHER });
 
     const allTags = getAllTags(videos, filters);
     const allPeople = getAllPeople(videos, filters);
@@ -129,6 +140,24 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
     const handleVideoPlayerClose = () => {
         setIsVideoPlayerOpen(false);
         setSelectedVideo(null);
+    };
+
+    const openFeedbackForChat = (userMsg: string, assistantMsg: string) => {
+        setFeedbackContext({
+            type: FeedbackType.GRIOT_RESPONSE,
+            chatUserMessage: userMsg,
+            chatAssistantMessage: assistantMsg,
+        });
+        setFeedbackModalOpen(true);
+    };
+
+    const openFeedbackForVideo = (video: Video) => {
+        setFeedbackContext({
+            type: FeedbackType.CONTENT_ISSUE,
+            artifactId: video.id,
+            artifactTitle: video.title,
+        });
+        setFeedbackModalOpen(true);
     };
 
     const handleSendMessage = async () => {
@@ -406,6 +435,25 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                                     <User className="w-4 h-4 text-secondary-foreground" />
                                                 </div>
                                             )}
+                                            {message.role === 'assistant' && message.content && !isLoading && (
+                                                <button
+                                                    onClick={() => {
+                                                        const userMsg = chatHistory
+                                                            .slice(0, index)
+                                                            .filter(m => m.role === 'user')
+                                                            .pop();
+                                                        openFeedbackForChat(
+                                                            userMsg?.content || '',
+                                                            message.content,
+                                                        );
+                                                    }}
+                                                    className="self-end text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
+                                                    title="Report issue with this response"
+                                                >
+                                                    <Flag className="w-3 h-3" />
+                                                    Report issue
+                                                </button>
+                                            )}
                                         </div>
                                     ))}
                                     
@@ -669,13 +717,22 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                     )}
                                 </div>
 
-                                <button 
-                                    onClick={() => handleVideoPlay(video)}
-                                    className="w-full bg-[#a94728] text-white py-2 rounded-lg hover:bg-[#8b3a1f] transition-colors flex items-center justify-center gap-2"
-                                >
-                                    <Play className="w-4 h-4" />
-                                    Watch Video
-                                </button>
+                                <div className="flex flex-col gap-2">
+                                    <button
+                                        onClick={() => handleVideoPlay(video)}
+                                        className="w-full bg-[#a94728] text-white py-2 rounded-lg hover:bg-[#8b3a1f] transition-colors flex items-center justify-center gap-2"
+                                    >
+                                        <Play className="w-4 h-4" />
+                                        Watch Video
+                                    </button>
+                                    <button
+                                        onClick={() => openFeedbackForVideo(video)}
+                                        className="w-full border border-border text-muted-foreground py-2 rounded-lg hover:bg-accent hover:text-foreground transition-colors flex items-center justify-center gap-2 text-sm"
+                                    >
+                                        <Flag className="w-3.5 h-3.5" />
+                                        Report Issue
+                                    </button>
+                                </div>
                             </div>
                         </motion.div>
                     ))}
@@ -724,6 +781,17 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                     </p>
                 </motion.div>
                 
+                {/* Feedback Modal */}
+                <FeedbackModal
+                    open={feedbackModalOpen}
+                    onOpenChange={setFeedbackModalOpen}
+                    defaultType={feedbackContext.type}
+                    artifactId={feedbackContext.artifactId}
+                    artifactTitle={feedbackContext.artifactTitle}
+                    chatUserMessage={feedbackContext.chatUserMessage}
+                    chatAssistantMessage={feedbackContext.chatAssistantMessage}
+                />
+
                 {/* Video Player Modal */}
                 <VideoPlayer
                     isOpen={isVideoPlayerOpen}

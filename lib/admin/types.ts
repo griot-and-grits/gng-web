@@ -126,6 +126,58 @@ export interface IngestionResponse {
     upload_path?: string;
 }
 
+export enum FeedbackType {
+    TRANSCRIPT_ACCURACY = 'transcript_accuracy',
+    GRIOT_RESPONSE = 'griot_response',
+    CONTENT_ISSUE = 'content_issue',
+    OTHER = 'other',
+}
+
+export enum FeedbackStatus {
+    NEW = 'new',
+    REVIEWED = 'reviewed',
+    RESOLVED = 'resolved',
+    DISMISSED = 'dismissed',
+}
+
+export interface FeedbackCreateRequest {
+    description: string;
+    feedback_type: FeedbackType;
+    artifact_id?: string;
+    artifact_title?: string;
+    chat_user_message?: string;
+    chat_assistant_message?: string;
+    submitter_name?: string;
+    submitter_email?: string;
+}
+
+export interface FeedbackStatusUpdateRequest {
+    status: FeedbackStatus;
+    admin_notes?: string;
+}
+
+export interface Feedback {
+    feedback_id: string;
+    description: string;
+    feedback_type: FeedbackType;
+    status: FeedbackStatus;
+    artifact_id?: string;
+    artifact_title?: string;
+    chat_user_message?: string;
+    chat_assistant_message?: string;
+    submitter_name?: string;
+    submitter_email?: string;
+    admin_notes?: string;
+    created_at: string;
+    updated_at?: string;
+}
+
+export interface FeedbackListResponse {
+    feedback: Feedback[];
+    count: number;
+    total: number;
+}
+
 export interface CollectionDraftRequest {
     title: string;
     description?: string;

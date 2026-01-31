@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Box, Upload, Package } from 'lucide-react';
+import { ArrowRight, Box, Upload, Package, Flag } from 'lucide-react';
 
 const quickActions = [
     {
@@ -19,6 +19,12 @@ const quickActions = [
         title: 'Start Archive Package',
         description: 'Create a draft package, upload to Globus, and finalize.',
         icon: <Package className="h-5 w-5 text-slate-500" />,
+    },
+    {
+        href: '/admin/feedback',
+        title: 'Review Feedback',
+        description: 'View and manage user-submitted feedback and issue reports.',
+        icon: <Flag className="h-5 w-5 text-slate-500" />,
     },
 ];
 
