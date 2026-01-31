@@ -23,6 +23,8 @@ tags:
     popularity: 0.7
   - name: "Racial Injustice"
     popularity: 0.7
+  - name: "Heritage"
+    popularity: 0.7
   - name: "Prison System"
     popularity: 0.6
   - name: "Work & Employment"
@@ -46,6 +48,10 @@ tags:
   - name: "Raleigh"
     popularity: 0.4
   - name: "Family Responsibility"
+    popularity: 0.4
+  - name: "Boys and Girls Club"
+    popularity: 0.4
+  - name: "Charlotte"
     popularity: 0.4
   - name: "Weather Events"
     popularity: 0.3

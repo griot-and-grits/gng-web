@@ -7,40 +7,13 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { Play, Clock, User, Tag, Calendar, MapPin, History } from "lucide-react";
 import VideoPlayer from './video-player';
-import { Video, FilterMetadata, getHistoricalYears, getHistoricalLocations } from '@/lib/video-metadata';
+import { Video, getHistoricalYears, getHistoricalLocations } from '@/lib/video-metadata';
 
 interface WorksProps {
   videos: Video[];
-  filters: FilterMetadata;
 }
 
-// Calculate popularity score for a video based on tag and people popularity
-function calculateVideoPopularity(video: Video, filters: FilterMetadata): number {
-  let tagScore = 0;
-  let peopleScore = 0;
-  
-  // Sum popularity scores for tags
-  video.tags.forEach(tag => {
-    const tagFilter = filters.tags.find(t => t.name === tag);
-    if (tagFilter) {
-      tagScore += tagFilter.popularity;
-    }
-  });
-  
-  // Sum popularity scores for people
-  video.people.forEach(person => {
-    const personFilter = filters.people.find(p => p.name === person);
-    if (personFilter) {
-      peopleScore += personFilter.popularity;
-    }
-  });
-  
-  // Calculate average score (tag score + people score) / total items
-  const totalItems = video.tags.length + video.people.length;
-  return totalItems > 0 ? (tagScore + peopleScore) / totalItems : 0;
-}
-
-const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
+const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
   const controls = useAnimation()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ref, inView] = useInView({
@@ -60,23 +33,13 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
   }, [controls, inView])
 
   useEffect(() => {
-    // Calculate popularity scores and get top 6 videos
-    const videosWithPopularity = videos.map(video => ({
-      ...video,
-      popularityScore: calculateVideoPopularity(video, filters)
-    }));
-    
-    // Sort by popularity score descending, then by creation date descending
-    const sortedVideos = videosWithPopularity.sort((a, b) => {
-      if (b.popularityScore !== a.popularityScore) {
-        return b.popularityScore - a.popularityScore;
-      }
-      return new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime();
-    });
-    
-    // Take only top 6
-    setFeaturedVideos(sortedVideos.slice(0, 6));
-  }, [videos, filters]);
+    // Filter videos marked as featured (treat missing as false) and sort by creation date descending
+    const filteredVideos = videos
+      .filter(video => video.featured ?? false)
+      .sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
+
+    setFeaturedVideos(filteredVideos);
+  }, [videos]);
 
   const handleVideoPlay = (video: Video) => {
     if (video && video.videoUrl && video.videoUrl.trim() !== '') {

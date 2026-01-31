@@ -31,6 +31,7 @@ export interface Video {
     people: string[];
     historicalYears?: number[]; // Deprecated: use historicalContext instead
     historicalContext?: HistoricalContext[];
+    featured?: boolean;
 }
 
 export interface VideoMetadata {
