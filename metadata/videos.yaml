@@ -173,7 +173,8 @@ videos:
       - location:
           name: "Concord, North Carolina"
           coordinates: [35.4089, -80.5816]
-      - location:
+      - year: 1980
+        location:
           name: "Charlotte, North Carolina"
           coordinates: [35.2271, -80.8431]
     tags:
