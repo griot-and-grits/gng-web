@@ -1,4 +1,4 @@
-import About from '@/components/about'
+import About, { CollectionCTA } from '@/components/about'
 import ContactSection from '@/components/contact'
 import GoFundMe from '@/components/gofundme'
 import Hero from '@/components/hero'
@@ -20,9 +20,10 @@ const page = () => {
             <div id="home"></div>
             <Nav />
             <Hero />
+            <CollectionCTA />
+            <Works videos={videoMetadata.videos} />
             <About />
             <Services />
-            <Works videos={videoMetadata.videos} />
             {/* <Stats /> */}
             {goFundMeConfig.enabled && goFundMeConfig.campaignId && (
                 <GoFundMe

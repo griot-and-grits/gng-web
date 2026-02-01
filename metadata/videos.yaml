@@ -25,7 +25,7 @@ videos:
 
   - id: "2"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
-    title: "Ms. Gladys M. Williams"
+    title: "The Storied Life of Ms. Gladys M. Williams"
     interviewees:
       - "Gladys M. Williams"
     description: "Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience and integrity."
@@ -159,14 +159,15 @@ videos:
     people:
       - "Deborah Ragan McCoy"
   - id: "7"
-    thumbnail: "https://img.youtube.com/vi/Wygd0hwc7iA/0.jpg"
+    thumbnail: "https://img.youtube.com/vi/Y48ON7_lUXE/0.jpg"
     title: "Dr. Oliver T. Reid Reflects on Growing Up Between Danger and Sanctuary"
     interviewees:
       - "Dr. Oliver T. Reid"
     description: "Dr. Oliver T. Reid reflects on the complicated journey of growing into his own name, sharing how \"Oliver\" once felt like a burden until he uncovered the powerful legacy behind it—a grandfather who rose from enslavement to reclaim the very land his family once worked. He traces the nicknames that marked different chapters of his life, the move from Concord to Charlotte in North Carolina, and the Boys and Girls Club that became a rare place of safety and belonging during a turbulent childhood. Through heritage, hardship, and the people who held him up, he tells the story of learning to take pride in the name he once rejected."
-    duration: "4:35"
+    duration: "4:39"
     createdDate: "2026-01-31T12:00:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=Wygd0hwc7iA"
+    videoUrl: "https://www.youtube.com/watch?v=Y48ON7_lUXE"
+    podcastUrl: "https://open.spotify.com/episode/02DSQX5xtuqWzL70nWdzRD?si=7c6e581980ae4b67"
     featured: true
     historicalContext:
       - location:

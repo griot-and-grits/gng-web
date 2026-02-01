@@ -128,7 +128,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
     };
 
     return (
-        <section id="donate" className="py-20 px-6 bg-gradient-to-br from-[#a94728]/5 to-[#8b3a1f]/5">
+        <section id="donate" className="py-20 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -138,7 +138,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h3 className="text-[#a94728] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Support Our Mission</h3>
+                    <h3 className="text-[#AE2D24] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Support Our Mission</h3>
                     <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
                         {campaignData?.description || 'Help us preserve Black voices and stories for future generations. Your donation directly supports our technology, equipment, and community outreach efforts.'}
                     </p>
@@ -157,7 +157,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
 
                             <div className="space-y-4">
                                 <div className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border">
-                                    <div className="w-10 h-10 bg-[#a94728] rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="w-10 h-10 bg-[#AE2D24] rounded-full flex items-center justify-center flex-shrink-0">
                                         <Heart className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
@@ -169,7 +169,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                                 </div>
 
                                 <div className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border">
-                                    <div className="w-10 h-10 bg-[#a94728] rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="w-10 h-10 bg-[#AE2D24] rounded-full flex items-center justify-center flex-shrink-0">
                                         <Target className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
@@ -181,7 +181,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                                 </div>
 
                                 <div className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border">
-                                    <div className="w-10 h-10 bg-[#a94728] rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="w-10 h-10 bg-[#AE2D24] rounded-full flex items-center justify-center flex-shrink-0">
                                         <Users className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
@@ -193,7 +193,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                                 </div>
 
                                 <div className="flex items-start gap-4 p-4 bg-card rounded-lg border border-border">
-                                    <div className="w-10 h-10 bg-[#a94728] rounded-full flex items-center justify-center flex-shrink-0">
+                                    <div className="w-10 h-10 bg-[#AE2D24] rounded-full flex items-center justify-center flex-shrink-0">
                                         <TrendingUp className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
@@ -216,7 +216,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="bg-white rounded-xl p-8 shadow-xl border border-gray-200"
                     >
-                        <h4 className="text-3xl font-bold mb-4 text-center text-[#a94728]">Every Voice Matters</h4>
+                        <h4 className="text-3xl font-bold mb-4 text-center text-[#AE2D24]">Every Voice Matters</h4>
                         <p className="text-lg text-gray-700 mb-6 text-center">
                             Join us in building a lasting legacy of Black history and culture.
                             Together, we can ensure these important stories are never forgotten.
@@ -234,7 +234,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-3">
                                 <div
-                                    className="bg-gradient-to-r from-[#a94728] to-[#8b3a1f] h-3 rounded-full transition-all duration-500"
+                                    className="bg-[#AE2D24] h-3 rounded-full transition-all duration-500"
                                     style={{width: `${calculateProgress()}%`}}
                                 ></div>
                             </div>
@@ -267,7 +267,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                             ) : (
                                 <button
                                     onClick={openDonationModal}
-                                    className="bg-gradient-to-r from-[#a94728] to-[#8b3a1f] text-white px-8 py-4 rounded-lg font-bold text-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 mx-auto"
+                                    className="bg-[#AE2D24] text-white px-8 py-4 rounded-lg font-bold text-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 mx-auto"
                                 >
                                     <Heart className="w-6 h-6" />
                                     Donate Now
@@ -302,7 +302,7 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                             >
                                 {/* Modal Header */}
                                 <div className="flex items-center justify-between p-4 border-b">
-                                    <h3 className="text-xl font-bold text-[#a94728]">Support Griot and Grits</h3>
+                                    <h3 className="text-xl font-bold text-[#AE2D24]">Support Griot and Grits</h3>
                                     <button
                                         onClick={closeDonationModal}
                                         className="p-2 hover:bg-gray-100 rounded-full transition-colors"
