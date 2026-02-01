@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { Play, Clock, User, Tag, Calendar, MapPin, History } from "lucide-react";
+import { Play, Clock, User, Tag, Calendar, MapPin, History, Headphones } from "lucide-react";
 import VideoPlayer from './video-player';
 import { Video, getHistoricalYears, getHistoricalLocations } from '@/lib/video-metadata';
 
@@ -68,7 +68,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
   };
 
   return (
-    <section id="works" className="pt-20 overflow-hidden">
+    <section id="works" className="pt-20 overflow-hidden bg-gray-50">
       <div className="container mx-auto px-4">        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h3 className="text-[#a94728] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Featured Stories</h3>
+          <h3 className="text-[#AE2D24] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Featured Stories</h3>
           <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
             Discover and watch the rich tapestry of Black experiences
           </p>
@@ -140,7 +140,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
                   {video.description.length > 150 && (
                     <button
                       onClick={() => toggleDescriptionExpansion(video.id)}
-                      className="text-xs text-[#a94728] hover:text-[#8b3a1f] underline mt-1 cursor-pointer"
+                      className="text-xs text-[#AE2D24] hover:text-[#282420] underline mt-1 cursor-pointer"
                     >
                       {expandedDescriptions[video.id] ? 'Show less' : 'Read more'}
                     </button>
@@ -214,7 +214,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
                   {video.tags.length > 3 && (
                     <button
                       onClick={() => toggleTagExpansion(video.id)}
-                      className="text-xs text-[#a94728] hover:text-[#8b3a1f] underline cursor-pointer"
+                      className="text-xs text-[#AE2D24] hover:text-[#282420] underline cursor-pointer"
                     >
                       {expandedTags[video.id] 
                         ? 'Show less' 
@@ -224,13 +224,25 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
                   )}
                 </div>
 
-                <button 
+                <button
                   onClick={() => handleVideoPlay(video)}
-                  className="w-full bg-[#a94728] text-white py-2 rounded-lg hover:bg-[#8b3a1f] transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-[#AE2D24] text-white py-2 rounded-lg hover:bg-[#282420] transition-colors flex items-center justify-center gap-2"
                 >
                   <Play className="w-4 h-4" />
                   Watch Video
                 </button>
+
+                {video.podcastUrl && (
+                  <a
+                    href={video.podcastUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2 mt-2"
+                  >
+                    <Headphones className="w-4 h-4" />
+                    Listen on Spotify
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

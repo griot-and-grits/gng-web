@@ -143,7 +143,7 @@ and amplifying all perspectives.`
             </div>
             <div className="p-4">
                 <h3 className="text-lg font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-[#a94728] font-medium text-sm">{member.title}</p>
+                <p className="text-[#AE2D24] font-medium text-sm">{member.title}</p>
             </div>
         </motion.div>
     );
@@ -195,7 +195,7 @@ and amplifying all perspectives.`
                         <div className="flex flex-col flex-1 min-h-0">
                             <div className="flex-shrink-0">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h2>
-                                <p className="text-[#a94728] font-medium mb-4">{member.title}</p>
+                                <p className="text-[#AE2D24] font-medium mb-4">{member.title}</p>
                             </div>
                             <div className="overflow-y-auto flex-1 pr-2">
                                 <div className="text-gray-700 leading-relaxed space-y-4">
@@ -214,7 +214,7 @@ and amplifying all perspectives.`
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Mission Section */}
-            <section className="bg-gradient-to-r from-[#a94728] to-[#8b3a1f] text-white py-20">
+            <section className="bg-[#AE2D24] text-white py-20">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

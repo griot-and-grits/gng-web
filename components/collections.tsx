@@ -16,7 +16,8 @@ import {
     Calendar,
     Send,
     Loader2,
-    History
+    History,
+    Headphones
 } from 'lucide-react';
 import {
     Video,
@@ -795,13 +796,25 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                     )}
                                 </div>
 
-                                <button 
+                                <button
                                     onClick={() => handleVideoPlay(video)}
-                                    className="w-full bg-[#a94728] text-white py-2 rounded-lg hover:bg-[#8b3a1f] transition-colors flex items-center justify-center gap-2"
+                                    className="w-full bg-[#AE2D24] text-white py-2 rounded-lg hover:bg-[#282420] transition-colors flex items-center justify-center gap-2"
                                 >
                                     <Play className="w-4 h-4" />
                                     Watch Video
                                 </button>
+
+                                {video.podcastUrl && (
+                                    <a
+                                        href={video.podcastUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2 mt-2"
+                                    >
+                                        <Headphones className="w-4 h-4" />
+                                        Listen on Spotify
+                                    </a>
+                                )}
                             </div>
                         </motion.div>
                     ))}

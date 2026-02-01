@@ -27,6 +27,7 @@ export interface Video {
     duration: string;
     createdDate: string;
     videoUrl: string;
+    podcastUrl?: string;
     tags: string[];
     people: string[];
     historicalYears?: number[]; // Deprecated: use historicalContext instead
@@ -119,30 +120,44 @@ export function getHistoricalLocations(video: Video): Location[] {
 
 export function getAllTags(videos: Video[], filters: FilterMetadata): TagWithPopularity[] {
     const usedTags = new Set<string>();
-    
+
     videos.forEach(video => {
         video.tags.forEach(tag => {
             usedTags.add(tag);
         });
     });
-    
+
     return filters.tags
         .filter(tag => usedTags.has(tag.name))
-        .sort((a, b) => b.popularity - a.popularity);
+        .sort((a, b) => {
+            // Sort by popularity first (descending)
+            if (b.popularity !== a.popularity) {
+                return b.popularity - a.popularity;
+            }
+            // If popularity is equal, sort alphabetically
+            return a.name.localeCompare(b.name);
+        });
 }
 
 export function getAllPeople(videos: Video[], filters: FilterMetadata): PersonWithPopularity[] {
     const usedPeople = new Set<string>();
-    
+
     videos.forEach(video => {
         video.people.forEach(person => {
             usedPeople.add(person);
         });
     });
-    
+
     return filters.people
         .filter(person => usedPeople.has(person.name))
-        .sort((a, b) => b.popularity - a.popularity);
+        .sort((a, b) => {
+            // Sort by popularity first (descending)
+            if (b.popularity !== a.popularity) {
+                return b.popularity - a.popularity;
+            }
+            // If popularity is equal, sort alphabetically
+            return a.name.localeCompare(b.name);
+        });
 }
 
 export function getAllLocations(videos: Video[]): string[] {
