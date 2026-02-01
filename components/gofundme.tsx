@@ -7,6 +7,7 @@ import { Heart, Target, Users, TrendingUp, X, RefreshCw } from 'lucide-react';
 interface GoFundMeProps {
     campaignId: string;
     useEmbedded?: boolean;
+    showTracker?: boolean;
 }
 
 interface CampaignData {
@@ -31,7 +32,7 @@ interface CampaignData {
     minimum_donation_amount?: number;
 }
 
-const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) => {
+const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false, showTracker = false }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [campaignData, setCampaignData] = useState<CampaignData | null>(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -223,28 +224,30 @@ const GoFundMe: React.FC<GoFundMeProps> = ({ campaignId, useEmbedded = false }) 
                         </p>
 
                         {/* Progress bar */}
-                        <div className="space-y-2 mb-6">
-                            <div className="flex justify-between text-sm">
-                                <span className="text-gray-600">
-                                    Raised: {campaignData ? formatCurrency(campaignData.current_amount, campaignData.currency) : 'unknown'}
-                                </span>
-                                <span className="font-semibold text-gray-900">
-                                    Goal: {campaignData ? formatCurrency(campaignData.goal, campaignData.currency) : 'unknown'}
-                                </span>
-                            </div>
-                            <div className="w-full bg-gray-200 rounded-full h-3">
-                                <div
-                                    className="bg-[#AE2D24] h-3 rounded-full transition-all duration-500"
-                                    style={{width: `${calculateProgress()}%`}}
-                                ></div>
-                            </div>
-                            {campaignData && (
-                                <div className="flex justify-between text-xs text-gray-600">
-                                    <span>{campaignData.donors_count} donors</span>
-                                    <span>{Math.round(calculateProgress())}% funded</span>
+                        {showTracker && (
+                            <div className="space-y-2 mb-6">
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-gray-600">
+                                        Raised: {campaignData ? formatCurrency(campaignData.current_amount, campaignData.currency) : 'unknown'}
+                                    </span>
+                                    <span className="font-semibold text-gray-900">
+                                        Goal: {campaignData ? formatCurrency(campaignData.goal, campaignData.currency) : 'unknown'}
+                                    </span>
                                 </div>
-                            )}
-                        </div>
+                                <div className="w-full bg-gray-200 rounded-full h-3">
+                                    <div
+                                        className="bg-[#AE2D24] h-3 rounded-full transition-all duration-500"
+                                        style={{width: `${calculateProgress()}%`}}
+                                    ></div>
+                                </div>
+                                {campaignData && (
+                                    <div className="flex justify-between text-xs text-gray-600">
+                                        <span>{campaignData.donors_count} donors</span>
+                                        <span>{Math.round(calculateProgress())}% funded</span>
+                                    </div>
+                                )}
+                            </div>
+                        )}
 
 
                         {/* Main donation button */}

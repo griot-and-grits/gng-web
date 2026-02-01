@@ -29,6 +29,7 @@ const page = () => {
                 <GoFundMe
                     campaignId={goFundMeConfig.campaignId}
                     useEmbedded={goFundMeConfig.useEmbedded}
+                    showTracker={goFundMeConfig.showTracker}
                 />
             )}
             <MediaCoverage />
