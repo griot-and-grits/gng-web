@@ -134,6 +134,43 @@ export FEATURE_GOFUNDME=false
 - If environment variables are not set, features default to enabled with campaign ID 731313
 - When disabled, the respective features will not appear on the website
 
+### Mailchimp Newsletter Integration
+
+The newsletter subscription feature allows users to subscribe to your email list through the "Get In Touch" section on the main page. This feature requires a Mailchimp account and API credentials.
+
+**Required Environment Variables:**
+```bash
+export MAILCHIMP_API_KEY=your-mailchimp-api-key           # Required: Your Mailchimp API key
+export MAILCHIMP_API_SERVER=us1                           # Required: Your Mailchimp server prefix (e.g., us1, us2, us21)
+export MAILCHIMP_AUDIENCE_ID=your-audience-list-id        # Required: The Mailchimp audience/list ID to subscribe users to
+```
+
+**How to Get Your Mailchimp Credentials:**
+1. **API Key**: Mailchimp → Account → Extras → API keys → Create New Key
+2. **Server Prefix**: Check your Mailchimp account URL (e.g., `https://us1.admin.mailchimp.com/` means server is "us1")
+3. **Audience ID**: Mailchimp → Audience → Settings → Audience name and defaults → Audience ID
+
+**For deployment platforms:**
+
+- **Vercel**: Add environment variables in the Vercel dashboard:
+  - `MAILCHIMP_API_KEY=your-mailchimp-api-key` (**Required**)
+  - `MAILCHIMP_API_SERVER=us1` (**Required**)
+  - `MAILCHIMP_AUDIENCE_ID=your-audience-list-id` (**Required**)
+
+- **Docker**: Pass environment variables when running the container:
+  ```bash
+  docker run -e MAILCHIMP_API_KEY=your-mailchimp-api-key \
+             -e MAILCHIMP_API_SERVER=us1 \
+             -e MAILCHIMP_AUDIENCE_ID=your-audience-list-id \
+             your-app
+  ```
+
+**Notes:**
+- Without these credentials configured, newsletter subscriptions will fail with an error
+- The subscription form will still be visible, but users will see an error message when attempting to subscribe
+- Subscribers are added to your Mailchimp audience with status "subscribed"
+- Email validation is handled by the Mailchimp API
+
 
 ## Deployment
 
