@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { getBioImageUrl, getImageUrl, getLogoUrl } from '@/lib/cdn';
 
 // LinkedIn SVG component (Simple Icons doesn't include LinkedIn)
 const LinkedInIcon = ({ size = 24 }: { size?: number }) => (
@@ -39,20 +40,20 @@ const WhoWeAre = () => {
         {
             name: "Ty McDuffie",
             title: "Executive Director & Founder",
-            photo: "/media/bio/T_McDuffie.jpg",
+            photo: getBioImageUrl("T_McDuffie.jpg"),
             bio: "Ty McDuffie is the founder of Griot and Grits, a non-profit organization dedicated to preserving Black family narratives through AI-enhanced video interviews. An Air Force veteran, Ty brings a disciplined, strategic approach to the urgent work of cultural preservation.\n\n​Driven by the realization that many Black families are losing their history to time and illness, Ty established Griot and Grits to bridge the gap between tradition and technology. His organization empowers families to secure their legacies, ensuring that the stories of the past remain accessible to inspire the future."
         },
         {
             name: "Sherard Griffin",
             title: "Board Chair",
-            photo: "/media/bio/S_Griffin.jpg",
+            photo: getBioImageUrl("S_Griffin.jpg"),
             bio: "Sherard Griffin leads the Griot and Grits Board, providing the vision, mission and strategic direction. He has over 25 years of experience architecting and developing large-scale enterprise data and AI solutions. He is currently Head of Engineering for OpenShift AI at Red Hat, an enterprise open-source Gen AI and MLOps platform.\n\nSherard serves on the Strategic Advisory Board of North Carolina State University's Computer Science Department. He is a passionate advocate for broadening participation in technology, mentoring emerging technologists, and promoting inclusive workforce development across the AI and open-source communities. His work reflects a holistic vision of technology as both a tool for innovation and a platform for empowerment.",
             linkedin: "https://www.linkedin.com/in/sherardgriffin"
         },
         {
             name: "Rickey Thomas Jr.",
             title: "Creative Executive Producer",
-            photo: "/media/bio/R_Thomas.jpg",
+            photo: getBioImageUrl("R_Thomas.jpg"),
             bio: "Rickey is an experienced media producer whose passion for film and television began early, running a studio camera at the age of 14 and directing live broadcasts by 16 through his church's television ministry. Those early opportunities nurtured his creative and technical skills across audio, directing, editing, and live production.\n\nHe went on to earn a B.A. in Mass Communications with a concentration in Film and Television from Shaw University, later joining the Inspiration Networks as an Associate Producer. Under the mentorship of seasoned industry professionals, he contributed to a wide range of programs including producing, directing and editing more than eighty episodes of \"A Muslim Journey to Hope\".\n\nRickey founded the creative banner Under the Sun Studios and has produced the feature film \"Young King\", the documentary \"Open Legs with a Closed Mind\", as well as commercials and music videos across multiple platforms. At Griot and Grits, he brings his production expertise to guide volunteers, capture oral histories, and ensure every story is recorded with care, creativity, and cultural respect."
         }
     ];
@@ -61,7 +62,7 @@ const WhoWeAre = () => {
         {
             name: "Carmen Wimberley Cauthen",
             title: "Historian, Author and Advocate",
-            photo: "/media/bio/C_Cauthen.jpg",
+            photo: getBioImageUrl("C_Cauthen.jpg"),
             bio: `Carmen Wimberley Cauthen is a historian, author, and advocate known for connecting personal memory with public history. A Raleigh native, she spent over two decades in the North Carolina House of Representatives as an Administrative Clerk, gaining deep insight into how policy shapes communities.\n\n
 She is the author of "Historic Black Neighborhoods of Raleigh", an award-winning bestseller that documents the resilience and displacement of Black communities. Her expertise spans Black history, Reconstruction, affordable housing, and systemic oppression, and her work is used in universities and planning departments.\n\n
 Beyond writing, Carmen is a sought-after speaker featured on PBS, ABC11, WRAL, and featured in "Walter Magazine", "News & Observer", and "IndyWeek". She hosts the podcast "Quiet No More" and curates events honoring Black women whose stories have shaped communities.\n\n
@@ -71,13 +72,13 @@ Her workshops empower women over 55 to preserve family legacies through genealog
         {
             name: "Dr. M. Keith Daniel",
             title: "Co-founder/Managing Director of Resilient Ventures, LLC",
-            photo: "/media/bio/K_Daniel.jpg",
+            photo: getBioImageUrl("K_Daniel.jpg"),
             bio: "Dr. M. Keith Daniel is Co-founder/Managing Director of Resilient Ventures, LLC. and owner of Madison Consulting Group, LLC. (MCG). Resilient Fund I launched in 2019 and successfully deployed $2.1M in eleven companies led by African American founders. Resilient Fund II, launched in 2024, is a $6.4M fund investing primarily in B2B/SaaS/Tech companies in a broad range of sectors.\n\nDr. Daniel has over 3 decades of management and servant-leadership in the public sector, higher education administration and management at the Fuqua School of Business, HR Learning and Development, Duke Divinity School, and Duke University Chapel. Daniel served as Executive Director for StepUp NC and DurhamCares, Inc.\n\nHe earned a B.A. in Comparative Area Studies, Duke University; Master of Higher Education, North Carolina State University; Master and Doctor of Divinity, Duke University. He resides in Durham, NC with his wife Lorna. They have and enjoy their two young adult children, Madison II and Loren."
         },
         {
             name: "Dr. Alanna Miller",
             title: "Associate Professor, Fayetteville State University",
-            photo: "/media/bio/A_Miller.jpg",
+            photo: getBioImageUrl("A_Miller.jpg"),
             bio: `Dr. Alanna Miller is an associate professor in the Department of Communication, Languages,
 and Cultures at Fayetteville State University, where she has served since 2015. She earned her
 Ph.D. in media and communication from Temple University, with a master’s from Syracuse
@@ -94,7 +95,7 @@ and amplifying all perspectives.`
         {
             name: "Debra Clark Jones",
             title: "Executive Vice President and Chief Institutional Advancement Officer at Bennett College",
-            photo: "/media/bio/D_Jones.jpg",
+            photo: getBioImageUrl("D_Jones.jpg"),
             bio: `Debra Clark Jones is Executive Vice President and Chief Institutional Advancement Officer at Bennett College, where she previously served as Acting President and as a member of the Board of Trustees. A respected leader in enterprise management, strategic communications, and data-driven decision-making, she has helped position Bennett for long-term stability through strategic fundraising, organizational alignment, and a renewed focus on institutional effectiveness.\n\n
             Before returning to her alma mater, Clark Jones served as Associate Vice President for Community Health at Duke Health, where she advanced systemwide strategies addressing the social drivers of health across North Carolina and secured a historic $30 million grant from Bloomberg Philanthropies—the largest in Duke Health’s history. Her prior roles include Vice President for University Advancement and External Affairs at Saint Augustine’s University and senior leadership positions in North Carolina state government, where she managed a $132 million statewide information technology initiative across 43 agencies and universities and later served as Chief Information Officer for the Department of Public Instruction.\n\n
             Clark Jones’ career also spans the private sector, with leadership roles at IBM and SAS Institute, where she advised P–20 education systems on analytics-driven decision tools to improve outcomes and efficiency. She is the president of TEQuity, a strategy consulting firm focused on advancing equity through data-informed strategy, and has led statewide health equity campaigns and cross-sector partnerships. A proud Bennett College graduate, she holds a bachelor’s degree in computer science with a minor in mathematics and a master’s degree in data analytics from the University of Maryland.`
@@ -102,7 +103,7 @@ and amplifying all perspectives.`
         {
             name: "Koren Townsend",
             title: "Chief of Staff, Red Hat AI Platform Engineering",
-            photo: "/media/bio/K_Townsend.jpg",
+            photo: getBioImageUrl("K_Townsend.jpg"),
             bio: "Koren Townsend is a Chief of Staff in Red Hat’s AI Engineering organization, where she focuses on supporting project efforts on the AI Platform team.  She serves her community in several organizations including Delta Sigma Theta Sorority, Inc., Jack and Jill of America, and is the Operations Director of the Clark STEM and Leadership Academy.  She is the immediate past Chairwoman and current Advisor of Red Hat Blacks United In Leadership and Diversity (B.U.I.L.D.), a DEI community.  Koren and her husband, Mitchell, and their sons reside in Raleigh, NC."
         }
     ];
@@ -110,7 +111,7 @@ and amplifying all perspectives.`
     const goldSponsors: Sponsor[] = [
         {
             name: "Resilient Ventures",
-            logo: "/media/logo/RV Color Horizontal.jpg",
+            logo: getLogoUrl("RV Color Horizontal.jpg"),
             website: "https://resilient-ventures.com"
         }
     ];
@@ -122,7 +123,7 @@ and amplifying all perspectives.`
     const partners: Sponsor[] = [
         {
             name: "Mass Open Cloud",
-            logo: "/media/logo/MOCwordmark_RGB_small.png",
+            logo: getLogoUrl("MOCwordmark_RGB_small.png"),
             website: "https://massopen.cloud"
         }
     ];
@@ -279,7 +280,7 @@ and amplifying all perspectives.`
                                             className="relative w-full h-64 md:absolute md:top-0 md:left-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
                                         >
                                             <Image
-                                                src="/media/img/2239728647962445031.jpg"
+                                                src={getImageUrl("2239728647962445031.jpg")}
                                                 alt="Volunteers at work"
                                                 fill
                                                 className="object-cover object-top rounded-lg"
@@ -294,7 +295,7 @@ and amplifying all perspectives.`
                                             className="relative w-full h-64 md:absolute md:top-0 md:right-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
                                         >
                                             <Image
-                                                src="/media/img/crew2.png"
+                                                src={getImageUrl("crew2.png")}
                                                 alt="Community engagement"
                                                 fill
                                                 className="object-cover object-top rounded-lg"
@@ -309,7 +310,7 @@ and amplifying all perspectives.`
                                             className="relative w-full h-64 md:absolute md:bottom-0 md:left-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
                                         >
                                             <Image
-                                                src="/media/img/3797497829222735602.jpg"
+                                                src={getImageUrl("3797497829222735602.jpg")}
                                                 alt="Storykeeping session"
                                                 fill
                                                 className="object-cover object-top rounded-lg"
@@ -324,7 +325,7 @@ and amplifying all perspectives.`
                                             className="relative w-full h-64 md:absolute md:bottom-0 md:right-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
                                         >
                                             <Image
-                                                src="/media/img/8348915442707023838.jpg"
+                                                src={getImageUrl("8348915442707023838.jpg")}
                                                 alt="Volunteer team"
                                                 fill
                                                 className="object-cover object-top rounded-lg"

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube, SiSpotify } from '@icons-pack/react-simple-icons';
+import { getVideoUrl } from '@/lib/cdn';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +57,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/60" />
 
         <video autoPlay muted className="w-full h-full object-cover absolute top-0 left-0 z-0" playsInline loop preload="none">
-            <source src="/media/vid/website_background_video.mp4" type="video/mp4" />
+            <source src={getVideoUrl("website_background_video.mp4")} type="video/mp4" />
             <track
             src="/path/to/captions.vtt"
             kind="subtitles"

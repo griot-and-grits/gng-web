@@ -44,6 +44,8 @@ export interface FilterMetadata {
     people: PersonWithPopularity[];
 }
 
+import { getImageUrl } from './cdn';
+
 export interface HistoricalEra {
     id: string;
     name: string;
@@ -58,28 +60,28 @@ export const HISTORICAL_ERAS: HistoricalEra[] = [
         name: 'Early Roots',
         subtitle: 'Pre-1950s',
         yearRange: { start: 0, end: 1949 },
-        image: '/media/img/era1.png' // Vintage sepia-toned historical photograph
+        image: getImageUrl('era1.png') // Vintage sepia-toned historical photograph
     },
     {
         id: 'civil-rights',
         name: 'Civil Rights Era',
         subtitle: '1950s - 1970s',
         yearRange: { start: 1950, end: 1979 },
-        image: '/media/img/era2.png' // Raised fist civil rights imagery
+        image: getImageUrl('era2.png') // Raised fist civil rights imagery
     },
     {
         id: 'urban-evolution',
         name: 'Urban Evolution',
         subtitle: '1980s - 1990s',
         yearRange: { start: 1980, end: 1999 },
-        image: '/media/img/era3.png' // Urban street graffiti art
+        image: getImageUrl('era3.png') // Urban street graffiti art
     },
     {
         id: 'modern-narratives',
         name: 'Modern Narratives',
         subtitle: '2000s - Present',
         yearRange: { start: 2000, end: null },
-        image: '/media/img/era4.png' // Contemporary diverse community gathering
+        image: getImageUrl('era4.png') // Contemporary diverse community gathering
     }
 ];
 
