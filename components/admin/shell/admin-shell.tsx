@@ -4,11 +4,13 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import type { ReactNode } from 'react';
-import { Menu, LogOut, Package, Upload, Box, Home } from 'lucide-react';
+import { Menu, LogOut, Package, Upload, Box, Home, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 import { ADMIN_DEV_MODE } from '@/lib/admin/config';
 import { cn } from '@/lib/utils';
+import { artifactsApi } from '@/lib/admin/apis';
 
 type AdminShellProps = {
     children: ReactNode;
@@ -18,9 +20,10 @@ type NavItem = {
     href: string;
     label: string;
     icon: ReactNode;
+    badge?: number;
 };
 
-const navItems: NavItem[] = [
+const baseNavItems: NavItem[] = [
     {
         href: '/admin',
         label: 'Dashboard',
@@ -30,6 +33,11 @@ const navItems: NavItem[] = [
         href: '/admin/artifacts',
         label: 'Artifacts',
         icon: <Box className="h-4 w-4" />,
+    },
+    {
+        href: '/admin/artifacts/pending',
+        label: 'Pending Artifacts',
+        icon: <AlertCircle className="h-4 w-4" />,
     },
     {
         href: '/admin/upload',
@@ -49,6 +57,22 @@ export function AdminShell({ children }: AdminShellProps) {
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
     const devBypass = session?.devBypass || ADMIN_DEV_MODE;
+
+    // Fetch pending artifacts count
+    const { data: pendingData } = useQuery({
+        queryKey: ['artifacts', 'drafts', 'count'],
+        queryFn: () => artifactsApi.listDrafts({ limit: 1 }),
+        refetchInterval: 30000, // Refresh every 30 seconds
+    });
+
+    const pendingCount = pendingData?.pending_count ?? 0;
+
+    // Merge nav items with dynamic badge count
+    const navItems = baseNavItems.map((item) =>
+        item.href === '/admin/artifacts/pending' && pendingCount > 0
+            ? { ...item, badge: pendingCount }
+            : item,
+    );
 
     const handleSignOut = async () => {
         await signOut({ callbackUrl: '/' });
@@ -133,7 +157,12 @@ export function AdminShell({ children }: AdminShellProps) {
                                     )}
                                 >
                                     {item.icon}
-                                    {item.label}
+                                    <span>{item.label}</span>
+                                    {item.badge && (
+                                        <span className="ml-auto inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-500 text-xs font-bold text-white">
+                                            {item.badge}
+                                        </span>
+                                    )}
                                 </Link>
                             );
                         })}

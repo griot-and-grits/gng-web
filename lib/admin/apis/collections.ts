@@ -30,4 +30,10 @@ export const collectionsApi = {
         const response = await apiClient.get('/collections', { params });
         return response.data;
     },
+
+    // NEW: Reseal collection
+    async reseal(collectionId: string): Promise<Collection> {
+        const response = await apiClient.post(`/collections/${collectionId}/reseal`);
+        return response.data;
+    },
 };

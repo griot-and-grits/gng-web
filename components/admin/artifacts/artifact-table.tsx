@@ -13,6 +13,7 @@ import { getAPIErrorMessage } from '@/lib/admin/utils/error';
 
 const statusOptions = [
     { value: '', label: 'All statuses' },
+    { value: ArtifactStatus.DRAFT, label: 'Draft (Pending Approval)' },  // NEW
     { value: ArtifactStatus.UPLOADING, label: 'Uploading' },
     { value: ArtifactStatus.PROCESSING, label: 'Processing' },
     { value: ArtifactStatus.READY, label: 'Ready' },

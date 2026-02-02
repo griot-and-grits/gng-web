@@ -1,4 +1,5 @@
 export enum ArtifactStatus {
+    DRAFT = 'draft',  // Pending admin approval (from Globus bulk upload)
     UPLOADING = 'uploading',
     PROCESSING = 'processing',
     READY = 'ready',
@@ -84,6 +85,15 @@ export interface Artifact {
     fixity?: FixityInfo;
     processing_metadata?: Record<string, unknown>;
     hot_storage_retained?: boolean;
+
+    // Collection linking (NEW)
+    collection_id?: string;
+    package_path?: string;
+    ingestion_source?: 'api' | 'globus';
+
+    // Approval tracking (NEW - for draft artifacts)
+    approved_at?: string;
+    approved_by?: string;
 }
 
 export interface ArtifactListItem {
@@ -160,4 +170,38 @@ export interface Collection {
     };
     upload_path?: string;
     globus_endpoint_id?: string;
+
+    // Artifact tracking (NEW)
+    pending_artifact_count?: number;
+    approved_artifact_count?: number;
+    last_sealed_at?: string;
+    seal_count?: number;
+}
+
+// New request/response types for artifact-collection linking
+export interface ApproveArtifactRequest {
+    approved_by: string;
+}
+
+export interface BulkMetadataUpdateRequest {
+    artifact_ids: string[];
+    metadata_updates: {
+        creator?: string;
+        rights?: string;
+        subject?: string[];
+        creation_date?: string;
+        language?: string[];
+        type?: string;
+    };
+}
+
+export interface BulkMetadataUpdateResponse {
+    updated_count: number;
+    artifact_ids: string[];
+}
+
+export interface DraftArtifactListResponse {
+    artifacts: ArtifactListItem[];
+    total: number;
+    pending_count: number;
 }

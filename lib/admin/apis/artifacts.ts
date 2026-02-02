@@ -7,11 +7,15 @@ import type {
     ArtifactStatusResponse,
     IngestionMetadata,
     IngestionResponse,
+    DraftArtifactListResponse,
+    BulkMetadataUpdateRequest,
+    BulkMetadataUpdateResponse,
 } from '../types';
 
 type IngestOptions = {
     onUploadProgress?: (progressEvent: AxiosProgressEvent) => void;
     timeoutMs?: number;
+    collectionId?: string;  // NEW: Optional collection to link artifact to
 };
 
 export const artifactsApi = {
@@ -23,6 +27,11 @@ export const artifactsApi = {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('metadata', JSON.stringify(metadata));
+
+        // NEW: Add collection_id if provided
+        if (options?.collectionId) {
+            formData.append('collection_id', options.collectionId);
+        }
 
         const response = await apiClient.post('/artifacts/ingest', formData, {
             headers: {
@@ -52,6 +61,32 @@ export const artifactsApi = {
         skip?: number;
     }): Promise<ArtifactListResponse> {
         const response = await apiClient.get('/artifacts', { params });
+        return response.data;
+    },
+
+    // NEW: List draft artifacts
+    async listDrafts(params?: {
+        collection_id?: string;
+        limit?: number;
+        skip?: number;
+    }): Promise<DraftArtifactListResponse> {
+        const response = await apiClient.get('/artifacts/drafts', { params });
+        return response.data;
+    },
+
+    // NEW: Approve draft artifact
+    async approve(artifactId: string, approvedBy: string): Promise<Artifact> {
+        const response = await apiClient.post(`/artifacts/${artifactId}/approve`, {
+            approved_by: approvedBy,
+        });
+        return response.data;
+    },
+
+    // NEW: Bulk update metadata
+    async bulkUpdateMetadata(
+        request: BulkMetadataUpdateRequest,
+    ): Promise<BulkMetadataUpdateResponse> {
+        const response = await apiClient.post('/artifacts/bulk-metadata', request);
         return response.data;
     },
 };

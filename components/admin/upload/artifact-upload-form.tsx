@@ -1,6 +1,6 @@
 'use client';
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { Loader2, UploadCloud } from 'lucide-react';
 import { z } from 'zod';
 
-import { artifactsApi } from '@/lib/admin/apis';
+import { artifactsApi, collectionsApi } from '@/lib/admin/apis';
 import type { IngestionMetadata } from '@/lib/admin/types';
 import { getAPIErrorMessage } from '@/lib/admin/utils/error';
 
@@ -22,6 +22,7 @@ const ingestionFormSchema = z.object({
     language: z.string().optional(),
     subject: z.string().optional(),
     rights: z.string().optional(),
+    collection_id: z.string().optional(),  // NEW: Optional collection to link artifact to
 });
 
 type IngestionFormValues = z.infer<typeof ingestionFormSchema>;
@@ -43,17 +44,29 @@ export function ArtifactUploadForm() {
             language: '',
             subject: '',
             rights: '',
+            collection_id: '',  // NEW
         },
     });
 
+    // NEW: Fetch collections for dropdown
+    const { data: collectionsData } = useQuery({
+        queryKey: ['collections'],
+        queryFn: () => collectionsApi.list({ limit: 100 }),
+    });
+
     const ingestionMutation = useMutation({
-        mutationFn: async (payload: { file: File; metadata: IngestionMetadata }) =>
+        mutationFn: async (payload: {
+            file: File;
+            metadata: IngestionMetadata;
+            collectionId?: string;
+        }) =>
             artifactsApi.ingest(payload.file, payload.metadata, {
                 onUploadProgress: (event) => {
                     if (event.total) {
                         setUploadProgress(Math.round((event.loaded / event.total) * 100));
                     }
                 },
+                collectionId: payload.collectionId,  // NEW: Pass collection ID
             }),
         onSuccess: (response) => {
             router.push(`/admin/artifacts/${response.artifact_id}`);
@@ -81,7 +94,11 @@ export function ArtifactUploadForm() {
             rights: emptyToUndefined(values.rights),
         };
 
-        ingestionMutation.mutate({ file, metadata });
+        ingestionMutation.mutate({
+            file,
+            metadata,
+            collectionId: emptyToUndefined(values.collection_id),  // NEW: Pass collection ID
+        });
     };
 
     const busy = ingestionMutation.isPending;
@@ -127,6 +144,31 @@ export function ArtifactUploadForm() {
                     Metadata
                 </h3>
                 <div className="grid gap-4 md:grid-cols-2">
+                    {/* NEW: Collection selector */}
+                    <div className="md:col-span-2">
+                        <label
+                            className="block text-sm font-medium text-slate-700"
+                            htmlFor="collection_id"
+                        >
+                            Collection (Optional)
+                        </label>
+                        <select
+                            id="collection_id"
+                            className="mt-1 w-full rounded-md border border-slate-200 px-3 py-2 text-sm focus:border-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-200"
+                            {...form.register('collection_id')}
+                        >
+                            <option value="">None (standalone artifact)</option>
+                            {collectionsData?.collections?.map((c) => (
+                                <option key={c.collection_id} value={c.collection_id}>
+                                    {c.title}
+                                </option>
+                            ))}
+                        </select>
+                        <p className="mt-1 text-xs text-slate-500">
+                            Link this artifact to an existing collection
+                        </p>
+                    </div>
+
                     <div className="md:col-span-2">
                         <label className="block text-sm font-medium text-slate-700" htmlFor="title">
                             Title

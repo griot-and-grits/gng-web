@@ -129,8 +129,17 @@ export function CollectionTable() {
                                     <td className="px-4 py-3">
                                         <CollectionStatusBadge status={collection.status} />
                                     </td>
-                                    <td className="px-4 py-3 text-sm text-slate-600">
-                                        {collection.artifact_ids?.length ?? 0}
+                                    <td className="px-4 py-3 text-sm">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-slate-900">
+                                                {collection.approved_artifact_count ?? 0} ready
+                                            </span>
+                                            {(collection.pending_artifact_count ?? 0) > 0 && (
+                                                <span className="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">
+                                                    {collection.pending_artifact_count} pending
+                                                </span>
+                                            )}
+                                        </div>
                                     </td>
                                     <td className="px-4 py-3 text-sm text-slate-600">
                                         -
