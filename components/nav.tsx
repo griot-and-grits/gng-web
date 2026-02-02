@@ -157,7 +157,29 @@ const Nav = () => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    href="#donate"
+                    href="/#donate"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        const hash = 'donate';
+
+                        // Check if we're already on the home page
+                        if (window.location.pathname === '/') {
+                            // Same page, just scroll
+                            const element = document.getElementById(hash);
+                            if (element) {
+                                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        } else {
+                            // Different page, navigate then scroll
+                            router.push('/');
+                            setTimeout(() => {
+                                const element = document.getElementById(hash);
+                                if (element) {
+                                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }
+                            }, 500);
+                        }
+                    }}
                     className="inline-flex items-center gap-2 bg-[#AE2D24] text-white px-4 py-2 rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
                     Donate
