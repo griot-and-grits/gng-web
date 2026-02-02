@@ -40,7 +40,8 @@ import { Testimonial, testimonials } from "@/lib/constants"
     }, [])
 
     return (
-        <div className="flex flex-col justify-center items-center py-10 p-4">
+        <section className="bg-white py-10">
+        <div className="flex flex-col justify-center items-center p-4">
         <h2 className="text-2xl font-bold text-center mb-6">Our History, Told By Us</h2>
         <div className="w-full max-w-4xl">
             <div className="grid grid-cols-1 border-t-2 md:grid-cols-2 gap-8">
@@ -76,7 +77,7 @@ import { Testimonial, testimonials } from "@/lib/constants"
                 <button
                 key={index}
                 onClick={() => handlePageChange(index)}
-                className={`w-3 h-3 rounded-full ${currentPage === index ? "bg-[#a94728]" : "bg-gray-300"}`}
+                className={`w-3 h-3 rounded-full ${currentPage === index ? "bg-[#AE2D24]" : "bg-gray-300"}`}
                 />
             ))}
             </div>
@@ -118,6 +119,7 @@ import { Testimonial, testimonials } from "@/lib/constants"
             )}
         </AnimatePresence>
         </div>
+        </section>
     )
 }
 

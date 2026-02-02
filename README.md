@@ -78,12 +78,18 @@ export GOFUNDME_CLIENT_SECRET=your-classy-secret      # Required: Your Classy AP
 export GOFUNDME_CAMPAIGN_ID=731313     # Default campaign ID
 export FEATURE_GOFUNDME=true           # Enable/disable the feature (default: enabled)
 export GOFUNDME_USE_EMBEDDED=false     # Use embedded modal vs external links (default: false - external links)
+export GOFUNDME_SHOW_TRACKER=false     # Show/hide fundraising progress tracker (default: false - hide tracker)
 export GOFUNDME_REDIRECT_URI=http://localhost:3000/oauth/callback  # OAuth redirect URI (not currently used)
 ```
 
 **To use embedded donation modal:**
 ```bash
 export GOFUNDME_USE_EMBEDDED=true      # Opens donation form in modal on your site
+```
+
+**To show the fundraising progress tracker:**
+```bash
+export GOFUNDME_SHOW_TRACKER=true      # Shows the "Raised/Goal" progress bar and donor count
 ```
 
 **To disable the GoFundMe section:**
@@ -100,6 +106,7 @@ export FEATURE_GOFUNDME=false
   - `GOFUNDME_CAMPAIGN_ID=your-campaign-id` (to set your campaign)
   - `FEATURE_GOFUNDME=false` (to disable GoFundMe section)
   - `GOFUNDME_USE_EMBEDDED=true` (to use embedded modal instead of external links)
+  - `GOFUNDME_SHOW_TRACKER=true` (to show the fundraising progress tracker)
 
 
 - **Docker**: Pass environment variables when running the container:
@@ -110,6 +117,7 @@ export FEATURE_GOFUNDME=false
              -e GOFUNDME_CAMPAIGN_ID=your-campaign-id \
              -e FEATURE_GOFUNDME=true \
              -e GOFUNDME_USE_EMBEDDED=true \
+             -e GOFUNDME_SHOW_TRACKER=true \
              your-app
   ```
 

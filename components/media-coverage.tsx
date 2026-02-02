@@ -57,7 +57,7 @@ const MediaCoverage: React.FC = () => {
     }
 
     return (
-        <section className="py-20 px-6 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-20 px-6 bg-gray-50">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -67,7 +67,7 @@ const MediaCoverage: React.FC = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h3 className="text-[#a94728] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ In The Media</h3>
+                    <h3 className="text-[#AE2D24] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ In The Media</h3>
                     <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
                         Discover how leading publications are covering our mission to preserve Black history through innovative AI technology.
                     </p>
@@ -88,7 +88,7 @@ const MediaCoverage: React.FC = () => {
                                 {/* Publication and Date */}
                                 <div className="flex items-center justify-between text-sm text-muted-foreground">
                                     <div className="flex items-center gap-2">
-                                        <span className="font-medium text-[#a94728]">
+                                        <span className="font-medium text-[#AE2D24]">
                                             {article.publication}
                                         </span>
                                         {article.language && (
@@ -122,7 +122,7 @@ const MediaCoverage: React.FC = () => {
                                         href={article.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-[#a94728] hover:text-[#8b3a1f] font-semibold transition-colors group-hover:gap-3 duration-300"
+                                        className="inline-flex items-center gap-2 text-[#AE2D24] hover:text-[#282420] font-semibold transition-colors group-hover:gap-3 duration-300"
                                     >
                                         Read Article
                                         <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -139,7 +139,7 @@ const MediaCoverage: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-center mt-16 p-8 bg-gradient-to-r from-[#a94728]/5 to-[#8b3a1f]/5 rounded-xl"
+                    className="text-center mt-16 p-8 bg-[#AE2D24]/5 rounded-xl"
                 >
                     <h3 className="text-2xl font-bold text-foreground mb-4">
                         Media Inquiries
@@ -149,7 +149,7 @@ const MediaCoverage: React.FC = () => {
                     </p>
                     <a
                         href="#contact"
-                        className="inline-flex items-center gap-2 bg-[#a94728] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#8b3a1f] transition-colors"
+                        className="inline-flex items-center gap-2 bg-[#AE2D24] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#282420] transition-colors"
                     >
                         Contact Us
                         <ExternalLink className="w-4 h-4" />

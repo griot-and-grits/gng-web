@@ -23,6 +23,8 @@ tags:
     popularity: 0.7
   - name: "Racial Injustice"
     popularity: 0.7
+  - name: "Heritage"
+    popularity: 0.7
   - name: "Prison System"
     popularity: 0.6
   - name: "Work & Employment"
@@ -47,6 +49,10 @@ tags:
     popularity: 0.4
   - name: "Family Responsibility"
     popularity: 0.4
+  - name: "Boys and Girls Club"
+    popularity: 0.4
+  - name: "Charlotte"
+    popularity: 0.4
   - name: "Weather Events"
     popularity: 0.3
 
@@ -62,4 +68,6 @@ people:
   - name: "Sharon Burwell McDuffie"
     popularity: 1.0
   - name: "Irene Clark"
-    popularity: 0.9
+    popularity: 1.0
+  - name: "Dr. Oliver T. Reid"
+    popularity: 1.0

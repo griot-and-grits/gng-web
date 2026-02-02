@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
+import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube, SiSpotify } from '@icons-pack/react-simple-icons';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,7 +92,8 @@ const Hero = () => {
                 { Icon: SiFacebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
                 { Icon: SiX, label: "X", link: 'https://x.com/GriotandGrits' },
                 { Icon: SiInstagram, label: "Instagram", link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: SiYoutube, label: "YouTube", link: 'https://www.youtube.com/@GriotandGrits' }
+                { Icon: SiYoutube, label: "YouTube", link: 'https://www.youtube.com/@GriotandGrits' },
+                { Icon: SiSpotify, label: "Spotify", link: 'https://open.spotify.com/show/4eIOKi8JuzTyBeuScT3wU2' }
             ].map(({ Icon: IconComponent, label, link }, index) => (
                 <motion.a
                 key={index}
@@ -102,7 +103,7 @@ const Hero = () => {
                 className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                 whileHover={{ x: -10 }}
                 >
-                <IconComponent className='text-[#a94728] mt-1' size={14} />
+                <IconComponent className='text-[#AE2D24] mt-1' size={14} />
                 <span >{label}</span>
                 </motion.a>
             ))}
@@ -117,7 +118,8 @@ const Hero = () => {
                 { Icon: SiFacebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
                 { Icon: SiX, link: 'https://x.com/GriotandGrits' },
                 { Icon: SiInstagram, link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: SiYoutube, link: 'https://www.youtube.com/@GriotandGrits' }
+                { Icon: SiYoutube, link: 'https://www.youtube.com/@GriotandGrits' },
+                { Icon: SiSpotify, link: 'https://open.spotify.com/show/4eIOKi8JuzTyBeuScT3wU2' }
             ].map(({ Icon: IconComponent, link }, index) => (
                 <motion.a
                     key={index}
@@ -146,7 +148,7 @@ const Hero = () => {
             whileHover={{ scale: 1.1 }}
             >
             <motion.div
-                className="w-1 h-2 bg-[#a94728] mx-auto mt-2 rounded-full"
+                className="w-1 h-2 bg-[#AE2D24] mx-auto mt-2 rounded-full"
                 animate={{ y: [0, 20, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
             />
