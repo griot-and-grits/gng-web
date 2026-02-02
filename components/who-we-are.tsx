@@ -58,6 +58,53 @@ const WhoWeAre = () => {
     ];
 
     const boardMembers: TeamMember[] = [
+        {
+            name: "Carmen Wimberley Cauthen",
+            title: "Historian, Author and Advocate",
+            photo: "/media/bio/C_Cauthen.jpg",
+            bio: `Carmen Wimberley Cauthen is a historian, author, and advocate known for connecting personal memory with public history. A Raleigh native, she spent over two decades in the North Carolina House of Representatives as an Administrative Clerk, gaining deep insight into how policy shapes communities.\n\n
+She is the author of "Historic Black Neighborhoods of Raleigh", an award-winning bestseller that documents the resilience and displacement of Black communities. Her expertise spans Black history, Reconstruction, affordable housing, and systemic oppression, and her work is used in universities and planning departments.\n\n
+Beyond writing, Carmen is a sought-after speaker featured on PBS, ABC11, WRAL, and featured in "Walter Magazine", "News & Observer", and "IndyWeek". She hosts the podcast "Quiet No More" and curates events honoring Black women whose stories have shaped communities.\n\n
+Her workshops empower women over 55 to preserve family legacies through genealogy and storytelling, ensuring that ordinary and extraordinary voices are remembered for generations.
+`
+        },
+        {
+            name: "Dr. M. Keith Daniel",
+            title: "Co-founder/Managing Director of Resilient Ventures, LLC",
+            photo: "/media/bio/K_Daniel.jpg",
+            bio: "Dr. M. Keith Daniel is Co-founder/Managing Director of Resilient Ventures, LLC. and owner of Madison Consulting Group, LLC. (MCG). Resilient Fund I launched in 2019 and successfully deployed $2.1M in eleven companies led by African American founders. Resilient Fund II, launched in 2024, is a $6.4M fund investing primarily in B2B/SaaS/Tech companies in a broad range of sectors.\n\nDr. Daniel has over 3 decades of management and servant-leadership in the public sector, higher education administration and management at the Fuqua School of Business, HR Learning and Development, Duke Divinity School, and Duke University Chapel. Daniel served as Executive Director for StepUp NC and DurhamCares, Inc.\n\nHe earned a B.A. in Comparative Area Studies, Duke University; Master of Higher Education, North Carolina State University; Master and Doctor of Divinity, Duke University. He resides in Durham, NC with his wife Lorna. They have and enjoy their two young adult children, Madison II and Loren."
+        },
+        {
+            name: "Dr. Alanna Miller",
+            title: "Associate Professor, Fayetteville State University",
+            photo: "/media/bio/A_Miller.jpg",
+            bio: `Dr. Alanna Miller is an associate professor in the Department of Communication, Languages,
+and Cultures at Fayetteville State University, where she has served since 2015. She earned her
+Ph.D. in media and communication from Temple University, with a master’s from Syracuse
+University in Television, Radio, and Film, and a bachelor’s in journalism from the University of
+Maryland. Dr. Miller also serves as faculty advisor for "The Voice" student newspaper and
+coordinates the department's internship program. Her research focuses on the intersection of
+identity and media.\n\n
+Dr. Miller is also a native of Raleigh and is committed to helping her community through
+teaching and media practice. She is firmly committed to diversifying media fields through
+serving all her students, including first generation students, military-affiliated students, rural
+students, and students of color. She believes that we all benefit from learning each other's stories
+and amplifying all perspectives.`
+        },
+        {
+            name: "Debra Clark Jones",
+            title: "Executive Vice President and Chief Institutional Advancement Officer at Bennett College",
+            photo: "/media/bio/D_Jones.jpg",
+            bio: `Debra Clark Jones is Executive Vice President and Chief Institutional Advancement Officer at Bennett College, where she previously served as Acting President and as a member of the Board of Trustees. A respected leader in enterprise management, strategic communications, and data-driven decision-making, she has helped position Bennett for long-term stability through strategic fundraising, organizational alignment, and a renewed focus on institutional effectiveness.\n\n
+            Before returning to her alma mater, Clark Jones served as Associate Vice President for Community Health at Duke Health, where she advanced systemwide strategies addressing the social drivers of health across North Carolina and secured a historic $30 million grant from Bloomberg Philanthropies—the largest in Duke Health’s history. Her prior roles include Vice President for University Advancement and External Affairs at Saint Augustine’s University and senior leadership positions in North Carolina state government, where she managed a $132 million statewide information technology initiative across 43 agencies and universities and later served as Chief Information Officer for the Department of Public Instruction.\n\n
+            Clark Jones’ career also spans the private sector, with leadership roles at IBM and SAS Institute, where she advised P–20 education systems on analytics-driven decision tools to improve outcomes and efficiency. She is the president of TEQuity, a strategy consulting firm focused on advancing equity through data-informed strategy, and has led statewide health equity campaigns and cross-sector partnerships. A proud Bennett College graduate, she holds a bachelor’s degree in computer science with a minor in mathematics and a master’s degree in data analytics from the University of Maryland.`
+        },
+        {
+            name: "Koren Townsend",
+            title: "Chief of Staff, Red Hat AI Platform Engineering",
+            photo: "/media/bio/K_Townsend.jpg",
+            bio: "Koren Townsend is a Chief of Staff in Red Hat’s AI Engineering organization, where she focuses on supporting project efforts on the AI Platform team.  She serves her community in several organizations including Delta Sigma Theta Sorority, Inc., Jack and Jill of America, and is the Operations Director of the Clark STEM and Leadership Academy.  She is the immediate past Chairwoman and current Advisor of Red Hat Blacks United In Leadership and Diversity (B.U.I.L.D.), a DEI community.  Koren and her husband, Mitchell, and their sons reside in Raleigh, NC."
+        }
     ];
 
     const goldSponsors: Sponsor[] = [
@@ -96,7 +143,7 @@ const WhoWeAre = () => {
             </div>
             <div className="p-4">
                 <h3 className="text-lg font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-[#a94728] font-medium text-sm">{member.title}</p>
+                <p className="text-[#AE2D24] font-medium text-sm">{member.title}</p>
             </div>
         </motion.div>
     );
@@ -114,16 +161,16 @@ const WhoWeAre = () => {
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
-                    className="bg-white rounded-lg max-w-2xl w-full p-8 relative"
+                    className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden p-8 relative flex flex-col"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10"
                     >
                         <X size={24} />
                     </button>
-                    <div className="flex flex-col md:flex-row gap-6">
+                    <div className="flex flex-col md:flex-row gap-6 min-h-0 flex-1">
                         <div className="flex-shrink-0 flex flex-col">
                             <div className="relative w-32 h-32">
                                 <Image
@@ -145,13 +192,17 @@ const WhoWeAre = () => {
                                 </a>
                             )}
                         </div>
-                        <div>
-                            <h2 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h2>
-                            <p className="text-[#a94728] font-medium mb-4">{member.title}</p>
-                            <div className="text-gray-700 leading-relaxed space-y-4">
-                                {member.bio.split('\n\n').map((paragraph, index) => (
-                                    <p key={index}>{paragraph}</p>
-                                ))}
+                        <div className="flex flex-col flex-1 min-h-0">
+                            <div className="flex-shrink-0">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h2>
+                                <p className="text-[#AE2D24] font-medium mb-4">{member.title}</p>
+                            </div>
+                            <div className="overflow-y-auto flex-1 pr-2">
+                                <div className="text-gray-700 leading-relaxed space-y-4">
+                                    {member.bio.split('\n\n').map((paragraph, index) => (
+                                        <p key={index}>{paragraph}</p>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -163,7 +214,7 @@ const WhoWeAre = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Mission Section */}
-            <section className="bg-gradient-to-r from-[#a94728] to-[#8b3a1f] text-white py-20">
+            <section className="bg-[#AE2D24] text-white py-20">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -207,8 +258,7 @@ const WhoWeAre = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="mt-12 bg-white rounded-lg shadow-lg overflow-hidden mx-auto"
-                            style={{ maxWidth: 'calc(100% - 10rem)' }}
+                            className="mt-12 bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-6xl"
                         >
                             <div className="p-8">
                                 <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Griot & Grits Storykeeping Collective</h3>
@@ -288,7 +338,7 @@ const WhoWeAre = () => {
                 </div>
             </section>
 
-            {/* Board of Advisors Section */}
+            {/* Strategic Advisory Board Section */}
             {boardMembers.length > 0 && (
                 <section className="py-20 bg-white">
                     <div className="container mx-auto px-6">
@@ -298,8 +348,8 @@ const WhoWeAre = () => {
                             transition={{ duration: 0.6 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Board of Advisors</h2>
-                            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Strategic Advisory Board</h2>
+                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto justify-items-center">
                                 {boardMembers.map((member) => (
                                     <MemberCard
                                         key={member.name}

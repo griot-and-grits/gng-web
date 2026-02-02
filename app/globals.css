@@ -2,32 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.masonry-gallery {
-    display: grid;
-    display: -ms-grid; /* IE/Edge fallback */
-    grid-template-columns: repeat(2, 1fr);
-    -ms-grid-columns: 1fr 1fr; /* IE/Edge fallback */
-    grid-auto-rows: 1fr;
-    gap: 1rem;
-
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Fallback for older browsers */
-    font-family: 'object-fit: cover;';
-}
-}
-
-.masonry-item {
-grid-row: span 1;
-}
-
-.masonry-item:nth-child(1),
-.masonry-item:nth-child(5) {
-grid-row: span 2;
-}
-
 @layer base {
   :root {
         --background: 0 0% 100%;
@@ -94,18 +68,6 @@ grid-row: span 2;
 }
 
 /* Browser compatibility fixes for Edge */
-
-/* Fix for CSS Grid issues in Edge */
-@supports not (grid-template-rows: masonry) {
-  .masonry-gallery {
-    display: -ms-grid;
-    -ms-grid-columns: 1fr 1fr;
-    -ms-grid-rows: auto auto auto auto;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 1rem;
-  }
-}
 
 /* Fix for aspect-ratio property not supported in older Edge */
 .aspect-video {

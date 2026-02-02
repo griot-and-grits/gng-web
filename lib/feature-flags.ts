@@ -7,6 +7,7 @@ export interface GoFundMeConfig {
     campaignId: string | null;
     enabled: boolean;
     useEmbedded: boolean;
+    showTracker: boolean;
 }
 
 /**
@@ -28,11 +29,13 @@ export function getGoFundMeConfig(): GoFundMeConfig {
     const campaignId = process.env.GOFUNDME_CAMPAIGN_ID || '731313';
     const enabled = isFeatureEnabled('goFundMe') && campaignId !== null;
     const useEmbedded = process.env.GOFUNDME_USE_EMBEDDED === 'true'; // Default to false (external links)
+    const showTracker = process.env.GOFUNDME_SHOW_TRACKER === 'true'; // Default to false (hide tracker)
 
     return {
         campaignId,
         enabled,
         useEmbedded,
+        showTracker,
     };
 }
 

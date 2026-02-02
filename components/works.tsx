@@ -5,42 +5,15 @@ import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { Play, Clock, User, Tag, Calendar, MapPin } from "lucide-react";
+import { Play, Clock, User, Tag, Calendar, MapPin, History, Headphones } from "lucide-react";
 import VideoPlayer from './video-player';
-import { Video, FilterMetadata } from '@/lib/video-metadata';
+import { Video, getHistoricalYears, getHistoricalLocations } from '@/lib/video-metadata';
 
 interface WorksProps {
   videos: Video[];
-  filters: FilterMetadata;
 }
 
-// Calculate popularity score for a video based on tag and people popularity
-function calculateVideoPopularity(video: Video, filters: FilterMetadata): number {
-  let tagScore = 0;
-  let peopleScore = 0;
-  
-  // Sum popularity scores for tags
-  video.tags.forEach(tag => {
-    const tagFilter = filters.tags.find(t => t.name === tag);
-    if (tagFilter) {
-      tagScore += tagFilter.popularity;
-    }
-  });
-  
-  // Sum popularity scores for people
-  video.people.forEach(person => {
-    const personFilter = filters.people.find(p => p.name === person);
-    if (personFilter) {
-      peopleScore += personFilter.popularity;
-    }
-  });
-  
-  // Calculate average score (tag score + people score) / total items
-  const totalItems = video.tags.length + video.people.length;
-  return totalItems > 0 ? (tagScore + peopleScore) / totalItems : 0;
-}
-
-const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
+const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
   const controls = useAnimation()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ref, inView] = useInView({
@@ -60,23 +33,13 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
   }, [controls, inView])
 
   useEffect(() => {
-    // Calculate popularity scores and get top 6 videos
-    const videosWithPopularity = videos.map(video => ({
-      ...video,
-      popularityScore: calculateVideoPopularity(video, filters)
-    }));
-    
-    // Sort by popularity score descending, then by creation date descending
-    const sortedVideos = videosWithPopularity.sort((a, b) => {
-      if (b.popularityScore !== a.popularityScore) {
-        return b.popularityScore - a.popularityScore;
-      }
-      return new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime();
-    });
-    
-    // Take only top 6
-    setFeaturedVideos(sortedVideos.slice(0, 6));
-  }, [videos, filters]);
+    // Filter videos marked as featured (treat missing as false) and sort by creation date descending
+    const filteredVideos = videos
+      .filter(video => video.featured ?? false)
+      .sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
+
+    setFeaturedVideos(filteredVideos);
+  }, [videos]);
 
   const handleVideoPlay = (video: Video) => {
     if (video && video.videoUrl && video.videoUrl.trim() !== '') {
@@ -105,7 +68,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
   };
 
   return (
-    <section id="works" className="pt-20 overflow-hidden">
+    <section id="works" className="pt-20 overflow-hidden bg-gray-50">
       <div className="container mx-auto px-4">        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -113,7 +76,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <h3 className="text-[#a94728] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Featured Stories</h3>
+          <h3 className="text-[#AE2D24] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Featured Stories</h3>
           <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
             Discover and watch the rich tapestry of Black experiences
           </p>
@@ -177,26 +140,58 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
                   {video.description.length > 150 && (
                     <button
                       onClick={() => toggleDescriptionExpansion(video.id)}
-                      className="text-xs text-[#a94728] hover:text-[#8b3a1f] underline mt-1 cursor-pointer"
+                      className="text-xs text-[#AE2D24] hover:text-[#282420] underline mt-1 cursor-pointer"
                     >
                       {expandedDescriptions[video.id] ? 'Show less' : 'Read more'}
                     </button>
                   )}
                 </div>
 
-                <div className="flex items-center text-sm text-gray-600 mb-4">
-                  <MapPin className="w-4 h-4 mr-2" />
-                  <div className="flex flex-wrap gap-1">
-                    {video.locations.map((location, index) => (
-                      <span key={location.name}>
-                        {location.name}
-                        {index < video.locations.length - 1 && '; '}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                {(() => {
+                  const locations = getHistoricalLocations(video);
+                  return locations.length > 0 && (
+                    <div
+                      className="flex items-center text-sm text-gray-600 mb-4 cursor-help"
+                      title="Location(s) mentioned in this story"
+                    >
+                      <MapPin className="w-4 h-4 mr-2" />
+                      <div className="flex flex-wrap gap-1">
+                        {locations.map((location, index) => (
+                          <span key={location.name}>
+                            {location.name}
+                            {index < locations.length - 1 && '; '}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
 
-                <div className="flex items-center text-sm text-gray-600 mb-4">
+                {/* Historical Years */}
+                {(() => {
+                  const years = getHistoricalYears(video);
+                  return years.length > 0 && (
+                    <div
+                      className="flex items-center text-sm text-gray-600 mb-4 cursor-help"
+                      title="Historical time period(s) referenced in this story"
+                    >
+                      <History className="w-4 h-4 mr-2" />
+                      <div className="flex flex-wrap gap-1">
+                        {years.map((year, index) => (
+                          <span key={year}>
+                            {year}
+                            {index < years.length - 1 && ', '}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                <div
+                  className="flex items-center text-sm text-gray-600 mb-4 cursor-help"
+                  title="Date this video was recorded"
+                >
                   <Calendar className="w-4 h-4 mr-2" />
                   {new Date(video.createdDate).toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -219,7 +214,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
                   {video.tags.length > 3 && (
                     <button
                       onClick={() => toggleTagExpansion(video.id)}
-                      className="text-xs text-[#a94728] hover:text-[#8b3a1f] underline cursor-pointer"
+                      className="text-xs text-[#AE2D24] hover:text-[#282420] underline cursor-pointer"
                     >
                       {expandedTags[video.id] 
                         ? 'Show less' 
@@ -229,13 +224,25 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos, filters }) => {
                   )}
                 </div>
 
-                <button 
+                <button
                   onClick={() => handleVideoPlay(video)}
-                  className="w-full bg-[#a94728] text-white py-2 rounded-lg hover:bg-[#8b3a1f] transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-[#AE2D24] text-white py-2 rounded-lg hover:bg-[#282420] transition-colors flex items-center justify-center gap-2"
                 >
                   <Play className="w-4 h-4" />
                   Watch Video
                 </button>
+
+                {video.podcastUrl && (
+                  <a
+                    href={video.podcastUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2 mt-2"
+                  >
+                    <Headphones className="w-4 h-4" />
+                    Listen on Spotify
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

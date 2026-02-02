@@ -151,7 +151,7 @@ const Services: React.FC = () => {
     }
 
     return (
-        <section id="services" className="py-20 w-full bg-gradient-to-br from-gray-100 to bg-orange-50 overflow-hidden">
+        <section id="services" className="py-20 w-full bg-gray-50 overflow-hidden">
             <div className="container max-w-7xl mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -159,7 +159,7 @@ const Services: React.FC = () => {
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <h3 className="text-[#a94728] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Work Of The Project</h3>
+                    <h3 className="text-[#AE2D24] tracking-widest font-semibold text-xl mt-6 mb-4 uppercase">/ Work Of The Project</h3>
                     <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
                         Bringing the Black experience to life for generations to come
                     </p>
@@ -186,10 +186,10 @@ const Services: React.FC = () => {
                                     className="bg-white/90 rounded-full p-6 hover:bg-white transition-colors transform hover:scale-110 duration-300"
                                     aria-label="Play Griot and Grits video"
                                 >
-                                    <Play className="w-8 h-8 text-[#a94728] ml-1" />
+                                    <Play className="w-8 h-8 text-[#AE2D24] ml-1" />
                                 </button>
                             </div>
-                            <div className="absolute bottom-4 left-4 bg-[#a94728] text-white px-3 py-1 rounded-full text-sm font-medium">
+                            <div className="absolute bottom-4 left-4 bg-[#AE2D24] text-white px-3 py-1 rounded-full text-sm font-medium">
                                 Platform Overview
                             </div>
                         </div>

@@ -2,15 +2,18 @@ videos:
   - id: "1"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667555/Screenshot_62_wjthuw.png"
     title: "Mrs. Clark Talks Black Prisoner Cadavers"
-    interviewees: 
+    interviewees:
       - "Irene Clark"
     description: "Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
     duration: "3:00"
-    createdDate: "2023-08-25T13:10:00Z"
+    createdDate: "2024-08-25T13:10:00Z"
     videoUrl: "https://www.youtube.com/watch?v=mE1PTJeDBXI"
-    locations:
-      - name: "United States"
-        coordinates: [39.8283, -98.5795]
+    featured: true
+    historicalContext:
+      - year: 1926
+        location:
+          name: "United States"
+          coordinates: [39.8283, -98.5795]
     tags:
       - "Medical History"
       - "Prison System"
@@ -22,27 +25,30 @@ videos:
 
   - id: "2"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
-    title: "Ms. Gladys M. Williams"
-    interviewees: 
+    title: "The Storied Life of Ms. Gladys M. Williams"
+    interviewees:
       - "Gladys M. Williams"
     description: "Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience and integrity."
     duration: "12:56"
     createdDate: "2023-09-14T10:25:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Bwk5yovVvmM"
-    locations:
-      - name: "Washington, North Carolina"
-        coordinates: [35.5468, -77.0522]
-      - name: "Brooklyn, New York"
-        coordinates: [40.6782, -73.9442]
+    featured: true
+    historicalContext:
+      - year: 1924
+        location:
+          name: "Washington, North Carolina"
+          coordinates: [35.5468, -77.0522]
+      - year: 1960
+        location:
+          name: "Brooklyn, New York"
+          coordinates: [40.6782, -73.9442]
     tags:
-      - "Personal Journey"
-      - "Work Ethic"
+      - "Personal Stories"
+      - "Work & Employment"
       - "Education"
       - "Resilience"
       - "Brooklyn"
       - "North Carolina"
-      - "Personal Stories"
-      - "Work Experience"
       - "Migration"
     people:
       - "Gladys M. Williams"
@@ -50,22 +56,24 @@ videos:
   - id: "3"
     thumbnail: "https://img.youtube.com/vi/9Nwl-6DRPYI/0.jpg"
     title: "Deborah Ragan McCoy"
-    interviewees: 
+    interviewees:
       - "Deborah Ragan McCoy"
     description: "Deborah McCoy reflects on her life, starting with her birth in Philadelphia, Pennsylvania in 1949. She explains how she got her name and shares various names she has been called, including Debbie and Elder Deb."
     duration: "3:27"
-    createdDate: "2023-10-03T16:30:00Z"
+    createdDate: "2024-10-03T16:30:00Z"
     videoUrl: "https://www.youtube.com/watch?v=9Nwl-6DRPYI"
-    locations:
-      - name: "Philadelphia, Pennsylvania"
-        coordinates: [39.9526, -75.1652]
+    featured: false
+    historicalContext:
+      - year: 1949
+        location:
+          name: "Philadelphia, Pennsylvania"
+          coordinates: [39.9526, -75.1652]
     tags:
       - "Philadelphia"
-      - "Personal History"
+      - "Personal Stories"
       - "Name Origins"
       - "1949"
       - "Elder"
-      - "Personal Stories"
       - "Family History"
       - "Identity"
     people:
@@ -74,51 +82,53 @@ videos:
   - id: "4"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667554/Screenshot_61_e3jz6q.png"
     title: "Sharon McDuffie Recalls 911"
-    interviewees: 
+    interviewees:
       - "Sharon McDuffie"
     description: "On the morning of September 11, 2001, she awoke in Raleigh, North Carolina, to the shocking news of a plane crashing into the World Trade Center. As a second plane struck, confirming the attack, a sense of urgency and fear set in."
     duration: "9:36"
-    createdDate: "2023-11-17T08:45:00Z"
+    createdDate: "2024-11-17T08:45:00Z"
     videoUrl: "https://www.youtube.com/watch?v=meR02ie2lYg"
-    locations:
-      - name: "Raleigh, North Carolina"
-        coordinates: [35.7796, -78.6382]
-      - name: "New York, New York"
-        coordinates: [40.7128, -74.0060]
+    featured: true
+    historicalContext:
+      - year: 2001
+        location:
+          name: "Raleigh, North Carolina"
+          coordinates: [35.7796, -78.6382]
+      - year: 2001
+        location:
+          name: "New York, New York"
+          coordinates: [40.7128, -74.0060]
     tags:
       - "September 11"
-      - "9/11"
       - "Raleigh"
       - "World Trade Center"
-      - "Personal Account"
+      - "Personal Stories"
       - "Historical Events"
-      - "Personal Experience"
-      - "September 11 Attacks"
     people:
       - "Sharon McDuffie"
 
   - id: "5"
     thumbnail: "https://img.youtube.com/vi/1veIaRHpYO0/0.jpg"
     title: "Ty McDuffie Remembers Meeting His Wife"
-    interviewees: 
+    interviewees:
       - "Ty McDuffie"
     description: "Ty McDuffie, founder of Griot and Grits, shares his personal story about meeting his wife, Sharon Burwell McDuffie, just before Air Force basic training at a MEPS station. They were assigned different flights but managed to connect by passing notes."
     duration: "3:16"
-    createdDate: "2023-12-08T14:20:00Z"
+    createdDate: "2024-12-08T14:20:00Z"
     videoUrl: "https://www.youtube.com/watch?v=1veIaRHpYO0"
-    locations:
-      - name: "United States"
-        coordinates: [39.8283, -98.5795]
+    featured: true
+    historicalContext:
+      - year: 1992
+        location:
+          name: "United States"
+          coordinates: [39.8283, -98.5795]
     tags:
-      - "Love Story"
+      - "Love Stories"
       - "Air Force"
       - "Military Service"
       - "MEPS"
-      - "Founder Story"
-      - "Romance"
-      - "Love Stories"
-      - "Personal Stories"
       - "Founder Stories"
+      - "Personal Stories"
     people:
       - "Ty McDuffie"
       - "Sharon Burwell McDuffie"
@@ -126,15 +136,18 @@ videos:
   - id: "6"
     thumbnail: "https://img.youtube.com/vi/Wygd0hwc7iA/0.jpg"
     title: "Deborah McCoy Recalls a Historic Snowstorm"
-    interviewees: 
+    interviewees:
       - "Deborah Ragan McCoy"
     description: "At just 10 years old, Deborah Ragan McCoy found herself babysitting her aunt's six children in West Philadelphia—a responsibility far beyond her years. As the evening wore on, an approaching snowstorm made her eager to get home. Determined, she braved the bitter cold and deepening snow, embarking on an arduous four-hour trek."
     duration: "5:14"
-    createdDate: "2024-01-12T12:15:00Z"
+    createdDate: "2025-01-12T12:15:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Wygd0hwc7iA"
-    locations:
-      - name: "West Philadelphia, Pennsylvania"
-        coordinates: [39.9526, -75.1652]
+    featured: true
+    historicalContext:
+      - year: 1958
+        location:
+          name: "West Philadelphia, Pennsylvania"
+          coordinates: [39.9526, -75.1652]
     tags:
       - "Childhood"
       - "Philadelphia"
@@ -142,7 +155,36 @@ videos:
       - "Babysitting"
       - "Resilience"
       - "Family Responsibility"
-      - "Childhood Stories"
       - "Weather Events"
     people:
       - "Deborah Ragan McCoy"
+
+  - id: "7"
+    thumbnail: "https://img.youtube.com/vi/Y48ON7_lUXE/0.jpg"
+    title: "Dr. Oliver T. Reid Reflects on Growing Up Between Danger and Sanctuary"
+    interviewees:
+      - "Dr. Oliver T. Reid"
+    description: "Dr. Oliver T. Reid reflects on the complicated journey of growing into his own name, sharing how \"Oliver\" once felt like a burden until he uncovered the powerful legacy behind it—a grandfather who rose from enslavement to reclaim the very land his family once worked. He traces the nicknames that marked different chapters of his life, the move from Concord to Charlotte in North Carolina, and the Boys and Girls Club that became a rare place of safety and belonging during a turbulent childhood. Through heritage, hardship, and the people who held him up, he tells the story of learning to take pride in the name he once rejected."
+    duration: "4:39"
+    createdDate: "2026-01-31T12:00:00Z"
+    videoUrl: "https://www.youtube.com/watch?v=Y48ON7_lUXE"
+    podcastUrl: "https://open.spotify.com/episode/02DSQX5xtuqWzL70nWdzRD?si=7c6e581980ae4b67"
+    featured: true
+    historicalContext:
+      - location:
+          name: "Concord, North Carolina"
+          coordinates: [35.4089, -80.5816]
+      - year: 1980
+        location:
+          name: "Charlotte, North Carolina"
+          coordinates: [35.2271, -80.8431]
+    tags:
+      - "North Carolina"
+      - "Charlotte"
+      - "Boys and Girls Club"
+      - "Childhood"
+      - "Heritage"
+      - "Personal Stories"
+      - "Resilience"
+    people:
+      - "Dr. Oliver T. Reid"
