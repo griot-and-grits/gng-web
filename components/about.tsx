@@ -132,38 +132,6 @@ Best regards`)}`}
 };
 
 const About = () => {
-    const inputRef = useRef<HTMLInputElement>(null);
-    const [message, setMessage] = useState<string>('');
-    const [loading, setLoading] = useState<boolean>(false);
-
-    const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setLoading(true);
-
-        const res = await fetch(`api/subscribe`, {
-            body: JSON.stringify({
-                email: inputRef.current!.value
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'POST'
-        });
-
-        const { error } = await res.json();
-
-        if (error) {
-            setMessage(error);
-            setLoading(false);
-
-            return;
-        }
-
-        inputRef.current!.value = '';
-        setMessage('You are now subscribed to our newsletter!');
-        setLoading(false);
-    };
-
     const processItems = [
         {
         number: '1',
