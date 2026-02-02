@@ -1,43 +1,10 @@
 "use client"
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { SiGithub, SiFacebook, SiX, SiInstagram, SiYoutube } from '@icons-pack/react-simple-icons';
-import LoadingDots from './loading-dots';
 
 const ContactSection: React.FC = () => {
-    const inputRef = useRef<HTMLInputElement>(null);
-    const [message, setMessage] = useState<string>('');
-    const [loading, setLoading] = useState<boolean>(false);
-
-    const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setLoading(true);
-
-        const res = await fetch(`api/subscribe`, {
-        body: JSON.stringify({
-            email: inputRef.current!.value
-        }),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        method: 'POST'
-        });
-
-        const { error } = await res.json();
-
-        if (error) {
-        setMessage(error);
-        setLoading(false);
-
-        return;
-        }
-
-        inputRef.current!.value = '';
-        setMessage('You are now subscribed to our newsletter!');
-        setLoading(false);
-    };
-
     const socialLinks = [
         { Icon: SiFacebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
         { Icon: SiX, link: 'https://x.com/GriotandGrits' },
@@ -46,13 +13,13 @@ const ContactSection: React.FC = () => {
     ];
 
     return (
-        <section id="contact" className="relative bg-black/90 text-white pt-24 pb-6 px-4">
+        <section className="relative bg-black/90 text-white pt-24 pb-6 px-4">
             {/* Black overlay with reduced opacity */}
             <div className="absolute inset-0 bg-black/50"></div>
 
             <div className="container mx-auto max-w-4xl text-left relative z-10">
                 {/* Get In Touch Section */}
-                <div className='max-w-md mx-auto'>
+                <div id="contact" className='max-w-md mx-auto'>
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +53,7 @@ const ContactSection: React.FC = () => {
                     </motion.div>
                 </div>
 
-                {/* Newsletter Section */}
+                {/* Follow Us Section */}
                 <div className='max-w-md mx-auto'>
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
@@ -94,30 +61,9 @@ const ContactSection: React.FC = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
                         <h3 className="text-[#a94728] text-xl uppercase tracking-widest font-semibold mb-8">/ Follow Us</h3>
-                        <p className="text-gray-300 mb-4">Subscribe to our newsletter to stay updated on our latest news and events.</p>
-
-                        <form onSubmit={subscribe} className="relative">
-                            <input
-                                id="email-address"
-                                name="email"
-                                type="email"
-                                required
-                                placeholder="Enter your email"
-                                ref={inputRef}
-                                className="w-full bg-white/10 px-4 py-3 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a94728]"
-                            />
-                            <button
-                                type="submit"
-                                className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#a94728] text-white p-2 rounded-full hover:opacity-70 duration-300 transition-all"
-                            >
-                                {loading ? <LoadingDots className="mb-3 bg-[#a94728]" /> : <p>Subscribe</p>}
-                            </button>
-                        </form>
-
-                        <p className="mt-2 text-center text-white">{message ? message : ``}</p>
 
                         {/* Social Media Links */}
-                        <div className="flex justify-center space-x-4 mt-8">
+                        <div className="flex justify-center space-x-4">
                             {socialLinks.map(({ Icon: IconComponent, link }, index) => (
                                 <a
                                     key={index}

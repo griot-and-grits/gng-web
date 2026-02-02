@@ -2,15 +2,17 @@ videos:
   - id: "1"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667555/Screenshot_62_wjthuw.png"
     title: "Mrs. Clark Talks Black Prisoner Cadavers"
-    interviewees: 
+    interviewees:
       - "Irene Clark"
     description: "Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
     duration: "3:00"
     createdDate: "2023-08-25T13:10:00Z"
     videoUrl: "https://www.youtube.com/watch?v=mE1PTJeDBXI"
-    locations:
-      - name: "United States"
-        coordinates: [39.8283, -98.5795]
+    historicalContext:
+      - year: 1926
+        location:
+          name: "United States"
+          coordinates: [39.8283, -98.5795]
     tags:
       - "Medical History"
       - "Prison System"
@@ -23,26 +25,28 @@ videos:
   - id: "2"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
     title: "Ms. Gladys M. Williams"
-    interviewees: 
+    interviewees:
       - "Gladys M. Williams"
     description: "Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience and integrity."
     duration: "12:56"
     createdDate: "2023-09-14T10:25:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Bwk5yovVvmM"
-    locations:
-      - name: "Washington, North Carolina"
-        coordinates: [35.5468, -77.0522]
-      - name: "Brooklyn, New York"
-        coordinates: [40.6782, -73.9442]
+    historicalContext:
+      - year: 1924
+        location:
+          name: "Washington, North Carolina"
+          coordinates: [35.5468, -77.0522]
+      - year: 1960
+        location:
+          name: "Brooklyn, New York"
+          coordinates: [40.6782, -73.9442]
     tags:
-      - "Personal Journey"
-      - "Work Ethic"
+      - "Personal Stories"
+      - "Work & Employment"
       - "Education"
       - "Resilience"
       - "Brooklyn"
       - "North Carolina"
-      - "Personal Stories"
-      - "Work Experience"
       - "Migration"
     people:
       - "Gladys M. Williams"
@@ -50,22 +54,23 @@ videos:
   - id: "3"
     thumbnail: "https://img.youtube.com/vi/9Nwl-6DRPYI/0.jpg"
     title: "Deborah Ragan McCoy"
-    interviewees: 
+    interviewees:
       - "Deborah Ragan McCoy"
     description: "Deborah McCoy reflects on her life, starting with her birth in Philadelphia, Pennsylvania in 1949. She explains how she got her name and shares various names she has been called, including Debbie and Elder Deb."
     duration: "3:27"
     createdDate: "2023-10-03T16:30:00Z"
     videoUrl: "https://www.youtube.com/watch?v=9Nwl-6DRPYI"
-    locations:
-      - name: "Philadelphia, Pennsylvania"
-        coordinates: [39.9526, -75.1652]
+    historicalContext:
+      - year: 1949
+        location:
+          name: "Philadelphia, Pennsylvania"
+          coordinates: [39.9526, -75.1652]
     tags:
       - "Philadelphia"
-      - "Personal History"
+      - "Personal Stories"
       - "Name Origins"
       - "1949"
       - "Elder"
-      - "Personal Stories"
       - "Family History"
       - "Identity"
     people:
@@ -74,51 +79,51 @@ videos:
   - id: "4"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667554/Screenshot_61_e3jz6q.png"
     title: "Sharon McDuffie Recalls 911"
-    interviewees: 
+    interviewees:
       - "Sharon McDuffie"
     description: "On the morning of September 11, 2001, she awoke in Raleigh, North Carolina, to the shocking news of a plane crashing into the World Trade Center. As a second plane struck, confirming the attack, a sense of urgency and fear set in."
     duration: "9:36"
     createdDate: "2023-11-17T08:45:00Z"
     videoUrl: "https://www.youtube.com/watch?v=meR02ie2lYg"
-    locations:
-      - name: "Raleigh, North Carolina"
-        coordinates: [35.7796, -78.6382]
-      - name: "New York, New York"
-        coordinates: [40.7128, -74.0060]
+    historicalContext:
+      - year: 2001
+        location:
+          name: "Raleigh, North Carolina"
+          coordinates: [35.7796, -78.6382]
+      - year: 2001
+        location:
+          name: "New York, New York"
+          coordinates: [40.7128, -74.0060]
     tags:
       - "September 11"
-      - "9/11"
       - "Raleigh"
       - "World Trade Center"
-      - "Personal Account"
+      - "Personal Stories"
       - "Historical Events"
-      - "Personal Experience"
-      - "September 11 Attacks"
     people:
       - "Sharon McDuffie"
 
   - id: "5"
     thumbnail: "https://img.youtube.com/vi/1veIaRHpYO0/0.jpg"
     title: "Ty McDuffie Remembers Meeting His Wife"
-    interviewees: 
+    interviewees:
       - "Ty McDuffie"
     description: "Ty McDuffie, founder of Griot and Grits, shares his personal story about meeting his wife, Sharon Burwell McDuffie, just before Air Force basic training at a MEPS station. They were assigned different flights but managed to connect by passing notes."
     duration: "3:16"
     createdDate: "2023-12-08T14:20:00Z"
     videoUrl: "https://www.youtube.com/watch?v=1veIaRHpYO0"
-    locations:
-      - name: "United States"
-        coordinates: [39.8283, -98.5795]
+    historicalContext:
+      - year: 1992
+        location:
+          name: "United States"
+          coordinates: [39.8283, -98.5795]
     tags:
-      - "Love Story"
+      - "Love Stories"
       - "Air Force"
       - "Military Service"
       - "MEPS"
-      - "Founder Story"
-      - "Romance"
-      - "Love Stories"
-      - "Personal Stories"
       - "Founder Stories"
+      - "Personal Stories"
     people:
       - "Ty McDuffie"
       - "Sharon Burwell McDuffie"
@@ -126,15 +131,17 @@ videos:
   - id: "6"
     thumbnail: "https://img.youtube.com/vi/Wygd0hwc7iA/0.jpg"
     title: "Deborah McCoy Recalls a Historic Snowstorm"
-    interviewees: 
+    interviewees:
       - "Deborah Ragan McCoy"
     description: "At just 10 years old, Deborah Ragan McCoy found herself babysitting her aunt's six children in West Philadelphia—a responsibility far beyond her years. As the evening wore on, an approaching snowstorm made her eager to get home. Determined, she braved the bitter cold and deepening snow, embarking on an arduous four-hour trek."
     duration: "5:14"
     createdDate: "2024-01-12T12:15:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Wygd0hwc7iA"
-    locations:
-      - name: "West Philadelphia, Pennsylvania"
-        coordinates: [39.9526, -75.1652]
+    historicalContext:
+      - year: 1958
+        location:
+          name: "West Philadelphia, Pennsylvania"
+          coordinates: [39.9526, -75.1652]
     tags:
       - "Childhood"
       - "Philadelphia"
@@ -142,7 +149,6 @@ videos:
       - "Babysitting"
       - "Resilience"
       - "Family Responsibility"
-      - "Childhood Stories"
       - "Weather Events"
     people:
       - "Deborah Ragan McCoy"

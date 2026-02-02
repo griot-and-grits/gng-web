@@ -3,10 +3,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { 
-    Search, 
-    Filter, 
-    MapPin, 
+import {
+    Search,
+    Filter,
+    MapPin,
     MessageSquare,
     Play,
     Clock,
@@ -15,14 +15,18 @@ import {
     X,
     Calendar,
     Send,
-    Loader2
+    Loader2,
+    History
 } from 'lucide-react';
-import { 
-    Video, 
+import {
+    Video,
     FilterMetadata,
-    getAllTags, 
-    getAllPeople, 
-    filterVideos 
+    getAllTags,
+    getAllPeople,
+    filterVideos,
+    HISTORICAL_ERAS,
+    getHistoricalYears,
+    getHistoricalLocations
 } from '@/lib/video-metadata';
 import { griotLLM, ChatMessage } from '@/lib/griot-llm';
 import dynamic from 'next/dynamic';
@@ -54,6 +58,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
     const [isLoading, setIsLoading] = useState(false);
     const chatMessagesRef = useRef<HTMLDivElement>(null);
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+    const [selectedEra, setSelectedEra] = useState<string | null>(null);
     const [filteredVideos, setFilteredVideos] = useState<Video[]>([]);
     const [expandedTags, setExpandedTags] = useState<{ [videoId: string]: boolean }>({});
     const [expandedDescriptions, setExpandedDescriptions] = useState<{ [videoId: string]: boolean }>({});
@@ -81,24 +86,60 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
 
     const handleSearch = (query: string) => {
         setSearchQuery(query);
-        updateFilteredVideos(query, selectedFilters, selectedLocation);
+        updateFilteredVideos(query, selectedFilters, selectedLocation, selectedEra);
     };
 
     const handleFilterToggle = (filter: string) => {
-        const newFilters = selectedFilters.includes(filter) 
+        const newFilters = selectedFilters.includes(filter)
             ? selectedFilters.filter(f => f !== filter)
             : [...selectedFilters, filter];
         setSelectedFilters(newFilters);
-        updateFilteredVideos(searchQuery, newFilters, selectedLocation);
+        updateFilteredVideos(searchQuery, newFilters, selectedLocation, selectedEra);
     };
 
     const handleLocationSelect = (location: string | null) => {
         setSelectedLocation(location);
-        updateFilteredVideos(searchQuery, selectedFilters, location);
+        updateFilteredVideos(searchQuery, selectedFilters, location, selectedEra);
     };
 
-    const updateFilteredVideos = (query: string, filters: string[], location: string | null) => {
-        const filtered = filterVideos(videos, query, filters, location);
+    const handleEraToggle = (eraId: string | null) => {
+        setSelectedEra(eraId);
+        updateFilteredVideos(searchQuery, selectedFilters, selectedLocation, eraId);
+
+        // Scroll to appropriate section after era selection
+        setTimeout(() => {
+            const isMobile = window.innerWidth < 768; // md breakpoint
+
+            if (isMobile) {
+                // On mobile, scroll to first video
+                const videosGrid = document.querySelector('[data-videos-grid]');
+                if (videosGrid) {
+                    const elementPosition = videosGrid.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - 100;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                // On desktop, scroll to show era filters at top with videos visible below
+                const eraSection = document.querySelector('[data-era-filters]');
+                if (eraSection) {
+                    const elementPosition = eraSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - 120;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }, 100);
+    };
+
+    const updateFilteredVideos = (query: string, filters: string[], location: string | null, era: string | null) => {
+        const filtered = filterVideos(videos, query, filters, location, era);
         setFilteredVideos(filtered);
     };
 
@@ -241,7 +282,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                     <div className="flex flex-col lg:flex-row gap-4">
                         {/* Search Bar */}
                         <div className="relative flex-1">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
                             <input
                                 type="text"
                                 placeholder="Search videos, people, topics, or descriptions..."
@@ -452,6 +493,50 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                     )}
                 </motion.div>
 
+                {/* Time Period Filter */}
+                <motion.div
+                    data-era-filters
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="mb-8"
+                >
+                    <div className="mb-3">
+                        <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                            Time Period
+                        </h3>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {HISTORICAL_ERAS.map((era) => (
+                            <button
+                                key={era.id}
+                                onClick={() => handleEraToggle(selectedEra === era.id ? null : era.id)}
+                                className={`relative h-32 rounded-3xl overflow-hidden transition-all ${
+                                    selectedEra === era.id
+                                        ? 'ring-4 ring-primary ring-offset-2 ring-offset-background scale-105'
+                                        : 'hover:scale-105'
+                                }`}
+                            >
+                                <Image
+                                    src={era.image}
+                                    alt={era.name}
+                                    fill
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+                                <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
+                                    <h4 className="text-lg font-bold text-center uppercase tracking-wide">
+                                        {era.name}
+                                    </h4>
+                                    <p className="text-base mt-1 opacity-90">
+                                        ({era.subtitle})
+                                    </p>
+                                </div>
+                            </button>
+                        ))}
+                    </div>
+                </motion.div>
+
                 {/* Filter Bar - Always above videos */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -528,8 +613,8 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                     </div>
 
                     {/* Active Filters */}
-                    {(selectedFilters.length > 0 || selectedLocation) && (
-                        <div className="flex flex-wrap gap-2 items-center">
+                    {(selectedFilters.length > 0 || selectedLocation || selectedEra) && (
+                        <div data-active-filters className="flex flex-wrap gap-2 items-center">
                             <span className="text-sm text-muted-foreground">Active:</span>
                             {selectedFilters.map(filter => (
                                 <span
@@ -550,12 +635,21 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                     </button>
                                 </span>
                             )}
+                            {selectedEra && (
+                                <span className="bg-primary text-primary-foreground px-2 py-1 rounded-full text-sm flex items-center gap-1">
+                                    🕒 {HISTORICAL_ERAS.find(e => e.id === selectedEra)?.name}
+                                    <button onClick={() => handleEraToggle(null)}>
+                                        <X className="w-3 h-3" />
+                                    </button>
+                                </span>
+                            )}
                         </div>
                     )}
                 </motion.div>
 
                 {/* Video Grid */}
                 <motion.div
+                    data-videos-grid
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
@@ -624,19 +718,51 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                     )}
                                 </div>
 
-                                <div className="flex items-center text-sm text-muted-foreground mb-4">
-                                    <MapPin className="w-4 h-4 mr-2" />
-                                    <div className="flex flex-wrap gap-1">
-                                        {video.locations.map((location, index) => (
-                                            <span key={location.name}>
-                                                {location.name}
-                                                {index < video.locations.length - 1 && '; '}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
+                                {(() => {
+                                    const locations = getHistoricalLocations(video);
+                                    return locations.length > 0 && (
+                                        <div
+                                            className="flex items-center text-sm text-muted-foreground mb-4 cursor-help"
+                                            title="Location(s) mentioned in this story"
+                                        >
+                                            <MapPin className="w-4 h-4 mr-2" />
+                                            <div className="flex flex-wrap gap-1">
+                                                {locations.map((location, index) => (
+                                                    <span key={location.name}>
+                                                        {location.name}
+                                                        {index < locations.length - 1 && '; '}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
 
-                                <div className="flex items-center text-sm text-muted-foreground mb-4">
+                                {/* Historical Years */}
+                                {(() => {
+                                    const years = getHistoricalYears(video);
+                                    return years.length > 0 && (
+                                        <div
+                                            className="flex items-center text-sm text-muted-foreground mb-4 cursor-help"
+                                            title="Historical time period(s) referenced in this story"
+                                        >
+                                            <History className="w-4 h-4 mr-2" />
+                                            <div className="flex flex-wrap gap-1">
+                                                {years.map((year, index) => (
+                                                    <span key={year}>
+                                                        {year}
+                                                        {index < years.length - 1 && ', '}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
+
+                                <div
+                                    className="flex items-center text-sm text-muted-foreground mb-4 cursor-help"
+                                    title="Date this video was recorded"
+                                >
                                     <Calendar className="w-4 h-4 mr-2" />
                                     {new Date(video.createdDate).toLocaleDateString('en-US', {
                                         year: 'numeric',
@@ -704,14 +830,15 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                 >
                     <p>
                         Showing {filteredVideos.length} of {videos.length} videos
-                        {(searchQuery || selectedFilters.length > 0 || selectedLocation) && (
+                        {(searchQuery || selectedFilters.length > 0 || selectedLocation || selectedEra) && (
                             <button
                                 onClick={() => {
                                     setSearchQuery('');
                                     setSelectedFilters([]);
                                     setSelectedLocation(null);
+                                    setSelectedEra(null);
                                     // Sort videos by creation date descending when clearing filters
-                                    const sortedVideos = [...videos].sort((a, b) => 
+                                    const sortedVideos = [...videos].sort((a, b) =>
                                         new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
                                     );
                                     setFilteredVideos(sortedVideos);
