@@ -12,6 +12,18 @@ This repository hosts the public marketing site for Griot & Grits and the admin 
 - GitHub / development auth scaffolding via NextAuth
 - React Query data layer, React Hook Form + Zod validation helpers
 
+## Contributing
+
+### Adding New Videos
+
+For detailed instructions on adding new video interviews to the website, see [ADDING_VIDEOS.md](ADDING_VIDEOS.md).
+
+This guide covers:
+- Using AI tools to generate descriptions and extract metadata
+- Uploading videos to the YouTube channel
+- Updating video metadata in `metadata/videos.yaml`
+- Managing tags and filters in `metadata/filters.yaml`
+
 ## Prerequisites
 
 - Node.js 18+ (recommended: latest LTS)
