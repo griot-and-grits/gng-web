@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { Play } from "lucide-react"
 import VideoPlayer from './video-player'
+import { getImageUrl } from '@/lib/cdn'
 
 interface Service {
   icon: string
@@ -175,7 +176,7 @@ const Services: React.FC = () => {
                     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
                         <div className="relative aspect-video bg-gray-900 group">
                             <Image
-                                src="/media/img/bringing_stories_to_life_video_thumbnail.png"
+                                src={getImageUrl("bringing_stories_to_life_video_thumbnail.png")}
                                 alt="Griot and Grits - Bringing Stories to Life"
                                 fill
                                 className="object-cover"

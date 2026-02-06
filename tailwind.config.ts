@@ -53,7 +53,7 @@ export default {
   		},
   		backgroundImage: {
   			hero: "url('https://res.cloudinary.com/ducxigdil/video/upload/v1739671689/0216_1_uptqcp.mp4')",
-  			stats: "url('/stats-bg.jpg')"
+  			stats: "url('https://cdn.griotandgrits.org/media/stats-bg.jpg')"
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
