@@ -16,7 +16,7 @@ export function getCdnUrl(path: string): string {
   // Remove leading slash and /media/ prefix if present
   const cleanPath = path.replace(/^\/?(media\/)?/, '');
 
-  return `${CDN_URL}/media/${cleanPath}`;
+  return `${CDN_URL}/${cleanPath}`;
 }
 
 /**
