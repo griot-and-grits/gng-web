@@ -145,7 +145,7 @@ The `metadata/videos.yaml` file contains all video metadata. Use the content you
 ### Required Fields
 
 ```yaml
-- id: "X"  # Use the next sequential number
+- id: "aB3dE5fG7hI"  # Use a random 11-character YouTube-style ID
   thumbnail: "URL"  # Cloudinary or image hosting URL
   title: "Video Title"
   interviewees:
@@ -170,8 +170,11 @@ The `metadata/videos.yaml` file contains all video metadata. Use the content you
 ### Field Details
 
 #### `id`
-- Must be a unique sequential number
-- Check the last video entry to determine the next available ID
+- Must be a unique random string in YouTube video ID format
+- Use 11 characters consisting of uppercase letters, lowercase letters, numbers, hyphens (-), and underscores (_)
+- Example: "mE7xK2qR9Ld", "Bw5yP8vV3mN", "Y4xON7_lXUe"
+- You can use an online random string generator or create one manually
+- Ensure the ID doesn't already exist in the videos.yaml file
 
 #### `title`
 - Use the **website title WITHOUT the "Griot and Grits - " prefix**
@@ -272,7 +275,7 @@ tags:
 
 3. **Add to videos.yaml**
    ```yaml
-   - id: "2"
+   - id: "Bw5yP8vV3mN"  # Generate a random 11-character YouTube-style ID
      thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
      title: "The Storied Life of Ms. Gladys M. Williams"  # WITHOUT "Griot and Grits - " prefix
      interviewees:
@@ -334,6 +337,35 @@ After updating the files:
 - Review the video on the site before committing changes
 - Consider the user experience: will these tags help people find related content?
 
+## Sharing Direct Video Links
+
+You can share direct links to specific videos on the collection page using the `video` URL parameter. This will automatically open the video player when someone visits the link.
+
+### Link Format
+
+```
+https://yourwebsite.com/collection?video=VIDEO_ID
+```
+
+### Example
+
+For a video with ID "Ue1a7sw8xW0":
+```
+https://griotandgrits.org/collection?video=Ue1a7sw8xW0
+```
+
+When users click this link, they will:
+1. Land on the collection page
+2. See the video player automatically open with that specific video
+3. Be able to close the player and browse other videos
+
+### Use Cases
+
+- Share specific interviews on social media
+- Link to videos from blog posts or newsletters
+- Reference particular stories in emails or presentations
+- Create curated playlists by sharing multiple links
+
 ## Common Issues
 
 **Video doesn't appear**: Check that the YAML syntax is valid (proper indentation, quotes, etc.)
@@ -343,3 +375,5 @@ After updating the files:
 **Featured video limit exceeded**: Set older featured videos to `featured: false`
 
 **Build errors**: Validate your YAML using an online YAML validator
+
+**Direct link not working**: Verify the video ID matches exactly with the `id` field in videos.yaml

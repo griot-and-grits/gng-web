@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { Play, Clock, User, Tag, Calendar, MapPin, History, Headphones } from "lucide-react";
+import { Play, Clock, User, Tag, Calendar, MapPin, History, Headphones, Share2 } from "lucide-react";
 import VideoPlayer from './video-player';
+import ShareVideoModal from './share-video-modal';
 import { Video, getHistoricalYears, getHistoricalLocations } from '@/lib/video-metadata';
 
 interface WorksProps {
@@ -25,6 +26,8 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
   const [featuredVideos, setFeaturedVideos] = useState<Video[]>([]);
   const [expandedTags, setExpandedTags] = useState<{ [videoId: string]: boolean }>({});
   const [expandedDescriptions, setExpandedDescriptions] = useState<{ [videoId: string]: boolean }>({});
+  const [shareVideo, setShareVideo] = useState<Video | null>(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   useEffect(() => {
     if (inView) {
@@ -67,6 +70,16 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
     }));
   };
 
+  const handleShareClick = (video: Video) => {
+    setShareVideo(video);
+    setIsShareModalOpen(true);
+  };
+
+  const handleShareModalClose = () => {
+    setIsShareModalOpen(false);
+    setShareVideo(null);
+  };
+
   return (
     <section id="works" className="pt-20 overflow-hidden bg-gray-50">
       <div className="container mx-auto px-4">        
@@ -101,7 +114,7 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                  <button 
+                  <button
                     onClick={() => handleVideoPlay(video)}
                     className="bg-white/90 rounded-full p-3 hover:bg-white transition-colors"
                     aria-label={`Play ${video.title}`}
@@ -109,10 +122,17 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
                     <Play className="w-6 h-6 text-black ml-1" />
                   </button>
                 </div>
-                <div className="absolute bottom-2 right-2 bg-black/80 text-white px-2 py-1 rounded text-sm flex items-center gap-1">
+                <div className="absolute bottom-2 left-2 bg-black/80 text-white px-2 py-1 rounded text-sm flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   {video.duration}
                 </div>
+                <button
+                  onClick={() => handleShareClick(video)}
+                  className="absolute bottom-2 right-2 bg-black/80 hover:bg-black/90 text-white p-2 rounded-full transition-colors"
+                  aria-label="Share video"
+                >
+                  <Share2 className="w-4 h-4" />
+                </button>
               </div>
 
               {/* Content */}
@@ -254,6 +274,14 @@ const FeaturedStories: React.FC<WorksProps> = ({ videos }) => {
           onClose={handleVideoPlayerClose}
           videoUrl={selectedVideo?.videoUrl || ''}
           title={selectedVideo?.title || ''}
+        />
+
+        {/* Share Video Modal */}
+        <ShareVideoModal
+          isOpen={isShareModalOpen}
+          onClose={handleShareModalClose}
+          videoId={shareVideo?.id || ''}
+          videoTitle={shareVideo?.title || ''}
         />
       </div>
     </section>
