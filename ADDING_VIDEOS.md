@@ -34,11 +34,24 @@ Based on this interview transcription, create a concise 1-paragraph synopsis (2-
 
 ### Extract Historical Context
 
-Ask the AI to identify relevant years and locations discussed:
+Ask the AI to identify relevant years and locations discussed. Make sure to verify the content and the coordinates:
 
 **Example Prompt:**
 ```
-From this transcription, extract all specific years and locations mentioned or discussed. List them in chronological order.
+From the interview transcript, extract all historical context as a structured list. Each entry must follow this exact format:
+- year: <four‑digit year or null if not explicitly stated> 
+  location: 
+    name: <place name as stated or clearly implied in the transcript> coordinates: [<latitude or null>, <longitude or null>]
+
+Rules:
+- Only include years explicitly mentioned or directly inferable from the transcript.
+- If year is null, exclude the field from the entry.
+- Locations must be real places referenced in the transcript.
+- If coordinates are unknown, set them to null; do not guess.
+- Do not add information not supported by the transcript.
+- Keep the final output valid YAML.
+- Use a service to extract the latitude and longitude based on the location names. Do not guess if you do not know.
+- List them in chronological order.
 ```
 
 **Use this information for:**
