@@ -16,6 +16,7 @@ import {
     Calendar,
     Send,
     Loader2,
+    Flag
     History,
     Headphones
 } from 'lucide-react';
@@ -32,6 +33,8 @@ import {
 import { griotLLM, ChatMessage } from '@/lib/griot-llm';
 import dynamic from 'next/dynamic';
 import VideoPlayer from './video-player';
+import { FeedbackModal } from './feedback/feedback-modal';
+import { FeedbackType } from '@/lib/admin/types';
 
 // Dynamically import the map component to avoid SSR issues
 const InteractiveMap = dynamic(() => import('./interactive-map'), {
@@ -67,6 +70,14 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
     const [showAllPeople, setShowAllPeople] = useState(false);
     const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
     const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
+    const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
+    const [feedbackContext, setFeedbackContext] = useState<{
+        type: FeedbackType;
+        artifactId?: string;
+        artifactTitle?: string;
+        chatUserMessage?: string;
+        chatAssistantMessage?: string;
+    }>({ type: FeedbackType.OTHER });
 
     const allTags = getAllTags(videos, filters);
     const allPeople = getAllPeople(videos, filters);
@@ -171,6 +182,24 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
     const handleVideoPlayerClose = () => {
         setIsVideoPlayerOpen(false);
         setSelectedVideo(null);
+    };
+
+    const openFeedbackForChat = (userMsg: string, assistantMsg: string) => {
+        setFeedbackContext({
+            type: FeedbackType.GRIOT_RESPONSE,
+            chatUserMessage: userMsg,
+            chatAssistantMessage: assistantMsg,
+        });
+        setFeedbackModalOpen(true);
+    };
+
+    const openFeedbackForVideo = (video: Video) => {
+        setFeedbackContext({
+            type: FeedbackType.CONTENT_ISSUE,
+            artifactId: video.id,
+            artifactTitle: video.title,
+        });
+        setFeedbackModalOpen(true);
     };
 
     const handleSendMessage = async () => {
@@ -447,6 +476,25 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                                 <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
                                                     <User className="w-4 h-4 text-secondary-foreground" />
                                                 </div>
+                                            )}
+                                            {message.role === 'assistant' && message.content && !isLoading && (
+                                                <button
+                                                    onClick={() => {
+                                                        const userMsg = chatHistory
+                                                            .slice(0, index)
+                                                            .filter(m => m.role === 'user')
+                                                            .pop();
+                                                        openFeedbackForChat(
+                                                            userMsg?.content || '',
+                                                            message.content,
+                                                        );
+                                                    }}
+                                                    className="self-end text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
+                                                    title="Report issue with this response"
+                                                >
+                                                    <Flag className="w-3 h-3" />
+                                                    Report issue
+                                                </button>
                                             )}
                                         </div>
                                     ))}
@@ -864,6 +912,17 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                     </p>
                 </motion.div>
                 
+                {/* Feedback Modal */}
+                <FeedbackModal
+                    open={feedbackModalOpen}
+                    onOpenChange={setFeedbackModalOpen}
+                    defaultType={feedbackContext.type}
+                    artifactId={feedbackContext.artifactId}
+                    artifactTitle={feedbackContext.artifactTitle}
+                    chatUserMessage={feedbackContext.chatUserMessage}
+                    chatAssistantMessage={feedbackContext.chatAssistantMessage}
+                />
+
                 {/* Video Player Modal */}
                 <VideoPlayer
                     isOpen={isVideoPlayerOpen}

@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import type { ReactNode } from 'react';
-import { Menu, LogOut, Package, Upload, Box, Home } from 'lucide-react';
+import { Menu, LogOut, Package, Upload, Box, Home, Flag } from 'lucide-react';
 import { useState } from 'react';
 
 import { ADMIN_DEV_MODE } from '@/lib/admin/config';
@@ -40,6 +40,11 @@ const navItems: NavItem[] = [
         href: '/admin/collections',
         label: 'Collections',
         icon: <Package className="h-4 w-4" />,
+    },
+    {
+        href: '/admin/feedback',
+        label: 'Feedback',
+        icon: <Flag className="h-4 w-4" />,
     },
 ];
 
