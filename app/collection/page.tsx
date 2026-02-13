@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Collections from '@/components/collections';
 import Nav from '@/components/nav';
 import { loadVideoMetadata, loadFilterMetadata } from '@/lib/load-metadata';
@@ -11,11 +12,13 @@ export default function CollectionsPage() {
     return (
         <>
             <Nav />
-            <Collections
-                videos={videoMetadata.videos}
-                filters={filterMetadata}
-                askTheGriotEnabled={askTheGriotEnabled}
-            />
+            <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+                <Collections
+                    videos={videoMetadata.videos}
+                    filters={filterMetadata}
+                    askTheGriotEnabled={askTheGriotEnabled}
+                />
+            </Suspense>
         </>
     );
 }
