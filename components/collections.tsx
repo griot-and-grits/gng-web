@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
 import {
     Search,
     Filter,
@@ -17,7 +18,8 @@ import {
     Send,
     Loader2,
     History,
-    Headphones
+    Headphones,
+    Share2
 } from 'lucide-react';
 import {
     Video,
@@ -32,6 +34,7 @@ import {
 import { griotLLM, ChatMessage } from '@/lib/griot-llm';
 import dynamic from 'next/dynamic';
 import VideoPlayer from './video-player';
+import ShareVideoModal from './share-video-modal';
 
 // Dynamically import the map component to avoid SSR issues
 const InteractiveMap = dynamic(() => import('./interactive-map'), {
@@ -50,6 +53,7 @@ interface CollectionsProps {
 }
 
 const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotEnabled = true }) => {
+    const searchParams = useSearchParams();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [showMap, setShowMap] = useState(false);
@@ -67,6 +71,8 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
     const [showAllPeople, setShowAllPeople] = useState(false);
     const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
     const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
+    const [shareVideo, setShareVideo] = useState<Video | null>(null);
+    const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
     const allTags = getAllTags(videos, filters);
     const allPeople = getAllPeople(videos, filters);
@@ -79,11 +85,22 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
 
     useEffect(() => {
         // Sort videos by creation date descending (newest first) on initial load
-        const sortedVideos = [...videos].sort((a, b) => 
+        const sortedVideos = [...videos].sort((a, b) =>
             new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
         );
         setFilteredVideos(sortedVideos);
     }, [videos]);
+
+    // Handle direct video links via URL parameter
+    useEffect(() => {
+        const videoId = searchParams.get('video');
+        if (videoId) {
+            const video = videos.find(v => v.id === videoId);
+            if (video) {
+                handleVideoPlay(video);
+            }
+        }
+    }, [searchParams, videos]);
 
     const handleSearch = (query: string) => {
         setSearchQuery(query);
@@ -171,6 +188,16 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
     const handleVideoPlayerClose = () => {
         setIsVideoPlayerOpen(false);
         setSelectedVideo(null);
+    };
+
+    const handleShareClick = (video: Video) => {
+        setShareVideo(video);
+        setIsShareModalOpen(true);
+    };
+
+    const handleShareModalClose = () => {
+        setIsShareModalOpen(false);
+        setShareVideo(null);
     };
 
     const handleSendMessage = async () => {
@@ -673,7 +700,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                    <button 
+                                    <button
                                         onClick={() => handleVideoPlay(video)}
                                         className="bg-white/90 rounded-full p-3 hover:bg-white transition-colors"
                                         aria-label={`Play ${video.title}`}
@@ -681,10 +708,17 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                                         <Play className="w-6 h-6 text-black ml-1" />
                                     </button>
                                 </div>
-                                <div className="absolute bottom-2 right-2 bg-black/80 text-white px-2 py-1 rounded text-sm flex items-center gap-1">
+                                <div className="absolute bottom-2 left-2 bg-black/80 text-white px-2 py-1 rounded text-sm flex items-center gap-1">
                                     <Clock className="w-3 h-3" />
                                     {video.duration}
                                 </div>
+                                <button
+                                    onClick={() => handleShareClick(video)}
+                                    className="absolute bottom-2 right-2 bg-black/80 hover:bg-black/90 text-white p-2 rounded-full transition-colors"
+                                    aria-label="Share video"
+                                >
+                                    <Share2 className="w-4 h-4" />
+                                </button>
                             </div>
 
                             {/* Content */}
@@ -870,6 +904,14 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters, askTheGriotE
                     onClose={handleVideoPlayerClose}
                     videoUrl={selectedVideo?.videoUrl || ''}
                     title={selectedVideo?.title || ''}
+                />
+
+                {/* Share Video Modal */}
+                <ShareVideoModal
+                    isOpen={isShareModalOpen}
+                    onClose={handleShareModalClose}
+                    videoId={shareVideo?.id || ''}
+                    videoTitle={shareVideo?.title || ''}
                 />
             </div>
         </section>
