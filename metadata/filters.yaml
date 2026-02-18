@@ -47,6 +47,10 @@ tags:
     popularity: 0.4
   - name: "Raleigh"
     popularity: 0.4
+  - name: "Manhattan"
+    popularity: 0.4
+  - name: "New York"
+    popularity: 0.5
   - name: "Family Responsibility"
     popularity: 0.4
   - name: "Boys and Girls Club"
@@ -72,4 +76,6 @@ people:
   - name: "Dr. Oliver T. Reid"
     popularity: 1.0
   - name: "Rickey Gerard Thomas"
+    popularity: 1.0
+  - name: "Lynette Richardson"
     popularity: 1.0

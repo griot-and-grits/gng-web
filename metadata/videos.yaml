@@ -48,6 +48,7 @@ videos:
       - "Education"
       - "Resilience"
       - "Brooklyn"
+      - "New York"
       - "North Carolina"
       - "Migration"
     people:
@@ -88,7 +89,7 @@ videos:
     duration: "9:36"
     createdDate: "2024-11-17T08:45:00Z"
     videoUrl: "https://www.youtube.com/watch?v=meR02ie2lYg"
-    featured: true
+    featured: false
     historicalContext:
       - year: 2001
         location:
@@ -218,6 +219,7 @@ videos:
       - "North Carolina"
       - "Raleigh"
       - "Brooklyn"
+      - "New York"
       - "Boys and Girls Club"
       - "Childhood"
       - "Heritage"
@@ -229,3 +231,29 @@ videos:
       - "Military Service"
     people:
       - "Rickey Gerard Thomas"
+
+  - id: "Ln2yR8iCh4d"
+    thumbnail: "https://img.youtube.com/vi/mBngYEV7_cc/0.jpg"
+    title: "Lynette Richardson Traces the Lessons of Home and the Lower East Side"
+    interviewees:
+      - "Lynette Richardson"
+    description: "Lynette Frierson Richardson reflects on a childhood shaped by the warmth, discipline, and creativity of her family on Manhattan’s Lower East Side, where home was defined less by geography and more by the people who taught her how to see the world. She describes a community anchored by steady work—school crossing guards, construction crews, taxi drivers—and a mother whose presence and purpose set the rhythm of her early life. Through memories of neighborhood jobs, school influences, and the cultural lessons woven into daily life, Lynette traces how her upbringing instilled resilience, identity, and a deep sense of belonging. Her story reveals how family, community, and place become the map one follows long after childhood ends."
+    duration: "4:32"
+    createdDate: "2026-02-18T12:00:00Z"
+    videoUrl: "https://www.youtube.com/watch?v=mBngYEV7_cc"
+    featured: true
+    historicalContext:
+      - year: 1980
+        location:
+          name: Lower East Side, Manhattan, New York
+          coordinates: [40.715, -73.985]
+    tags:
+      - "Childhood"
+      - "Heritage"
+      - "Personal Stories"
+      - "Work & Employment"
+      - "Family History"
+      - "Manhattan"
+      - "New York"
+    people:
+      - "Lynette Richardson"
