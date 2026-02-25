@@ -76,8 +76,8 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         return Array.from(locationMap.values());
     }, [videos]);
 
-    // Center map on the middle of the United States
-    const defaultCenter: LatLngExpression = [39.8283, -98.5795];
+    // Center map to show both United States and Africa
+    const defaultCenter: LatLngExpression = [30.0, -30.0];
 
     if (mapError) {
         return (
@@ -112,7 +112,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
             <div className="h-96 w-full rounded-lg overflow-hidden border border-border">
                 <MapContainer
                     center={defaultCenter}
-                    zoom={4}
+                    zoom={3}
                     style={{ height: '100%', width: '100%' }}
                     className="z-10"
                 >

@@ -178,8 +178,14 @@ The `metadata/videos.yaml` file contains all video metadata. Use the content you
 
 #### `title`
 - Use the **website title WITHOUT the "Griot and Grits - " prefix**
-- This is just the [Subject/Topic] part
-- Example: "Mrs. Clark Talks Black Prisoner Cadavers" (NOT "Griot and Grits - Mrs. Clark Talks Black Prisoner Cadavers")
+- **Format**: `[Storyteller Name] — Chapter [Number]: [Thematic Subtitle]`
+  - Use an em dash (—) not a hyphen (-)
+  - Example: "Irene Clark — Chapter One: Black Prisoner Cadavers"
+  - Example: "Dr. Oliver T. Reid — Chapter One: Growing Up Between Danger and Sanctuary"
+  - Example: "Rickey Thomas — Chapter One: Roots, Work, and Quiet Strength"
+  - Example: "Lynette Richardson — Chapter One: The Lessons of Home and the Lower East Side"
+- For single-part stories (not part of a series), omit the chapter designation
+- **Important**: This is just the title content, NOT "Griot and Grits - [Title]"
 
 #### `description`
 Use the 1-paragraph synopsis you generated in Step 1 with AI tools.

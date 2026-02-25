@@ -59,6 +59,14 @@ tags:
     popularity: 0.4
   - name: "Weather Events"
     popularity: 0.3
+  - name: "Africa"
+    popularity: 0.3
+  - name: "Travel"
+    popularity: 0.3
+  - name: "Cultural Misrepresentation"
+    popularity: 0.3
+  - name: "Historical Exploration"
+    popularity: 0.3
 
 people:
   - name: "Deborah Ragan McCoy"
