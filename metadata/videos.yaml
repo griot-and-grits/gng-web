@@ -1,14 +1,14 @@
 videos:
   - id: "mE7xK2qR9Ld"
     thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667555/Screenshot_62_wjthuw.png"
-    title: "Mrs. Clark Talks Black Prisoner Cadavers"
+    title: "Irene Clark — Chapter One: Black Prisoner Cadavers"
     interviewees:
       - "Irene Clark"
     description: "Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
     duration: "3:00"
     createdDate: "2024-08-25T13:10:00Z"
     videoUrl: "https://www.youtube.com/watch?v=mE1PTJeDBXI"
-    featured: true
+    featured: false
     historicalContext:
       - year: 1926
         location:
@@ -162,7 +162,7 @@ videos:
 
   - id: "Y4xON7_lXUe"
     thumbnail: "https://img.youtube.com/vi/Y48ON7_lUXE/0.jpg"
-    title: "Dr. Oliver T. Reid Reflects on Growing Up Between Danger and Sanctuary - Chapter One"
+    title: "Dr. Oliver T. Reid — Chapter One: Growing Up Between Danger and Sanctuary"
     interviewees:
       - "Dr. Oliver T. Reid"
     description: "Dr. Oliver T. Reid reflects on the complicated journey of growing into his own name, sharing how \"Oliver\" once felt like a burden until he uncovered the powerful legacy behind it—a grandfather who rose from enslavement to reclaim the very land his family once worked. He traces the nicknames that marked different chapters of his life, the move from Concord to Charlotte in North Carolina, and the Boys and Girls Club that became a rare place of safety and belonging during a turbulent childhood. Through heritage, hardship, and the people who held him up, he tells the story of learning to take pride in the name he once rejected. This is Chapter One of Oliver's story. More chapters coming soon."
@@ -192,7 +192,7 @@ videos:
 
   - id: "Ue1a7sw8xW0"
     thumbnail: "https://img.youtube.com/vi/Uea17sw8xW0/0.jpg"
-    title: "Roots, Work, and Quiet Strength with Rickey Thomas - Chapter One"
+    title: "Rickey Thomas — Chapter One: Roots, Work, and Quiet Strength"
     interviewees:
       - "Rickey Gerard Thomas"
     description: "Rickey Gerard Thomas reflects on his upbringing in Brooklyn as the son of Southern parents who built a new life after meeting at the Brooklyn Navy Yard. He describes his father’s influence as a hardworking Navy veteran–turned–plumber whose consistency shaped Rickey’s own quiet, steady approach to life. The interview traces the dynamics of a large family, the personalities of his siblings, and the lessons absorbed from watching people work, study, and find their way. Woven through his memories is a sense of place—how the streets, the block, and the rhythm of New York instilled awareness, resilience, and a belief that true character shows itself through everyday consistency. This is Chapter One of Rickey's story. More chapters coming soon."
@@ -234,7 +234,7 @@ videos:
 
   - id: "Ln2yR8iCh4d"
     thumbnail: "https://img.youtube.com/vi/mBngYEV7_cc/0.jpg"
-    title: "Lynette Richardson Traces the Lessons of Home and the Lower East Side - Chapter One"
+    title: "Lynette Richardson — Chapter One: The Lessons of Home and the Lower East Side"
     interviewees:
       - "Lynette Richardson"
     description: "Lynette Richardson reflects on a childhood shaped by the warmth, discipline, and creativity of her family on Manhattan’s Lower East Side, where home was defined less by geography and more by the people who taught her how to see the world. She describes a community anchored by steady work—school crossing guards, construction crews, taxi drivers—and a mother whose presence and purpose set the rhythm of her early life. Through memories of neighborhood jobs, school influences, and the cultural lessons woven into daily life, Lynette traces how her upbringing instilled resilience, identity, and a deep sense of belonging. Her story reveals how family, community, and place become the map one follows long after childhood ends. This is Chapter One of Lynette's story. More chapters coming soon."
@@ -258,3 +258,31 @@ videos:
       - "New York"
     people:
       - "Lynette Richardson"
+
+  - id: "Cr2AfR8iCa9"
+    thumbnail: "https://img.youtube.com/vi/DIwtQ9tLfa0/0.jpg"
+    title: "Irene Clark — Chapter Two: Confronting the Stereotypes of Africa"
+    interviewees:
+      - "Irene Clark"
+    description: "Irene Clark reflects on how misinformation and stigma have long distorted Western views of Africa, from travel ads that separate Egypt from the continent to the fearful stereotypes echoed by earlier generations. She contrasts those narratives with her own travels across Egypt, Ethiopia, Eritrea, Swaziland, and South Africa, where she witnessed modern cities, deep ingenuity, and a living history far richer than outsiders imagine. Her story underscores the power of seeing Africa firsthand and the profound impact of standing in places like the slave castles, where history becomes impossible to ignore."
+    duration: "3:28"
+    createdDate: "2026-02-25T12:00:00Z"
+    videoUrl: "https://www.youtube.com/watch?v=DIwtQ9tLfa0"
+    podcastUrl: "https://open.spotify.com/episode/6VjeQAGOQAIPaEo9uAyrVB?si=f3UsWjiXRtyCJo4UsBJhbg"
+    featured: true
+    historicalContext:
+      - year: 1970
+        location:
+          name: Africa
+          coordinates: [28.0, 10.0]
+    tags:
+      - "Africa"
+      - "Heritage"
+      - "Personal Stories"
+      - "Migration"
+      - "Historical Exploration"
+      - "Education"
+      - "Cultural Misrepresentation"
+      - "Travel"
+    people:
+      - "Irene Clark"
