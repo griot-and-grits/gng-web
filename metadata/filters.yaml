@@ -67,6 +67,14 @@ tags:
     popularity: 0.3
   - name: "Historical Exploration"
     popularity: 0.3
+  - name: "Church Life"
+    popularity: 0.3
+  - name: "Southern Cooking"
+    popularity: 0.3
+  - name: "Rural Life"
+    popularity: 0.3
+  - name: "Community Sharing"
+    popularity: 0.3
 
 people:
   - name: "Deborah Ragan McCoy"
@@ -86,4 +94,6 @@ people:
   - name: "Rickey Gerard Thomas"
     popularity: 1.0
   - name: "Lynette Richardson"
+    popularity: 1.0
+  - name: "David E. Reid"
     popularity: 1.0

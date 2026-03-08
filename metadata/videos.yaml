@@ -143,7 +143,7 @@ videos:
     duration: "5:14"
     createdDate: "2025-01-12T12:15:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Wygd0hwc7iA"
-    featured: true
+    featured: false
     historicalContext:
       - year: 1958
         location:
@@ -286,3 +286,34 @@ videos:
       - "Travel"
     people:
       - "Irene Clark"
+
+  - id: "q7F2mX9BLaP"
+    thumbnail: "https://img.youtube.com/vi/gDF5Soer0is/0.jpg"
+    title: "David E. Reid — Chapter One: Growing Up with Faith, Family, and Southern Traditions"
+    interviewees:
+      - "David E. Reid"
+    description: "David E. Reid reflects on his upbringing in Reidsville, North Carolina, where he was raised by his mother and grandmother after his father left during his early childhood. He describes a tight‑knit, church‑centered household rooted in modest means, homegrown food, and shared community values. His memories center on the women who shaped him—especially through cooking, compassion, and lessons about doing good for others. Now 84, he looks back with warmth on the foods, traditions, and moral grounding that defined his early life and continue to guide his character today."
+    duration: "5:01"
+    createdDate: "2026-03-07T12:00:00Z"
+    videoUrl: "https://www.youtube.com/watch?v=gDF5Soer0is"
+    podcastUrl: "https://open.spotify.com/episode/2OqMFHM7zLTcK8LtNOAJql?si=rWen3jJrQMOSskKFY3Quog"
+    featured: true
+    historicalContext:
+      - year: 1940
+        location:
+          name: Reidsville, North Carolina
+          coordinates: [36.35486, -79.66447]
+    tags:
+      - "Reidsville"
+      - "North Carolina"
+      - "Personal Stories"
+      - "Childhood"
+      - "Family History"
+      - "Family Responsibility"
+      - "Heritage"
+      - "Church Life"
+      - "Southern Cooking"
+      - "Rural Life"
+      - "Community Sharing"
+    people:
+      - "David E. Reid"
