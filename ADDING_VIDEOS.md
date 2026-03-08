@@ -63,7 +63,15 @@ Ask the AI to suggest relevant tags based on existing categories:
 
 **Example Prompt:**
 ```
-Based on this interview transcription, suggest relevant tags that match these existing categories: [paste tags from metadata/filters.yaml]. If there are important themes not covered by these existing tags, suggest new ones that would help users discover similar content.
+Based on this interview transcription, suggest relevant tags that match these existing categories: https://raw.githubusercontent.com/griot-and-grits/gng-web/refs/heads/main/metadata/filters.yaml. If there are important themes not covered by these existing tags, suggest new ones that would help users discover similar content.
+
+The format must be exactly as follows: 
+
+tags: 
+  - "tag1" 
+  - "tag2" 
+  - "tag3"
+
 ```
 
 **Use these tags for:**
@@ -84,6 +92,11 @@ Use the "Griot and Grits - [Subject/Topic]" format:
 Use ONLY the [Subject/Topic] part for the `videos.yaml` file:
 - "Mrs. Clark Talks Black Prisoner Cadavers"
 - "The Storied Life of Ms. Gladys M. Williams"
+
+**Example Prompt:**
+```
+Create a title for the video based on the transcript. Use exactly this format: "[name] — Chapter One: [title]" Example: "Irene Clark — Chapter Two: Confronting the Stereotypes of Africa"
+```
 
 ## Step 2: Upload Video to YouTube
 
