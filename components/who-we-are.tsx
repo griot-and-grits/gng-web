@@ -105,6 +105,13 @@ and amplifying all perspectives.`
             title: "Chief of Staff, Red Hat AI Platform Engineering",
             photo: getBioImageUrl("K_Townsend.jpg"),
             bio: "Koren Townsend is a Chief of Staff in Red Hat’s AI Engineering organization, where she focuses on supporting project efforts on the AI Platform team.  She serves her community in several organizations including Delta Sigma Theta Sorority, Inc., Jack and Jill of America, and is the Operations Director of the Clark STEM and Leadership Academy.  She is the immediate past Chairwoman and current Advisor of Red Hat Blacks United In Leadership and Diversity (B.U.I.L.D.), a DEI community.  Koren and her husband, Mitchell, and their sons reside in Raleigh, NC."
+        },
+        {
+            name: "Alexandra Machado",
+            title: "Principal AI Architect in the Field CTO Office at Red Hat",
+            photo: getBioImageUrl("A_Machado.jpg"),
+            bio: `Alexandra Machado is a global technology and social innovation leader dedicated to using technology as a catalyst for positive, lasting societal impact. With over 17 years of experience spanning engineering, consulting and strategy, she currently serves as a Principal AI Architect in the Field CTO Office at Red Hat, where she helps organizations, particularly in financial services and emerging markets, focus on long term strategy aligning technology with value.\n\n
+            With an MBA and an MSc in Information and Communication Technologies specializing in AI, Alexandra brings a rare blend of deep technical expertise and executive-level strategic thinking. A passionate advocate for open source, Alexandra has led and advised initiatives at the intersection of technology, social impact, environmental sustainability and cultural preservation, partnering with global institutions, nonprofits, and community organizations. Having lived and worked across seven countries and three continents, she brings a global, empathetic perspective to leadership and governance, guided by a deep belief that technology should serve the greater good.`
         }
     ];
 
