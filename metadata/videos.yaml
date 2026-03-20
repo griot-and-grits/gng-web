@@ -200,7 +200,7 @@ videos:
     createdDate: "2026-02-09T12:00:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Uea17sw8xW0"
     podcastUrl: "https://open.spotify.com/episode/5MJzmnOw8C2sy0yw3URK5k?si=UcYW5o3eQf66FOUBLU7A5g"
-    featured: true
+    featured: false
     historicalContext:
       - location:
           name: "Raleigh, North Carolina"
@@ -246,7 +246,7 @@ videos:
     historicalContext:
       - year: 1980
         location:
-          name: Lower East Side, Manhattan, New York
+          name: "Lower East Side, Manhattan, New York"
           coordinates: [40.715, -73.985]
     tags:
       - "Childhood"
@@ -273,7 +273,7 @@ videos:
     historicalContext:
       - year: 1970
         location:
-          name: Africa
+          name: "Africa"
           coordinates: [28.0, 10.0]
     tags:
       - "Africa"
@@ -301,7 +301,7 @@ videos:
     historicalContext:
       - year: 1940
         location:
-          name: Reidsville, North Carolina
+          name: "Reidsville, North Carolina"
           coordinates: [36.35486, -79.66447]
     tags:
       - "Reidsville"
@@ -317,3 +317,38 @@ videos:
       - "Community Sharing"
     people:
       - "David E. Reid"
+
+  - id: "X4m9Tq2RbLA"
+    thumbnail: "https://img.youtube.com/vi/Ud1XFjHrULc/0.jpg"
+    title: "Michael Jerome Thompson — Chapter One: Rock Hill Roots and a Family of Gospel Voices"
+    interviewees:
+      - "Michael Jerome Thompson"
+    description: "Michael Jerome Thompson reflects on his upbringing in 1950s Rock Hill, South Carolina, a small, segregated but close‑knit “village” where poverty was shared and childhood felt safe. Raised by his deeply spiritual mother, Estelle, after his father left, Michael grew up surrounded by music, family, and the legacy of gospel singers like his grandfather from the Dixie Hummingbirds. His story traces a journey from rural roots to the working world of Charlotte and later Washington, D.C., where he navigated identity, hardship, and reinvention. Through it all, he carries the meaning of his name — “one who is like God” — as a reminder of the resilience and faith that shaped his life."
+    duration: "4:44"
+    createdDate: "2026-03-19T12:00:00Z"
+    videoUrl: "https://www.youtube.com/watch?v=Ud1XFjHrULc"
+    featured: true
+    historicalContext:
+      - year: 1955
+        location:
+          name: "Rock Hill, South Carolina"
+          coordinates: [34.924866, -81.025078]
+      - location:
+          name: "Charlotte, North Carolina"
+          coordinates: [35.227085, -80.843124]
+    tags:
+      - "Rock Hill"
+      - "South Carolina"
+      - "Personal Stories"
+      - "Childhood"
+      - "Family History"
+      - "Segregation"
+      - "Poverty"
+      - "Community"
+      - "Gospel"
+      - "Music"
+      - "Faith"
+      - "Rural Life"
+      - "Childhood"
+    people:
+      - "Michael Jerome Thompson"

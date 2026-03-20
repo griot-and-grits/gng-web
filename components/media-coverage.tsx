@@ -10,23 +10,45 @@ interface MediaArticle {
     publication: string
     date: string
     description: string
+    type: 'article' | 'video' | 'audio'
     language?: string
 }
 
 const mediaArticles: MediaArticle[] = [
     {
+        title: "Griot and Grits dinner launches $100K campaign to preserve Black family histories",
+        url: "https://abc11.com/post/griot-grits-dinner-launches-100k-campaign-preserve-black-family-histories/18702630/",
+        publication: "ABC 11 WTVD",
+        date: "2026-03-11T12:00:00",
+        description: "Raleigh's John Chavis Community Center became a gathering place Tuesday evening for residents dedicated to ensuring Black history is preserved for future generations.",
+        type: "article",
+        language: "English"
+    },{
+        title: "Young. Black. Oklahoma. - Interview",
+        url: "https://www.youtube.com/watch?v=UdIQcN7cXms",
+        publication: "FOX 23 News",
+        date: "2026-02-20T12:00:00",
+        description: "Preserving history doesn't just mean keeping old pictures or going to museums. One non-profit is using artificial intelligence to make sure black stories live on for generations.",
+        type: "video",
+        language: "English"
+    },
+    {
         title: "Griot & Grits Project preserving Black families' history using AI: 'Crazy and exciting'",
         url: "https://abc11.com/post/black-history-month-red-hat-partners-griot-grits-preserve-family-histories-ai/15963216/",
-        publication: "ABC11",
+        publication: "ABC 11 WTVD",
         date: "2025-02-28T12:00:00",
-        description: "Red Hat partners with Griot & Grits to create an AI-powered digital archive for African American family histories and oral traditions."
+        description: "Red Hat partners with Griot & Grits to create an AI-powered digital archive for African American family histories and oral traditions.",
+        type: "article",
+        language: "English"
     },
     {
         title: "Griot and Grits is preserving Black history through AI",
         url: "https://www.redhat.com/en/blog/griot-and-grits-preserving-black-history-through-ai",
         publication: "Red Hat Blog",
         date: "2025-02-24T12:00:00",
-        description: "How AI is being used to enrich and synthesize the context of historical events, figures and movements in education."
+        description: "How AI is being used to enrich and synthesize the context of historical events, figures and movements in education.",
+        type: "article",
+        language: "English"
     },
     {
         title: "Volver al pasado: ahora usan inteligencia artificial para reconstruir historias que nadie registró",
@@ -34,6 +56,7 @@ const mediaArticles: MediaArticle[] = [
         publication: "Clarín",
         date: "2025-11-02T12:00:00",
         description: "With the Griot and Grits project, universities, museums and companies come together to store the oral history of the African-American community in the United States in the cloud.",
+        type: "article",
         language: "Spanish"
     },
     {
@@ -42,6 +65,7 @@ const mediaArticles: MediaArticle[] = [
         publication: "EnterpriseZine",
         date: "2025-04-08T12:00:00",
         description: "Red Hat's initiative to use AI and open source technologies to digitally preserve cultural heritage and maintain historical narratives.",
+        type: "article",
         language: "Japanese"
     }
 ]
@@ -54,6 +78,18 @@ const MediaCoverage: React.FC = () => {
             month: 'long',
             day: 'numeric'
         })
+    }
+
+    const getLinkText = (type: 'article' | 'video' | 'audio') => {
+        switch (type) {
+            case 'video':
+                return 'Watch Video'
+            case 'audio':
+                return 'Listen to Audio'
+            case 'article':
+            default:
+                return 'Read Article'
+        }
     }
 
     return (
@@ -124,7 +160,7 @@ const MediaCoverage: React.FC = () => {
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 text-[#AE2D24] hover:text-[#282420] font-semibold transition-colors group-hover:gap-3 duration-300"
                                     >
-                                        Read Article
+                                        {getLinkText(article.type)}
                                         <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </a>
                                 </div>
