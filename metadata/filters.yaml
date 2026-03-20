@@ -75,6 +75,16 @@ tags:
     popularity: 0.3
   - name: "Community Sharing"
     popularity: 0.3
+  - name: "Faith"
+    popularity: 0.3
+  - name: "Music"
+    popularity: 0.3
+  - name: "Segregation"
+    popularity: 0.3
+  - name: "Poverty"
+    popularity: 0.3
+  - name: "South Carolina"
+    popularity: 0.4
 
 people:
   - name: "Deborah Ragan McCoy"
@@ -96,4 +106,6 @@ people:
   - name: "Lynette Richardson"
     popularity: 1.0
   - name: "David E. Reid"
+    popularity: 1.0
+  - name: "Michael Jerome Thompson"
     popularity: 1.0
