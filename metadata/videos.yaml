@@ -200,7 +200,7 @@ videos:
     createdDate: "2026-02-09T12:00:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Uea17sw8xW0"
     podcastUrl: "https://open.spotify.com/episode/5MJzmnOw8C2sy0yw3URK5k?si=UcYW5o3eQf66FOUBLU7A5g"
-    featured: false
+    featured: true
     historicalContext:
       - location:
           name: "Raleigh, North Carolina"
@@ -352,3 +352,36 @@ videos:
       - "Childhood"
     people:
       - "Michael Jerome Thompson"
+  
+  - id: "p7Qk3v9LsRT"
+    thumbnail: "https://img.youtube.com/vi/asXTzudzZyA/0.jpg"
+    title: "Ann E. Moore — Chapter One: From Little Washington to Brooklyn"
+    interviewees:
+      - "Ann E. Moore"
+    description: "Ann E. Moore was born in Washington, North Carolina in 1942 and raised by family there until her mother returned in 1949 to bring her and her siblings to Brooklyn, New York. She recalls the jarring adjustment from quiet Southern life to the rough streets of Brownsville — being chased home from the corner store, losing her eyelashes on an unfamiliar gas stove — while finding pride and inspiration in figures like Joe Louis and Jackie Robinson. Her story is a first-chapter portrait of the Great Migration seen through the eyes of a young Black girl learning to navigate two very different worlds."
+    duration: "6:05"
+    createdDate: "2026-04-23T21:02:50Z"
+    videoUrl: "https://www.youtube.com/watch?v=asXTzudzZyA"
+    featured: true
+    historicalContext:
+      - year: 1942
+        location:
+          name: "Washington, North Carolina, USA"
+          coordinates: [35.5468, -77.0522]
+      - year: 1949
+        location:
+          name: "Brownsville, Brooklyn, New York, USA"
+          coordinates: [40.6450, -73.9167]
+    tags:
+      - "Personal Stories"
+      - "Childhood"
+      - "Family History"
+      - "Migration"
+      - "Brooklyn"
+      - "North Carolina"
+      - "New York"
+      - "Rural Life"
+      - "Family Responsibility"
+      - "Faith"
+    people:
+      - "Ann E. Moore"
