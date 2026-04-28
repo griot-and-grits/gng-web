@@ -115,6 +115,27 @@ and amplifying all perspectives.`
         }
     ];
 
+    const volunteerMembers: TeamMember[] = [
+        {
+            name: "Volunteer Placeholder 1",
+            title: "Storykeeper",
+            photo: getImageUrl("crew2.png"),
+            bio: "A dedicated volunteer and member of the Griot & Grits Storykeeping Collective. This placeholder will be replaced with the volunteer's full biography and photo when available."
+        },
+        {
+            name: "Volunteer Placeholder 2",
+            title: "Storykeeper",
+            photo: getImageUrl("crew2.png"),
+            bio: "A dedicated volunteer and member of the Griot & Grits Storykeeping Collective. This placeholder will be replaced with the volunteer's full biography and photo when available."
+        },
+        {
+            name: "Volunteer Placeholder 3",
+            title: "Storykeeper",
+            photo: getImageUrl("crew2.png"),
+            bio: "A dedicated volunteer and member of the Griot & Grits Storykeeping Collective. This placeholder will be replaced with the volunteer's full biography and photo when available."
+        }
+    ];
+
     const goldSponsors: Sponsor[] = [
         {
             name: "Resilient Ventures",
@@ -338,6 +359,21 @@ and amplifying all perspectives.`
                                                 className="object-cover object-top rounded-lg"
                                             />
                                         </motion.div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-12">
+                                    <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
+                                        Meet the Storykeepers
+                                    </h3>
+                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                                        {volunteerMembers.map((member) => (
+                                            <MemberCard
+                                                key={member.name}
+                                                member={member}
+                                                onClick={() => setSelectedMember(member)}
+                                            />
+                                        ))}
                                     </div>
                                 </div>
                             </div>
