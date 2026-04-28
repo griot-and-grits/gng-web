@@ -327,6 +327,7 @@ videos:
     duration: "4:44"
     createdDate: "2026-03-19T12:00:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Ud1XFjHrULc"
+    podcastUrl: "https://open.spotify.com/episode/5Hen3ZJmR2NH8Jb2gXSkM8?si=lF0XmxG9SwGwjk6ME8gqVQ"
     featured: true
     historicalContext:
       - year: 1955
