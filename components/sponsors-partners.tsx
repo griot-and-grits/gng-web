@@ -13,13 +13,14 @@ interface LogoCardProps {
 }
 
 const LogoCard = ({ sponsor, width, height, index, sizes }: LogoCardProps) => {
-    const Tag = sponsor.website ? motion.a : motion.div as React.ElementType;
+    const Tag = (sponsor.website ? motion.a : motion.div) as React.ElementType;
+    const anchorProps = sponsor.website
+        ? { href: sponsor.website, target: "_blank", rel: "noopener noreferrer" }
+        : {};
 
     return (
         <Tag
-            href={sponsor.website}
-            target={sponsor.website ? "_blank" : undefined}
-            rel={sponsor.website ? "noopener noreferrer" : undefined}
+            {...anchorProps}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.05 }}
