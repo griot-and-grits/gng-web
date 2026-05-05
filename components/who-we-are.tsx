@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { getBioImageUrl, getImageUrl, getLogoUrl } from '@/lib/cdn';
+import { getBioImageUrl, getImageUrl } from '@/lib/cdn';
 
 // LinkedIn SVG component (Simple Icons doesn't include LinkedIn)
 const LinkedInIcon = ({ size = 24 }: { size?: number }) => (
@@ -25,12 +25,6 @@ interface TeamMember {
     photo: string;
     bio: string;
     linkedin?: string;
-}
-
-interface Sponsor {
-    name: string;
-    logo: string;
-    website?: string;
 }
 
 const WhoWeAre = () => {
@@ -117,49 +111,41 @@ and amplifying all perspectives.`
 
     const volunteerMembers: TeamMember[] = [
         {
-            name: "Volunteer Placeholder 1",
-            title: "Storykeeper",
-            photo: getImageUrl("crew2.png"),
-            bio: "A dedicated volunteer and member of the Griot & Grits Storykeeping Collective. This placeholder will be replaced with the volunteer's full biography and photo when available."
+            name: "Demethria Ramseur",
+            title: "Community Manager, Story Collection & Digital Archiving",
+            photo: getBioImageUrl("D_Ramseur.jpg"),
+            bio: "Demethria Ramseur is an Agile practitioner and project manager who helps teams work smarter, not harder, guiding cross‑functional groups in improving how they plan, collaborate, and deliver by blending structured project management with adaptive Agile practices. She also serves as a Community Manager for the Griot and Grits initiative, supporting story collection and digital archiving to amplify and preserve community narratives."
         },
         {
-            name: "Volunteer Placeholder 2",
-            title: "Storykeeper",
-            photo: getImageUrl("crew2.png"),
-            bio: "A dedicated volunteer and member of the Griot & Grits Storykeeping Collective. This placeholder will be replaced with the volunteer's full biography and photo when available."
+            name: "Thoan Freckleton",
+            title: "Music & Creative Production",
+            photo: getBioImageUrl("T_Freckleton.jpg"),
+            bio: "Thoan Freckleton is a strategist and technologist dedicated to building bridges between systems, strategy, and service. With a professional background spanning technical project management, equity research, and data analytics, he approaches complex challenges as an imaginative \"Questionary\" who prioritizes big-picture impact over the status quo. Thoan focuses on the intersection of innovation and human-centered progress to create a lasting legacy. He operates under the firm belief that technology is only as powerful as the people and processes it empowers, centering his work on culture, community, and equitable growth."
         },
         {
-            name: "Volunteer Placeholder 3",
-            title: "Storykeeper",
-            photo: getImageUrl("crew2.png"),
-            bio: "A dedicated volunteer and member of the Griot & Grits Storykeeping Collective. This placeholder will be replaced with the volunteer's full biography and photo when available."
-        }
-    ];
-
-    const goldSponsors: Sponsor[] = [
+            name: "Kimla Lee",
+            title: "Ethical AI, Bias Mitigation & Legal",
+            photo: getBioImageUrl("K_Lee.jpg"),
+            bio: "Kimla Lee is a Data and AI Governance Leader dedicated to advancing ethical AI and equitable technology practices. Her work focuses on bias mitigation, data governance, and responsible data use across systems and organizations. With experience spanning software development, analytics, and compliance, Kimla brings a holistic approach and strategic mindset to solving complex organizational challenges. She is also committed to community outreach, helping students and emerging professionals explore pathways into STEM and data-driven careers, and enabling teams to build trusted AI solutions that align with both business objectives and societal responsibility."
+        },
         {
-            name: "Resilient Ventures",
-            logo: getLogoUrl("RV Color Horizontal.jpg"),
-            website: "https://resilient-ventures.com"
-        }
-    ];
-
-    const silverSponsors: Sponsor[] = [];
-
-    const bronzeSponsors: Sponsor[] = [];
-
-    const partners: Sponsor[] = [
+            name: "Albert Myles",
+            title: "AI Services",
+            photo: getBioImageUrl("A_Myles.jpg"),
+            bio: "Albert is a Knowledge Management Professional with a passion for technology and creativity. As a veteran technologist, Albert thrives at translating technical jargon to business outcomes. Griot and Grits provides a perfect outlet for Albert's Techno-creative energy."
+        },
         {
-            name: "Mass Open Cloud",
-            logo: getLogoUrl("MOCwordmark_RGB_small.png"),
-            website: "https://massopen.cloud"
+            name: "Everett Moore",
+            title: "Videographer",
+            photo: getBioImageUrl("E_Moore.jpg"),
+            bio: "Everette Moore is a digital content creator with a strong foundation in photography and visual storytelling. As the former owner of a photography and digital content company, he has developed a keen eye for capturing compelling narratives through both still and motion media. His work has contributed to major film and photography projects, showcasing his versatility and creative direction.\n\nCurrently, Everette serves as the videographer for Griot and Grits, where he plays a key role in preserving cultural narratives through visual media. As part of this collective effort, he has contributed to the production of over 25 documentaries, helping to amplify voices and document stories that matter. Driven by purpose and creativity, Everette continues to use his skills to inform, inspire, and preserve history through digital storytelling."
         }
     ];
 
     const MemberCard = ({ member, onClick }: { member: TeamMember; onClick: () => void }) => (
         <motion.div
             whileHover={{ scale: 1.05 }}
-            className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
+            className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer w-full"
             onClick={onClick}
         >
             <div className="relative w-full aspect-square">
@@ -271,7 +257,7 @@ and amplifying all perspectives.`
                         viewport={{ once: true }}
                     >
                         <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Our Team</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 px-20">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-16 max-w-3xl mx-auto justify-items-center">
                             {teamMembers.map((member) => (
                                 <MemberCard
                                     key={member.name}
@@ -280,104 +266,6 @@ and amplifying all perspectives.`
                                 />
                             ))}
                         </div>
-
-                        {/* Volunteers Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            viewport={{ once: true }}
-                            className="mt-12 bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-6xl"
-                        >
-                            <div className="p-8">
-                                <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">Griot & Grits Storykeeping Collective</h3>
-                                <p className="text-gray-700 text-lg leading-relaxed text-center mb-8">
-                                    Many dedicated volunteers who have contributed countless hours to preserving
-                                    and sharing the stories that matter. Their passion and commitment make our mission possible.
-                                </p>
-
-                                {/* Creative collage - grid on desktop, vertical on mobile */}
-                                <div className="flex flex-col md:relative md:w-full md:h-[500px] gap-4 md:gap-0">
-                                    {/* Mobile: vertical stack, Desktop: grid layout */}
-                                    <div className="flex flex-col md:relative md:w-full md:h-full gap-4 md:gap-0">
-                                        {/* First image */}
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.5, delay: 0.3 }}
-                                            className="relative w-full h-64 md:absolute md:top-0 md:left-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
-                                        >
-                                            <Image
-                                                src={getImageUrl("2239728647962445031.jpg")}
-                                                alt="Volunteers at work"
-                                                fill
-                                                className="object-cover object-top rounded-lg"
-                                            />
-                                        </motion.div>
-
-                                        {/* Second image */}
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.5, delay: 0.4 }}
-                                            className="relative w-full h-64 md:absolute md:top-0 md:right-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
-                                        >
-                                            <Image
-                                                src={getImageUrl("crew2.png")}
-                                                alt="Community engagement"
-                                                fill
-                                                className="object-cover object-top rounded-lg"
-                                            />
-                                        </motion.div>
-
-                                        {/* Third image */}
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.5, delay: 0.5 }}
-                                            className="relative w-full h-64 md:absolute md:bottom-0 md:left-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
-                                        >
-                                            <Image
-                                                src={getImageUrl("3797497829222735602.jpg")}
-                                                alt="Storykeeping session"
-                                                fill
-                                                className="object-cover object-top rounded-lg"
-                                            />
-                                        </motion.div>
-
-                                        {/* Fourth image */}
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.5, delay: 0.6 }}
-                                            className="relative w-full h-64 md:absolute md:bottom-0 md:right-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
-                                        >
-                                            <Image
-                                                src={getImageUrl("8348915442707023838.jpg")}
-                                                alt="Volunteer team"
-                                                fill
-                                                className="object-cover object-top rounded-lg"
-                                            />
-                                        </motion.div>
-                                    </div>
-                                </div>
-
-                                <div className="mt-12">
-                                    <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
-                                        Meet the Storykeepers
-                                    </h3>
-                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                                        {volunteerMembers.map((member) => (
-                                            <MemberCard
-                                                key={member.name}
-                                                member={member}
-                                                onClick={() => setSelectedMember(member)}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
                     </motion.div>
                 </div>
             </section>
@@ -407,142 +295,102 @@ and amplifying all perspectives.`
                 </section>
             )}
 
-            {/* Sponsors Section */}
-            {(goldSponsors.length > 0 || silverSponsors.length > 0 || bronzeSponsors.length > 0) && (
-                <section className="py-20 bg-gray-100">
-                    <div className="container mx-auto px-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Our Sponsors</h2>
+            {/* Storykeeping Collective Section */}
+            <section className="py-20">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-6xl"
+                    >
+                        <div className="p-8">
+                            <h2 className="text-4xl font-bold text-gray-900 mb-4 text-center">Griot & Grits Storykeeping Collective</h2>
+                            <p className="text-gray-700 text-lg leading-relaxed text-center mb-8">
+                                Many dedicated volunteers who have contributed countless hours to preserving
+                                and sharing the stories that matter. Their passion and commitment make our mission possible.
+                            </p>
 
-                        {/* Gold Sponsors */}
-                        {goldSponsors.length > 0 && (
-                            <div className="mb-16">
-                                <h3 className="text-2xl font-bold text-center mb-8 text-yellow-600">Gold Sponsors</h3>
-                                <div className="flex flex-wrap justify-center gap-12">
-                                    {goldSponsors.map((sponsor) => (
-                                        <motion.a
-                                            key={sponsor.name}
-                                            href={sponsor.website}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            className="bg-white p-8 rounded-lg shadow-lg"
-                                        >
-                                            <div className="relative w-64 h-32">
-                                                <Image
-                                                    src={sponsor.logo}
-                                                    alt={sponsor.name}
-                                                    fill
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </motion.a>
+                            <div className="mb-12">
+                                <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
+                                    Meet the Storykeepers
+                                </h3>
+                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-5xl mx-auto justify-items-center">
+                                    {volunteerMembers.map((member) => (
+                                        <MemberCard
+                                            key={member.name}
+                                            member={member}
+                                            onClick={() => setSelectedMember(member)}
+                                        />
                                     ))}
                                 </div>
                             </div>
-                        )}
 
-                        {/* Silver Sponsors */}
-                        {silverSponsors.length > 0 && (
-                            <div className="mb-16">
-                                <h3 className="text-2xl font-bold text-center mb-8 text-gray-400">Silver Sponsors</h3>
-                                <div className="flex flex-wrap justify-center gap-8">
-                                    {silverSponsors.map((sponsor) => (
-                                        <motion.a
-                                            key={sponsor.name}
-                                            href={sponsor.website}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            className="bg-white p-6 rounded-lg shadow-lg"
-                                        >
-                                            <div className="relative w-48 h-24">
-                                                <Image
-                                                    src={sponsor.logo}
-                                                    alt={sponsor.name}
-                                                    fill
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </motion.a>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Bronze Sponsors */}
-                        {bronzeSponsors.length > 0 && (
-                            <div>
-                                <h3 className="text-2xl font-bold text-center mb-8 text-orange-600">Bronze Sponsors</h3>
-                                <div className="flex flex-wrap justify-center gap-6">
-                                    {bronzeSponsors.map((sponsor) => (
-                                        <motion.a
-                                            key={sponsor.name}
-                                            href={sponsor.website}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            className="bg-white p-4 rounded-lg shadow-lg"
-                                        >
-                                            <div className="relative w-32 h-16">
-                                                <Image
-                                                    src={sponsor.logo}
-                                                    alt={sponsor.name}
-                                                    fill
-                                                    className="object-contain"
-                                                />
-                                            </div>
-                                        </motion.a>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                        </motion.div>
-                    </div>
-                </section>
-            )}
-
-            {/* Partners Section */}
-            {partners.length > 0 && (
-                <section className="py-20 bg-white">
-                    <div className="container mx-auto px-6">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">Our Partners</h2>
-                            <div className="flex flex-wrap justify-center gap-12">
-                                {partners.map((partner) => (
-                                    <motion.a
-                                        key={partner.name}
-                                        href={partner.website}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.05 }}
-                                        className="bg-gray-50 p-8 rounded-lg shadow-lg"
+                            {/* Creative collage - grid on desktop, vertical on mobile */}
+                            <div className="flex flex-col md:relative md:w-full md:h-[500px] gap-4 md:gap-0">
+                                <div className="flex flex-col md:relative md:w-full md:h-full gap-4 md:gap-0">
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.3 }}
+                                        className="relative w-full h-64 md:absolute md:top-0 md:left-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
                                     >
-                                        <div className="relative w-64 h-32">
-                                            <Image
-                                                src={partner.logo}
-                                                alt={partner.name}
-                                                fill
-                                                className="object-contain"
-                                            />
-                                        </div>
-                                    </motion.a>
-                                ))}
+                                        <Image
+                                            src={getImageUrl("2239728647962445031.jpg")}
+                                            alt="Volunteers at work"
+                                            fill
+                                            className="object-cover object-top rounded-lg"
+                                        />
+                                    </motion.div>
+
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.4 }}
+                                        className="relative w-full h-64 md:absolute md:top-0 md:right-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
+                                    >
+                                        <Image
+                                            src={getImageUrl("crew2.png")}
+                                            alt="Community engagement"
+                                            fill
+                                            className="object-cover object-top rounded-lg"
+                                        />
+                                    </motion.div>
+
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.5 }}
+                                        className="relative w-full h-64 md:absolute md:bottom-0 md:left-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
+                                    >
+                                        <Image
+                                            src={getImageUrl("3797497829222735602.jpg")}
+                                            alt="Storykeeping session"
+                                            fill
+                                            className="object-cover object-top rounded-lg"
+                                        />
+                                    </motion.div>
+
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.6 }}
+                                        className="relative w-full h-64 md:absolute md:bottom-0 md:right-0 md:w-[45%] md:h-[45%] shadow-xl z-10"
+                                    >
+                                        <Image
+                                            src={getImageUrl("8348915442707023838.jpg")}
+                                            alt="Volunteer team"
+                                            fill
+                                            className="object-cover object-top rounded-lg"
+                                        />
+                                    </motion.div>
+                                </div>
                             </div>
-                        </motion.div>
-                    </div>
-                </section>
-            )}
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
 
             {/* Bio Modal */}
             {selectedMember && (
