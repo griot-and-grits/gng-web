@@ -23,13 +23,13 @@ test.describe('Home Page', () => {
     await expect(page.locator('body')).toBeVisible();
   });
 
-  test('shows sponsors and partners section', async ({ page }) => {
+  test('should show sponsors and partners section', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('text=Thank You to Our Sponsors & Partners')).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Sponsors & Partners/i })).toBeVisible();
   });
 
-  test('shows become a sponsor CTA', async ({ page }) => {
+  test('should show become a sponsor CTA', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('text=Interested in sponsoring?')).toBeVisible();
+    await expect(page.getByText('Interested in sponsoring?')).toBeVisible();
   });
 });
