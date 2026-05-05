@@ -22,4 +22,14 @@ test.describe('Home Page', () => {
     await page.setViewportSize({ width: 1920, height: 1080 });
     await expect(page.locator('body')).toBeVisible();
   });
+
+  test('should show sponsors and partners section', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { name: /Sponsors & Partners/i })).toBeVisible();
+  });
+
+  test('should show become a sponsor CTA', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByText('Interested in sponsoring?')).toBeVisible();
+  });
 });

@@ -5,6 +5,7 @@ import Hero from '@/components/hero'
 import MediaCoverage from '@/components/media-coverage'
 import Nav from '@/components/nav'
 import Services from '@/components/services'
+import SponsorsPartners from '@/components/sponsors-partners'
 import Testimonials from '@/components/testimonials'
 import Works from '@/components/works'
 import { loadVideoMetadata } from '@/lib/load-metadata'
@@ -34,6 +35,7 @@ const page = () => {
             )}
             <MediaCoverage />
             <Testimonials />
+            <SponsorsPartners />
             {/* <FAQ /> */}
             <ContactSection />
         </>
