@@ -327,6 +327,7 @@ videos:
     duration: "4:44"
     createdDate: "2026-03-19T12:00:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Ud1XFjHrULc"
+    podcastUrl: "https://open.spotify.com/episode/5Hen3ZJmR2NH8Jb2gXSkM8?si=lF0XmxG9SwGwjk6ME8gqVQ"
     featured: true
     historicalContext:
       - year: 1955
@@ -362,6 +363,7 @@ videos:
     duration: "6:05"
     createdDate: "2026-04-23T21:02:50Z"
     videoUrl: "https://www.youtube.com/watch?v=KZ7Hn5JAjwQ"
+    podcastUrl: "https://open.spotify.com/episode/1sehWd2YoPZbw7RZDsWV56?si=578a4181c407441b"
     featured: true
     historicalContext:
       - year: 1942
