@@ -200,7 +200,7 @@ videos:
     createdDate: "2026-02-09T12:00:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Uea17sw8xW0"
     podcastUrl: "https://open.spotify.com/episode/5MJzmnOw8C2sy0yw3URK5k?si=UcYW5o3eQf66FOUBLU7A5g"
-    featured: true
+    featured: false
     historicalContext:
       - location:
           name: "Raleigh, North Carolina"
@@ -242,7 +242,7 @@ videos:
     createdDate: "2026-02-18T12:00:00Z"
     videoUrl: "https://www.youtube.com/watch?v=mBngYEV7_cc"
     podcastUrl: "https://open.spotify.com/episode/4o9wuMJ0dLzBMHydGxRlGh?si=TLiqo-3bTKKKfNK966uqRw"
-    featured: true
+    featured: false
     historicalContext:
       - year: 1980
         location:
