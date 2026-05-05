@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 import { goldSponsors, silverSponsors, bronzeSponsors, partners, Sponsor } from '@/lib/sponsors';
 
 interface LogoCardProps {
@@ -36,7 +37,6 @@ const LogoCard = ({ sponsor, width, height, index, sizes }: LogoCardProps) => {
 };
 
 const SponsorsPartners = () => {
-    const hasSponsors = goldSponsors.length > 0 || silverSponsors.length > 0 || bronzeSponsors.length > 0;
     const hasPartners = partners.length > 0;
 
     return (
@@ -86,13 +86,9 @@ const SponsorsPartners = () => {
                     </div>
                 )}
 
-                {hasSponsors && hasPartners && (
-                    <div className="border-t border-gray-200 my-12" />
-                )}
-
                 {hasPartners && (
                     <div className="mb-12">
-                        <h3 className="text-2xl font-bold text-center mb-8 text-gray-600">Our Partners</h3>
+                        <h3 className="text-2xl font-bold text-center mb-8 text-gray-600">Partners</h3>
                         <div className="flex flex-wrap justify-center gap-8">
                             {partners.map((s, i) => (
                                 <LogoCard key={s.name} sponsor={s} width="w-48" height="h-24" index={i} sizes="192px" />
@@ -103,10 +99,11 @@ const SponsorsPartners = () => {
 
                 <div className="text-center mt-12">
                     <a
-                        href="#contact"
-                        className="inline-block border-2 border-[#AE2D24] text-[#AE2D24] px-8 py-3 rounded-lg font-semibold hover:bg-[#AE2D24] hover:text-white transition-colors duration-200"
+                        href="mailto:info@griotandgrits.org?subject=Sponsorship%20Inquiry%20%E2%80%94%20Griot%20%26%20Grits&body=Hello%2C%0A%0AI%20am%20interested%20in%20learning%20more%20about%20sponsorship%20opportunities%20with%20Griot%20%26%20Grits.%20Could%20you%20please%20share%20your%20sponsorship%20prospectus%20and%20details%20about%20the%20program%2C%20including%20available%20tiers%20and%20benefits%3F%0A%0AThank%20you%2C"
+                        className="inline-flex items-center gap-2 bg-[#AE2D24] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#282420] transition-colors"
                     >
-                        Interested in sponsoring? Get in touch →
+                        Interested in Sponsoring? Get in Touch
+                        <ExternalLink className="w-4 h-4" />
                     </a>
                 </div>
             </div>
