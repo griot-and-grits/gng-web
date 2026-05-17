@@ -297,7 +297,7 @@ videos:
     createdDate: "2026-03-07T12:00:00Z"
     videoUrl: "https://www.youtube.com/watch?v=gDF5Soer0is"
     podcastUrl: "https://open.spotify.com/episode/2OqMFHM7zLTcK8LtNOAJql?si=rWen3jJrQMOSskKFY3Quog"
-    featured: true
+    featured: false
     historicalContext:
       - year: 1940
         location:
@@ -387,3 +387,36 @@ videos:
       - "Faith"
     people:
       - "Ann E. Moore"
+
+  - id: "t4Kp9W2sQeL"
+    thumbnail: "https://img.youtube.com/vi/Ui3wXW7ar_I/0.jpg"
+    title: "Rep. James Roberson — Chapter One: A Name, a City, and a Mother's Political Fire"
+    interviewees:
+      - "Rep. James Roberson"
+    description: "Representative James Roberson — a Democratic member of the North Carolina House serving District 39 in Wake County and former Mayor of Knightdale — traces his story back to Wilson, North Carolina, a tobacco town once nicknamed \"Little DC\" for its deep political ties. He shares how his name came from the doctor who delivered him, a choice his mother made with pride, and recalls growing up in a household where civic engagement was a way of life. From crisp October mornings spent helping register voters to long nights watching election returns on television, those early experiences shaped his sense of purpose. His journey shows how place, family, and early lessons in service guided him from the streets of Wilson to a life in public leadership."
+    duration: "4:43"
+    createdDate: "2026-05-14T12:36:47Z"
+    videoUrl: "https://www.youtube.com/watch?v=Ui3wXW7ar_I"
+    podcastUrl: "https://open.spotify.com/episode/11IEbhaPKhSLseEouBMnCd?si=x9w3ZjDsRWK0RpllTZfWaA"
+    featured: true
+    historicalContext:
+      - location:
+          name: "Wilson, North Carolina"
+          coordinates: [35.7215, -77.9156]
+      - location:
+          name: "Raleigh, North Carolina"
+          coordinates: [35.7791, -78.6382]
+    tags:
+      - "Personal Stories"
+      - "Family History"
+      - "Education"
+      - "Childhood"
+      - "North Carolina"
+      - "Politics"
+      - "Voting"
+      - "Shaw University"
+      - "Wilson"
+      - "Raleigh"
+      - "North Carolina"
+    people:
+      - "Rep. James Roberson"
