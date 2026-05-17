@@ -23,6 +23,12 @@ tags:
     popularity: 0.7
   - name: "Racial Injustice"
     popularity: 0.7
+  - name: "Politics"
+    popularity: 0.7
+  - name: "Voting"
+    popularity: 0.5
+  - name: "Shaw University"
+    popularity: 0.6
   - name: "Heritage"
     popularity: 0.7
   - name: "Prison System"
@@ -57,6 +63,8 @@ tags:
     popularity: 0.4
   - name: "Charlotte"
     popularity: 0.4
+  - name: "Wilson"
+    popularity: 0.3
   - name: "Weather Events"
     popularity: 0.3
   - name: "Africa"
@@ -88,26 +96,26 @@ tags:
 
 people:
   - name: "Deborah Ragan McCoy"
-    popularity: 1.0
+    popularity: 0.5
   - name: "Gladys M. Williams"
-    popularity: 1.0
+    popularity: 0.8
   - name: "Sharon McDuffie"
-    popularity: 1.0
+    popularity: 0.5
   - name: "Ty McDuffie"
-    popularity: 1.0
-  - name: "Sharon Burwell McDuffie"
-    popularity: 1.0
+    popularity: 0.8
   - name: "Irene Clark"
     popularity: 1.0
   - name: "Dr. Oliver T. Reid"
-    popularity: 1.0
+    popularity: 0.8
   - name: "Rickey Gerard Thomas"
-    popularity: 1.0
+    popularity: 0.5
   - name: "Lynette Richardson"
-    popularity: 1.0
+    popularity: 0.5
   - name: "David E. Reid"
-    popularity: 1.0
+    popularity: 0.5
   - name: "Michael Jerome Thompson"
     popularity: 1.0
   - name: "Ann E. Moore"
+    popularity: 1.0
+  - name: "Rep. James Roberson"
     popularity: 1.0
